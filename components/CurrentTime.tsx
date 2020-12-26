@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const CurrentTime = () => {
+const CurrentTime: React.FC = () => {
   const [now, setCurrentTime] = useState(new Date())
 
   useEffect(() => {
