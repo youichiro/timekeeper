@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
 const Timer: React.FC = () => {
-  const durationSecond = 10
   const [elapsedSecond, setElapsedSecond] = useState(0)
+  const [durationSecond, setDurationSecond] = useState(10)
+  const [inputNumber, setInputNumber] = useState('')
 
   useEffect(() => {
     const countUp = () => {
@@ -17,9 +18,28 @@ const Timer: React.FC = () => {
     }
   })
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputNumber(event.target.value)
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setDurationSecond(parseInt(inputNumber))
+    setElapsedSecond(0)
+  }
+
   return (
     <>
-      <p>{elapsedSecond}</p>
+      <p>durationSecond: {durationSecond}</p>
+      <p>elapsedSecond: {elapsedSecond}</p>
+      <p>inputNumber: {inputNumber}</p>
+      <form onSubmit={handleSubmit}>
+        <label>
+          durationSecond:
+          <input type="number" value={inputNumber} onChange={handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
     </>
   )
 }
