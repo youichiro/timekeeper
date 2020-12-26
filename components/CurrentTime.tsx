@@ -12,7 +12,6 @@ const CurrentTime: React.FC = () => {
     const intervalID = setInterval(tick, 1000)
     // cleanup
     return () => {
-      console.log('unsubscribe')
       clearInterval(intervalID)
     }
   })
