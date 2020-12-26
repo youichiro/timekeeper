@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 const Timer: React.FC = () => {
   const [elapsedSecond, setElapsedSecond] = useState(0)
@@ -18,27 +18,33 @@ const Timer: React.FC = () => {
     }
   })
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputNumber(event.target.value)
-  }
+  const onChangeInput = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setInputNumber(event.target.value)
+    },
+    [inputNumber]
+  )
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setDurationSecond(parseInt(inputNumber))
-    setElapsedSecond(0)
-  }
+  const onSubmitInput = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault()
+      setDurationSecond(parseInt(inputNumber))
+      setElapsedSecond(0)
+    },
+    [inputNumber]
+  )
 
   return (
     <>
       <p>durationSecond: {durationSecond}</p>
       <p>elapsedSecond: {elapsedSecond}</p>
       <p>inputNumber: {inputNumber}</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmitInput}>
         <label>
           durationSecond:
-          <input type="number" value={inputNumber} onChange={handleChange} />
+          <input type="number" value={inputNumber} onChange={onChangeInput} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" disabled={inputNumber === ''} />
       </form>
     </>
   )
