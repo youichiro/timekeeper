@@ -5,7 +5,7 @@ import CurrentTime from '../components/CurrentTime'
 const IndexPage: React.FC = () => (
   <Layout title="Home">
     <h1>Timekeeper</h1>
-    <CurrentTime/>
+    <CurrentTime />
   </Layout>
 )
 

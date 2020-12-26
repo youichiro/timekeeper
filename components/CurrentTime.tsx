@@ -21,7 +21,7 @@ const CurrentTime: React.FC = () => {
     <>
       <p>{now.toLocaleTimeString()}</p>
     </>
-  )  
+  )
 }
 
 export default CurrentTime
