@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
-    "lint": "eslint . --ext .ts,.tsx"
+    "lint": "eslint . --ext .ts,.tsx",
+    "prettier": "prettier --write ./**/*.{ts,tsx}"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.11.0",
