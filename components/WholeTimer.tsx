@@ -46,7 +46,7 @@ const WholeTimer: React.FC = () => {
   })
 
   return (
-    <>
+    <div>
       <h2>WholeTimer</h2>
       <p>totalSeconds: {wholeProgress.totalSeconds}</p>
       <p>elapsedSecond: {elapsedSeconds}</p>
@@ -54,7 +54,7 @@ const WholeTimer: React.FC = () => {
         開始
       </button>
       <WholeProgressBar />
-    </>
+    </div>
   )
 }
 

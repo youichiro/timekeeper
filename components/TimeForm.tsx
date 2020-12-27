@@ -21,7 +21,7 @@ const TimeForm: React.FC = () => {
   )
 
   return (
-    <>
+    <div>
       <p>input: {input}</p>
       <form onSubmit={onSubmitInput}>
         <label>
@@ -30,7 +30,7 @@ const TimeForm: React.FC = () => {
         </label>
         <input type="submit" value="Submit" disabled={input === ''} />
       </form>
-    </>
+    </div>
   )
 }
 

@@ -17,9 +17,9 @@ const CurrentTime: React.FC = () => {
   })
 
   return (
-    <>
+    <div>
       <p>{now.toLocaleTimeString()}</p>
-    </>
+    </div>
   )
 }
 
