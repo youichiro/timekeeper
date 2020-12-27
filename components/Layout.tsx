@@ -17,9 +17,7 @@ const Layout: React.FC<Props> = ({
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <header></header>
-    <main>
-      {children}
-    </main>
+    <main>{children}</main>
     <footer></footer>
   </div>
 )
