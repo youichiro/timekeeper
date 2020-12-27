@@ -1,18 +1,6 @@
-import { add } from 'date-fns'
 import React, { useState, useEffect, useCallback } from 'react'
 import { SetTime, WholeProgress } from '../interfaces'
-
-const convertSeconds = (setTime: SetTime): number => {
-  return setTime.hours * 60 * 60 + setTime.minutes * 60 + setTime.seconds
-}
-
-const calcEndDate = (start: Date, setTime: SetTime): Date => {
-  return add(start, {
-    hours: setTime.hours,
-    minutes: setTime.minutes,
-    seconds: setTime.seconds,
-  })
-}
+import { convertSeconds, calcEndDate } from '../utils/calc-date'
 
 const WholeTimer: React.FC = () => {
   const wholeSetTime: SetTime = {
