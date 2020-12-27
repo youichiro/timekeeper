@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
+
+import WholeProgressBar from './WholeProgressBar'
 import { SetTime, WholeProgress } from '../interfaces'
 import { convertSeconds, calcEndDate } from '../utils/calc-date'
 
@@ -51,6 +53,7 @@ const WholeTimer: React.FC = () => {
       <button type="button" onClick={onClickStartButton}>
         開始
       </button>
+      <WholeProgressBar />
     </>
   )
 }
