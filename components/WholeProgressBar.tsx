@@ -1,5 +1,5 @@
 import React from 'react'
-import { LinearProgress } from '@material-ui/core'
+import { LinearProgress, Grid } from '@material-ui/core'
 
 const WholeProgressBar: React.FC = () => {
   const total = 30
@@ -10,10 +10,27 @@ const WholeProgressBar: React.FC = () => {
   return (
     <div>
       <h2>WholeProgressBar</h2>
-      <LinearProgress variant="determinate" value={progress} />
-      <p>total: {total}</p>
-      <p>elapsed: {elapsed}</p>
-      <p>remained: {remained}</p>
+      <div style={{ flexGrow: 1 }}>
+        <Grid container spacing={3} justify="space-between">
+          <Grid item xs={12}>
+            <p style={{ textAlign: 'center' }}>total: {total}</p>
+          </Grid>
+          <Grid item xs={12}>
+            <LinearProgress
+              variant="determinate"
+              value={progress}
+              style={{ height: 10, borderRadius: 6 }}
+              color="secondary"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <p>elapsed: {elapsed}</p>
+          </Grid>
+          <Grid item xs={6}>
+            <p style={{ textAlign: 'right' }}>remained: {remained}</p>
+          </Grid>
+        </Grid>
+      </div>
     </div>
   )
 }
