@@ -3,9 +3,7 @@ import { TimerContext } from './Timer'
 
 const TimeForm: React.FC = () => {
   const [input, setInput] = useState('')
-  const { handleUpdateDurationSecond, handleResetElapsedSecond } = useContext(
-    TimerContext
-  )
+  const { handleRestartTimer } = useContext(TimerContext)
 
   const onChangeInput = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +15,7 @@ const TimeForm: React.FC = () => {
   const onSubmitInput = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
-      handleUpdateDurationSecond(parseInt(input))
-      handleResetElapsedSecond()
+      handleRestartTimer(parseInt(input))
     },
     [input]
   )

@@ -2,8 +2,7 @@ import React, { useState, useEffect, createContext, useCallback } from 'react'
 import TimeForm from './TimeForm'
 
 type TimerContextValue = {
-  handleUpdateDurationSecond: (_: number) => void
-  handleResetElapsedSecond: () => void
+  handleRestartTimer: (_: number) => void
 }
 
 export const TimerContext = createContext({} as TimerContextValue)
@@ -25,21 +24,16 @@ const Timer: React.FC = () => {
     }
   })
 
-  const handleUpdateDurationSecond = useCallback(
-    (num: number) => {
-      setDurationSecond(num)
+  const handleRestartTimer = useCallback(
+    (newDurationSecond: number) => {
+      setDurationSecond(newDurationSecond)
+      setElapsedSecond(0)
     },
-    [setDurationSecond]
+    [setDurationSecond, setElapsedSecond]
   )
 
-  const handleResetElapsedSecond = useCallback(() => {
-    setElapsedSecond(0)
-  }, [setElapsedSecond])
-
   return (
-    <TimerContext.Provider
-      value={{ handleUpdateDurationSecond, handleResetElapsedSecond }}
-    >
+    <TimerContext.Provider value={{ handleRestartTimer }}>
       <p>durationSecond: {durationSecond}</p>
       <p>elapsedSecond: {elapsedSecond}</p>
       <TimeForm />
