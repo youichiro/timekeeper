@@ -1,15 +1,24 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, createContext } from 'react'
 
 import WholeProgressBar from './WholeProgressBar'
-import { SetTime, WholeProgress } from '../interfaces'
+import WholeTimeForm from './WholeTimeForm'
+import { BlockTime, WholeProgress } from '../interfaces'
 import { convertSeconds, calcEndDate } from '../utils/calc-date'
 
+export const WholeTimerContext = createContext(
+  {} as {
+    wholeBlockTime: BlockTime
+    setWholeBlockTime: (blockTime: BlockTime) => void
+  }
+)
+
 const WholeTimer: React.FC = () => {
-  const wholeSetTime: SetTime = {
+  const initialWholeBlockTime: BlockTime = {
     hours: 0,
     minutes: 0,
     seconds: 8,
   }
+  const [wholeBlockTime, setWholeBlockTime] = useState(initialWholeBlockTime)
 
   const initialWholeProgress: WholeProgress = {
     isStarted: false,
@@ -24,11 +33,11 @@ const WholeTimer: React.FC = () => {
     setElapsedSeconds(0)
     setWholeProgress({
       isStarted: true,
-      totalSeconds: convertSeconds(wholeSetTime),
+      totalSeconds: convertSeconds(wholeBlockTime),
       start: new Date(),
-      end: calcEndDate(new Date(), wholeSetTime),
+      end: calcEndDate(new Date(), wholeBlockTime),
     })
-  }, [])
+  }, [wholeBlockTime])
 
   // 経過時間をカウントし、設定時間に達したらストップする
   const [elapsedSeconds, setElapsedSeconds] = useState(0)
@@ -57,6 +66,9 @@ const WholeTimer: React.FC = () => {
         total={wholeProgress.totalSeconds}
         elapsed={elapsedSeconds}
       />
+      <WholeTimerContext.Provider value={{ wholeBlockTime, setWholeBlockTime }}>
+        <WholeTimeForm />
+      </WholeTimerContext.Provider>
     </div>
   )
 }
