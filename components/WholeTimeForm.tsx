@@ -17,7 +17,7 @@ const WholeTimeForm: React.FC = () => {
 
   return (
     <div>
-      <h2>WholeTimeForm</h2>
+      <h3>WholeTimeForm</h3>
       <form>
         <label>
           <input

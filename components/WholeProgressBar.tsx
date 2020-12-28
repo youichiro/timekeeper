@@ -12,7 +12,7 @@ const WholeProgressBar: React.FC<WholeProgressBarProps> = (props) => {
 
   return (
     <div>
-      <h2>WholeProgressBar</h2>
+      <h3>WholeProgressBar</h3>
       <div style={{ flexGrow: 1 }}>
         <Grid container spacing={3} justify="space-between">
           <Grid item xs={12}>
