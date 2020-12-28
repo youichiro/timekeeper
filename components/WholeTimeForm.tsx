@@ -15,6 +15,10 @@ const WholeTimeForm: React.FC = () => {
     })
   }
 
+  const inputValue = (value: number | null): number | '' => {
+    return value !== null ? value : ''
+  }
+
   return (
     <div>
       <h3>WholeTimeForm</h3>
@@ -23,7 +27,7 @@ const WholeTimeForm: React.FC = () => {
           <input
             name="hours"
             type="number"
-            value={wholeBlockTime.hours || ''}
+            value={inputValue(wholeBlockTime.hours)}
             onChange={onChangeInput}
           />
           時間
@@ -32,7 +36,7 @@ const WholeTimeForm: React.FC = () => {
           <input
             name="minutes"
             type="number"
-            value={wholeBlockTime.minutes || ''}
+            value={inputValue(wholeBlockTime.minutes)}
             onChange={onChangeInput}
           />
           分
@@ -41,7 +45,7 @@ const WholeTimeForm: React.FC = () => {
           <input
             name="seconds"
             type="number"
-            value={wholeBlockTime.seconds || ''}
+            value={inputValue(wholeBlockTime.seconds)}
             onChange={onChangeInput}
           />
           秒
