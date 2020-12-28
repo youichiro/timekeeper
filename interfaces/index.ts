@@ -1,7 +1,7 @@
-export interface SetTime {
-  hours: number
-  minutes: number
-  seconds: number
+export interface BlockTime {
+  hours: number | null
+  minutes: number | null
+  seconds: number | null
 }
 
 export interface WholeProgress {

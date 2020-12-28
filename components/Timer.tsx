@@ -1,11 +1,11 @@
 import React, { useState, useEffect, createContext, useCallback } from 'react'
 import TimeForm from './TimeForm'
 
-type TimerContextValue = {
-  handleRestartTimer: (_: number) => void
-}
-
-export const TimerContext = createContext({} as TimerContextValue)
+export const TimerContext = createContext(
+  {} as {
+    handleRestartTimer: (_: number) => void
+  }
+)
 
 const Timer: React.FC = () => {
   const [elapsedSecond, setElapsedSecond] = useState(0)
