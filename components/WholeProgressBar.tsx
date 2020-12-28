@@ -16,7 +16,7 @@ const WholeProgressBar: React.FC<WholeProgressBarProps> = (props) => {
       <div style={{ flexGrow: 1 }}>
         <Grid container spacing={3} justify="space-between">
           <Grid item xs={12}>
-            <p style={{ textAlign: 'center' }}>total: {props.total}</p>
+            <p style={{ textAlign: 'center' }}>合計: {props.total}秒</p>
           </Grid>
           <Grid item xs={12}>
             <LinearProgress
@@ -27,10 +27,10 @@ const WholeProgressBar: React.FC<WholeProgressBarProps> = (props) => {
             />
           </Grid>
           <Grid item xs={6}>
-            <p>elapsed: {props.elapsed}</p>
+            <p>経過: {props.elapsed}秒</p>
           </Grid>
           <Grid item xs={6}>
-            <p style={{ textAlign: 'right' }}>remained: {remained}</p>
+            <p style={{ textAlign: 'right' }}>残り: {remained}秒</p>
           </Grid>
         </Grid>
       </div>
