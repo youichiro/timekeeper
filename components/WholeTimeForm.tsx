@@ -20,34 +20,31 @@ const WholeTimeForm: React.FC = () => {
       <h2>WholeTimeForm</h2>
       <form>
         <label>
-          {' '}
-          hours:
           <input
             name="hours"
             type="number"
             value={wholeBlockTime.hours || ''}
             onChange={onChangeInput}
           />
+          時間
         </label>
         <label>
-          {' '}
-          minutes:
           <input
             name="minutes"
             type="number"
             value={wholeBlockTime.minutes || ''}
             onChange={onChangeInput}
           />
+          分
         </label>
         <label>
-          {' '}
-          seconds:
           <input
             name="seconds"
             type="number"
             value={wholeBlockTime.seconds || ''}
             onChange={onChangeInput}
           />
+          秒
         </label>
       </form>
     </div>
