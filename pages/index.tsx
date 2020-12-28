@@ -2,7 +2,6 @@ import React from 'react'
 import { Container } from '@material-ui/core'
 import Layout from '../components/Layout'
 // import CurrentTime from '../components/CurrentTime'
-// import Timer from '../components/Timer'
 import WholeTimer from '../components/WholeTimer'
 
 const IndexPage: React.FC = () => (
