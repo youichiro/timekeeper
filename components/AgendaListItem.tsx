@@ -1,14 +1,15 @@
-import { ListItem, ListItemText } from '@material-ui/core'
 import React from 'react'
+import { ListItem, ListItemText } from '@material-ui/core'
+import { Agenda } from '../interfaces/index'
 
 type Props = {
-  name: string
+  agenda: Agenda
 }
 
-const AgendaListItem: React.FC<Props> = ({ name }) => {
+const AgendaListItem: React.FC<Props> = ({ agenda }) => {
   return (
     <ListItem button>
-      <ListItemText primary={name} />
+      <ListItemText primary={agenda.name} />
     </ListItem>
   )
 }

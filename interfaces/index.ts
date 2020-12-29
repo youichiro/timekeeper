@@ -19,4 +19,5 @@ export interface WholeProgress {
 
 export interface Agenda {
   name: string
+  time: string
 }
