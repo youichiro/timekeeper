@@ -1,18 +1,18 @@
 import React from 'react'
 import { LinearProgress, Grid } from '@material-ui/core'
 
-type WholeProgressBarProps = {
+type ProgressBarProps = {
   total: number
   elapsed: number
 }
 
-const WholeProgressBar: React.FC<WholeProgressBarProps> = (props) => {
+const ProgressBar: React.FC<ProgressBarProps> = (props) => {
   const progress = (props.elapsed / props.total) * 100.0
   const remained = props.total - props.elapsed
 
   return (
     <div>
-      <h3>WholeProgressBar</h3>
+      <h3>ProgressBar</h3>
       <div style={{ flexGrow: 1 }}>
         <Grid container spacing={3} justify="space-between">
           <Grid item xs={12}>
@@ -38,4 +38,4 @@ const WholeProgressBar: React.FC<WholeProgressBarProps> = (props) => {
   )
 }
 
-export default WholeProgressBar
+export default ProgressBar

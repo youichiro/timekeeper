@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, createContext } from 'react'
 
-import WholeProgressBar from './WholeProgressBar'
+import ProgressBar from './ProgressBar'
 import WholeTimeForm from './WholeTimeForm'
 import StartButton from './StartButton'
 import { BlockTime, WholeProgress } from '../interfaces'
@@ -58,7 +58,7 @@ const WholeTimer: React.FC = () => {
   return (
     <div>
       <h2>WholeTimer</h2>
-      <WholeProgressBar
+      <ProgressBar
         total={wholeProgress.totalSeconds}
         elapsed={elapsedSeconds}
       />
