@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { List } from '@material-ui/core'
 import AgendaListItem from './AgendaListItem'
+import AgendaForm from './AgendaForm'
 import { Agenda, BlockTime } from '../interfaces'
 
 const AgendaList: React.FC = () => {
@@ -15,7 +16,7 @@ const AgendaList: React.FC = () => {
     { id: 3, name: 'アジェンダ3', blockTime: defaultBlockTime },
   ]
 
-  const [selectedAgenda, setSelectedAgenda] = useState({} as Agenda)
+  const [selectedAgenda, setSelectedAgenda] = useState(null as Agenda | null)
   const handleSetSelectedAgenda = (agenda: Agenda): void => {
     setSelectedAgenda(agenda)
   }
@@ -32,7 +33,7 @@ const AgendaList: React.FC = () => {
     <div>
       <h2>AgendaList</h2>
       <List>{listItems}</List>
-      <p>{selectedAgenda.name}</p>
+      <AgendaForm agenda={selectedAgenda} />
     </div>
   )
 }

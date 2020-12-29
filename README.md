@@ -28,7 +28,7 @@
     - [x] AgendaにIDを追加
     - [x] AgendaにBlockTimeを追加
     - [x] ItemをクリックしたらselectedAgendaをセットする
-    - [ ] AgendaFormコンポーネントを作成する
+    - [x] AgendaFormコンポーネントを作成する
     - [ ] 入力フォームをモーダル表示する
     - [ ] 入力フォームで送信ボタンを押したらagendaListを更新する
 
