@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, createContext } from 'react'
 
 import WholeProgressBar from './WholeProgressBar'
 import WholeTimeForm from './WholeTimeForm'
-import Buttons from './Buttons'
+import StartButton from './StartButton'
 import { BlockTime, WholeProgress } from '../interfaces'
 import { convertSeconds, calcEndDate } from '../utils/calc-date'
 
@@ -65,7 +65,7 @@ const WholeTimer: React.FC = () => {
       <WholeTimerContext.Provider value={{ wholeBlockTime, setWholeBlockTime }}>
         <WholeTimeForm />
       </WholeTimerContext.Provider>
-      <Buttons handleClick={onClickStartButton} />
+      <StartButton handleClick={onClickStartButton} />
     </div>
   )
 }

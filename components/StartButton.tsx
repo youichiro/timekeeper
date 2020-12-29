@@ -4,10 +4,10 @@ type Props = {
   handleClick: () => void
 }
 
-const Buttons: React.FC<Props> = (props) => {
+const StartButton: React.FC<Props> = (props) => {
   return (
     <div>
-      <h3>Buttons</h3>
+      <h3>StartButton</h3>
       <button type="submit" onClick={props.handleClick}>
         開始
       </button>
@@ -15,4 +15,4 @@ const Buttons: React.FC<Props> = (props) => {
   )
 }
 
-export default Buttons
+export default StartButton
