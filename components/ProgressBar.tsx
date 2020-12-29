@@ -27,9 +27,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ total, elapsed }) => {
       <div style={{ flexGrow: 1 }}>
         <Grid container spacing={3} justify="space-between">
           <Grid item xs={12}>
-            <p style={{ textAlign: 'center' }}>
-              合計: {displayTime(total)}
-            </p>
+            <p style={{ textAlign: 'center' }}>合計: {displayTime(total)}</p>
           </Grid>
           <Grid item xs={12}>
             <LinearProgress
