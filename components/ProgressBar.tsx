@@ -1,22 +1,24 @@
 import React from 'react'
 import { LinearProgress, Grid } from '@material-ui/core'
-import { convertSecondsToBlockTime } from '../utils/calc-date'
+import {
+  convertSecondsToBlockTime,
+  zeroPaddingBlockTime,
+} from '../utils/calc-date'
 
 type ProgressBarProps = {
   total: number
   elapsed: number
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = (props) => {
-  const progress = (props.elapsed / props.total) * 100.0
-  const remained = props.total - props.elapsed
+const ProgressBar: React.FC<ProgressBarProps> = ({ total, elapsed }) => {
+  const progress = (elapsed / total) * 100.0
+  const remained = total - elapsed
 
   const displayTime = (totalSeconds: number): string => {
-    const blockTime = convertSecondsToBlockTime(totalSeconds)
-    const hours = blockTime.hours !== 0 ? `${blockTime.hours}時間` : ''
-    const minutes = blockTime.minutes !== 0 ? `${blockTime.minutes}分` : ''
-    const seconds = blockTime.seconds !== 0 ? `${blockTime.seconds}秒` : ''
-    return `${hours} ${minutes} ${seconds}`
+    const bt = convertSecondsToBlockTime(totalSeconds)
+    const btStr = zeroPaddingBlockTime(bt, 2)
+    const hours = btStr.hours !== '00' ? btStr.hours + ':' : ''
+    return `${hours}${btStr.minutes}:${btStr.seconds}`
   }
 
   return (
@@ -26,7 +28,7 @@ const ProgressBar: React.FC<ProgressBarProps> = (props) => {
         <Grid container spacing={3} justify="space-between">
           <Grid item xs={12}>
             <p style={{ textAlign: 'center' }}>
-              合計: {displayTime(props.total)}
+              合計: {displayTime(total)}
             </p>
           </Grid>
           <Grid item xs={12}>
@@ -38,7 +40,7 @@ const ProgressBar: React.FC<ProgressBarProps> = (props) => {
             />
           </Grid>
           <Grid item xs={6}>
-            <p>経過: {displayTime(props.elapsed)}</p>
+            <p>経過: {displayTime(elapsed)}</p>
           </Grid>
           <Grid item xs={6}>
             <p style={{ textAlign: 'right' }}>残り: {displayTime(remained)}</p>

@@ -4,6 +4,12 @@ export interface BlockTime {
   seconds: number | null
 }
 
+export interface BlockTimeString {
+  hours: string
+  minutes: string
+  seconds: string
+}
+
 export interface WholeProgress {
   isStarted: boolean
   totalSeconds: number
