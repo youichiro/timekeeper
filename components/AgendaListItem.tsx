@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListItem, ListItemText } from '@material-ui/core'
+import { ListItem, ListItemText, Grid } from '@material-ui/core'
 import { Agenda } from '../interfaces/index'
 
 type Props = {
@@ -9,7 +9,14 @@ type Props = {
 const AgendaListItem: React.FC<Props> = ({ agenda }) => {
   return (
     <ListItem button>
-      <ListItemText primary={agenda.name} />
+      <Grid container spacing={3}>
+        <Grid item xs={6}>
+          <ListItemText primary={agenda.name} />
+        </Grid>
+        <Grid item xs={6}>
+          <ListItemText style={{ textAlign: 'right' }} primary={agenda.time} />
+        </Grid>
+      </Grid>
     </ListItem>
   )
 }
