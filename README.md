@@ -24,3 +24,11 @@
   - [x] AgendaListコンポーネントを作成
   - [x] アジェンダを表示
   - [x] AgendaListItemコンポーネントを作成
+  - [ ] アジェンダのタイムを設定できるようにする
+    - [ ] AgendaにIDを追加
+    - [ ] AgendaにBlockTimeを追加
+    - [ ] ItemをクリックしたらselectedAgendaをセットする
+    - [ ] AgendaFormコンポーネントを作成する
+    - [ ] 入力フォームをモーダル表示する
+    - [ ] 入力フォームで送信ボタンを押したらagendaListを更新する
+
