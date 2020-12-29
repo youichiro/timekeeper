@@ -5,7 +5,7 @@ import { convertBlockTimeToDisplayTime } from '../utils/calc-date'
 
 type Props = {
   agenda: Agenda
-  handleClick: (agenda: Agenda) => void
+  handleClick: (agenda: Agenda | null) => void
 }
 
 const AgendaListItem: React.FC<Props> = ({ agenda, handleClick }) => {

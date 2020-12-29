@@ -17,13 +17,17 @@ const AgendaList: React.FC = () => {
   ]
 
   const [selectedAgenda, setSelectedAgenda] = useState(null as Agenda | null)
-  const handleSetSelectedAgenda = (agenda: Agenda): void => {
+  const handleSetSelectedAgenda = (agenda: Agenda | null): void => {
     setSelectedAgenda(agenda)
   }
 
   const listItems = agendaList.map((agenda) =>
     selectedAgenda !== null && agenda.id === selectedAgenda.id ? (
-      <AgendaForm key={agenda.id} agenda={agenda} />
+      <AgendaForm
+        key={agenda.id}
+        agenda={agenda}
+        handleClick={handleSetSelectedAgenda}
+      />
     ) : (
       <AgendaListItem
         key={agenda.id}
