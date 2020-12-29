@@ -16,3 +16,7 @@ export interface WholeProgress {
   start: Date
   end: Date
 }
+
+export interface Agenda {
+  name: string
+}
