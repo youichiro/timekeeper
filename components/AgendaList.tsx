@@ -1,13 +1,18 @@
 import React from 'react'
 import { List } from '@material-ui/core'
 import AgendaListItem from './AgendaListItem'
-import { Agenda } from '../interfaces'
+import { Agenda, BlockTime } from '../interfaces'
 
 const AgendaList: React.FC = () => {
+  const defaultBlockTime: BlockTime = {
+    hours: 0,
+    minutes: 0,
+    seconds: 10,
+  }
   const agendaList: Agenda[] = [
-    { id: 1, name: 'アジェンダ1', time: '05:00' },
-    { id: 2, name: 'アジェンダ2', time: '10:00' },
-    { id: 3, name: 'アジェンダ3', time: '00:30' },
+    { id: 1, name: 'アジェンダ1', blockTime: defaultBlockTime },
+    { id: 2, name: 'アジェンダ2', blockTime: defaultBlockTime },
+    { id: 3, name: 'アジェンダ3', blockTime: defaultBlockTime },
   ]
 
   const listItems = agendaList.map((agenda) => (

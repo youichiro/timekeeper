@@ -31,7 +31,7 @@ export const convertSecondsToBlockTime = (seconds: number): BlockTime => {
 // 数値を0で桁埋めした文字列を返す
 export const zeroPaddingBlockTime = (
   blockTime: BlockTime,
-  length: number
+  length = 2
 ): BlockTimeString => {
   const zeroPadding = (num: number, length: number): string =>
     ('00000000' + num).slice(-length)
@@ -40,4 +40,11 @@ export const zeroPaddingBlockTime = (
     minutes: zeroPadding(blockTime.minutes || 0, length),
     seconds: zeroPadding(blockTime.seconds || 0, length),
   }
+}
+
+// BlockTimeを表示用の文字列に変換する
+export const convertBlockTimeToDisplayTime = (blockTime: BlockTime): string => {
+  const btStr = zeroPaddingBlockTime(blockTime)
+  const hours = btStr.hours !== '00' ? btStr.hours + ':' : ''
+  return `${hours}${btStr.minutes}:${btStr.seconds}`
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { LinearProgress, Grid } from '@material-ui/core'
 import {
+  convertBlockTimeToDisplayTime,
   convertSecondsToBlockTime,
-  zeroPaddingBlockTime,
 } from '../utils/calc-date'
 
 type ProgressBarProps = {
@@ -16,9 +16,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ total, elapsed }) => {
 
   const displayTime = (totalSeconds: number): string => {
     const bt = convertSecondsToBlockTime(totalSeconds)
-    const btStr = zeroPaddingBlockTime(bt, 2)
-    const hours = btStr.hours !== '00' ? btStr.hours + ':' : ''
-    return `${hours}${btStr.minutes}:${btStr.seconds}`
+    return convertBlockTimeToDisplayTime(bt)
   }
 
   return (
