@@ -21,19 +21,22 @@ const AgendaList: React.FC = () => {
     setSelectedAgenda(agenda)
   }
 
-  const listItems = agendaList.map((agenda) => (
-    <AgendaListItem
-      key={agenda.id}
-      agenda={agenda}
-      handleClick={handleSetSelectedAgenda}
-    />
-  ))
+  const listItems = agendaList.map((agenda) =>
+    selectedAgenda !== null && agenda.id === selectedAgenda.id ? (
+      <AgendaForm key={agenda.id} agenda={agenda} />
+    ) : (
+      <AgendaListItem
+        key={agenda.id}
+        agenda={agenda}
+        handleClick={handleSetSelectedAgenda}
+      />
+    )
+  )
 
   return (
     <div>
       <h2>AgendaList</h2>
       <List>{listItems}</List>
-      <AgendaForm agenda={selectedAgenda} />
     </div>
   )
 }
