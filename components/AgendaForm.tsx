@@ -1,6 +1,5 @@
-import React from 'react'
-import { Grid, ListItem, ListItemText } from '@material-ui/core'
-import { convertBlockTimeToDisplayTime } from '../utils/calc-date'
+import React, { useState } from 'react'
+import { ListItem, TextField } from '@material-ui/core'
 import { Agenda } from '../interfaces/index'
 import DoneIcon from '@material-ui/icons/Done'
 
@@ -14,21 +13,66 @@ const AgendaForm: React.FC<Props> = ({ agenda, handleClick }) => {
     return null
   }
 
-  const displayTime = convertBlockTimeToDisplayTime(agenda.blockTime)
+  const [newAgenda, setNewAgenda] = useState(agenda)
+
+  const onChangeNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewAgenda({
+      ...newAgenda,
+      name: event.target.value,
+    })
+  }
+
+  const onChangeTimeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value =
+      event.target.value !== '' ? parseInt(event.target.value) : null
+    const name = event.target.name
+    setNewAgenda({
+      ...newAgenda,
+      blockTime: {
+        hours: name === 'hours' ? value : newAgenda.blockTime.hours,
+        minutes: name === 'minutes' ? value : newAgenda.blockTime.minutes,
+        seconds: name === 'seconds' ? value : newAgenda.blockTime.seconds,
+      },
+    })
+  }
+
+  const inputValue = (value: number | null): number | '' => {
+    return value !== null ? value : ''
+  }
 
   return (
     <ListItem>
-      <Grid container spacing={3}>
-        <Grid item xs={6}>
-          <ListItemText primary={`* ${agenda.name}`} />
-        </Grid>
-        <Grid item xs={4} style={{ textAlign: 'right' }}>
-          <ListItemText primary={displayTime} />
-        </Grid>
-        <Grid item xs={2} style={{ textAlign: 'right' }}>
-          <DoneIcon color="primary" onClick={() => handleClick(null)} />
-        </Grid>
-      </Grid>
+      <form>
+        <TextField
+          name="name"
+          label="name"
+          value={newAgenda.name}
+          onChange={onChangeNameInput}
+          error={newAgenda.name === ''}
+        />
+        <TextField
+          name="hours"
+          type="number"
+          label="hours"
+          value={inputValue(newAgenda.blockTime.hours)}
+          onChange={onChangeTimeInput}
+        />
+        <TextField
+          name="minutes"
+          type="number"
+          label="minutes"
+          value={inputValue(newAgenda.blockTime.minutes)}
+          onChange={onChangeTimeInput}
+        />
+        <TextField
+          name="seconds"
+          type="number"
+          label="seconds"
+          value={inputValue(newAgenda.blockTime.seconds)}
+          onChange={onChangeTimeInput}
+        />
+        <DoneIcon color="primary" onClick={() => handleClick(null)} />
+      </form>
     </ListItem>
   )
 }
