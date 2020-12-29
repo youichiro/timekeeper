@@ -16,7 +16,7 @@ export const WholeTimerContext = createContext(
 const WholeTimer: React.FC = () => {
   const initialWholeBlockTime: BlockTime = {
     hours: 0,
-    minutes: 0,
+    minutes: 1,
     seconds: 8,
   }
   const [wholeBlockTime, setWholeBlockTime] = useState(initialWholeBlockTime)

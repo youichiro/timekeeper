@@ -18,3 +18,12 @@ export const calcEndDate = (start: Date, blockTime: BlockTime): Date => {
     seconds: blockTime.seconds || 0,
   })
 }
+
+// 秒を時間分秒に変換する
+export const convertSecondsToBlockTime = (seconds: number): BlockTime => {
+  return {
+    hours: Math.floor((seconds % (24 * 60 * 60)) / (60 * 60)),
+    minutes: Math.floor(((seconds % (24 * 60 * 60)) % (60 * 60)) / 60),
+    seconds: ((seconds % (24 * 60 * 60)) % (60 * 60)) % 60,
+  }
+}
