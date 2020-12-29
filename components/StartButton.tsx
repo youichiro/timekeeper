@@ -4,11 +4,11 @@ type Props = {
   handleClick: () => void
 }
 
-const StartButton: React.FC<Props> = (props) => {
+const StartButton: React.FC<Props> = ({ handleClick }) => {
   return (
     <div>
       <h3>StartButton</h3>
-      <button type="submit" onClick={props.handleClick}>
+      <button type="submit" onClick={handleClick}>
         開始
       </button>
     </div>

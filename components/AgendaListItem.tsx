@@ -5,13 +5,14 @@ import { convertBlockTimeToDisplayTime } from '../utils/calc-date'
 
 type Props = {
   agenda: Agenda
+  handleClick: (agenda: Agenda) => void
 }
 
-const AgendaListItem: React.FC<Props> = ({ agenda }) => {
+const AgendaListItem: React.FC<Props> = ({ agenda, handleClick }) => {
   const displayTime = convertBlockTimeToDisplayTime(agenda.blockTime)
 
   return (
-    <ListItem button>
+    <ListItem button onClick={() => handleClick(agenda)}>
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <ListItemText primary={agenda.name} />

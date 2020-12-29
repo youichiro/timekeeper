@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { List } from '@material-ui/core'
 import AgendaListItem from './AgendaListItem'
 import { Agenda, BlockTime } from '../interfaces'
@@ -15,14 +15,24 @@ const AgendaList: React.FC = () => {
     { id: 3, name: 'アジェンダ3', blockTime: defaultBlockTime },
   ]
 
+  const [selectedAgenda, setSelectedAgenda] = useState({} as Agenda)
+  const handleSetSelectedAgenda = (agenda: Agenda): void => {
+    setSelectedAgenda(agenda)
+  }
+
   const listItems = agendaList.map((agenda) => (
-    <AgendaListItem agenda={agenda} key={agenda.id} />
+    <AgendaListItem
+      key={agenda.id}
+      agenda={agenda}
+      handleClick={handleSetSelectedAgenda}
+    />
   ))
 
   return (
     <div>
       <h2>AgendaList</h2>
       <List>{listItems}</List>
+      <p>{selectedAgenda.name}</p>
     </div>
   )
 }
