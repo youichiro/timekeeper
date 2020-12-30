@@ -4,9 +4,11 @@ import {
   TypedUseSelectorHook,
 } from 'react-redux'
 import agendaListReducer from './agendaList'
+import selectedAgendaIdReducer from './selectedAgendaId'
 
 const reducer = combineReducers({
   agendaList: agendaListReducer,
+  selectedAgendaId: selectedAgendaIdReducer,
 })
 
 const store = configureStore({ reducer })
