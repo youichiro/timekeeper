@@ -35,5 +35,5 @@
   - [ ] Redux Toolkitを使ってステート管理する
     - [x] storeを作成
     - [x] agendaListをステート管理する
-    - [ ] selectedAgendaをステート管理する
+    - [x] selectedAgendaをステート管理する
 
