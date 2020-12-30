@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { ListItem, TextField } from '@material-ui/core'
 import { Agenda } from '../interfaces/index'
 import DoneIcon from '@material-ui/icons/Done'
+import { AgendaListContext } from './AgendaList'
 
 type Props = {
   agenda: Agenda | null
@@ -13,27 +14,35 @@ const AgendaForm: React.FC<Props> = ({ agenda, handleClick }) => {
     return null
   }
 
-  const [newAgenda, setNewAgenda] = useState(agenda)
+  const { agendaList, setAgendaList } = useContext(AgendaListContext)
+
+  const updateAgenda = (newAgenda: Agenda) => {
+    setAgendaList(
+      agendaList.map((a) => (a.id !== newAgenda.id ? a : newAgenda))
+    )
+  }
 
   const onChangeNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewAgenda({
-      ...newAgenda,
+    const newAgenda = {
+      ...agenda,
       name: event.target.value,
-    })
+    }
+    updateAgenda(newAgenda)
   }
 
   const onChangeTimeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value =
       event.target.value !== '' ? parseInt(event.target.value) : null
     const name = event.target.name
-    setNewAgenda({
-      ...newAgenda,
+    const newAgenda = {
+      ...agenda,
       blockTime: {
-        hours: name === 'hours' ? value : newAgenda.blockTime.hours,
-        minutes: name === 'minutes' ? value : newAgenda.blockTime.minutes,
-        seconds: name === 'seconds' ? value : newAgenda.blockTime.seconds,
+        hours: name === 'hours' ? value : agenda.blockTime.hours,
+        minutes: name === 'minutes' ? value : agenda.blockTime.minutes,
+        seconds: name === 'seconds' ? value : agenda.blockTime.seconds,
       },
-    })
+    }
+    updateAgenda(newAgenda)
   }
 
   const inputValue = (value: number | null): number | '' => {
@@ -46,29 +55,29 @@ const AgendaForm: React.FC<Props> = ({ agenda, handleClick }) => {
         <TextField
           name="name"
           label="name"
-          value={newAgenda.name}
+          value={agenda.name}
           onChange={onChangeNameInput}
-          error={newAgenda.name === ''}
+          error={agenda.name === ''}
         />
         <TextField
           name="hours"
           type="number"
           label="hours"
-          value={inputValue(newAgenda.blockTime.hours)}
+          value={inputValue(agenda.blockTime.hours)}
           onChange={onChangeTimeInput}
         />
         <TextField
           name="minutes"
           type="number"
           label="minutes"
-          value={inputValue(newAgenda.blockTime.minutes)}
+          value={inputValue(agenda.blockTime.minutes)}
           onChange={onChangeTimeInput}
         />
         <TextField
           name="seconds"
           type="number"
           label="seconds"
-          value={inputValue(newAgenda.blockTime.seconds)}
+          value={inputValue(agenda.blockTime.seconds)}
           onChange={onChangeTimeInput}
         />
         <DoneIcon color="primary" onClick={() => handleClick(null)} />
