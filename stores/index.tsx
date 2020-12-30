@@ -3,8 +3,8 @@ import {
   useSelector as rawUseSelector,
   TypedUseSelectorHook,
 } from 'react-redux'
-import agendaListReducer from './agendaList'
-import selectedAgendaIdReducer from './selectedAgendaId'
+import agendaListReducer from './agenda-list'
+import selectedAgendaIdReducer from './selected-agenda-id'
 
 const reducer = combineReducers({
   agendaList: agendaListReducer,

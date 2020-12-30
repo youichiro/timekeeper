@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { ListItem, ListItemText, Grid } from '@material-ui/core'
 import { Agenda } from '../interfaces/index'
 import { convertBlockTimeToDisplayTime } from '../utils/calc-date'
-import { setSelectedAgendaId } from '../stores/selectedAgendaId'
+import { setSelectedAgendaId } from '../stores/selected-agenda-id'
 
 type Props = {
   agenda: Agenda

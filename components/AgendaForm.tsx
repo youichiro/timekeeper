@@ -4,8 +4,8 @@ import { ListItem, TextField } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done'
 
 import { Agenda } from '../interfaces/index'
-import { updateAgenda } from '../stores/agendaList'
-import { setSelectedAgendaId } from '../stores/selectedAgendaId'
+import { updateAgenda } from '../stores/agenda-list'
+import { setSelectedAgendaId } from '../stores/selected-agenda-id'
 
 type Props = {
   agenda: Agenda | null

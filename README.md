@@ -20,20 +20,22 @@
   - [x] propsで時間を渡す
   - [x] 設定時間を入力できるようにする
   - [x] 合計秒を時間分秒に変換して表示する
-  - [ ] アジェンダのタイムを設定できるようにする
-    - [x] AgendaListコンポーネントを作成
-    - [x] アジェンダを表示
-    - [x] AgendaListItemコンポーネントを作成
-    - [x] AgendaにIDを追加
-    - [x] AgendaにBlockTimeを追加
-    - [x] ItemをクリックしたらselectedAgendaをセットする
-    - [x] AgendaFormコンポーネントを作成する
-    - [x] Itemをクリックしたらフォームに切り替える
-    - [x] 入力フォームを表示する
-    - [x] フォームを入力したらagendaListを更新する
-  - [ ] Redux Toolkitを使ってステート管理する
-    - [x] storeを作成
-    - [x] agendaListをステート管理する
-    - [x] selectedAgendaをステート管理する
-    - [△] payloadの型を定義する (selectedAgendaIdはなぜかエラーになった)
+- [ ] アジェンダのタイムを設定できるようにする
+  - [x] AgendaListコンポーネントを作成
+  - [x] アジェンダを表示
+  - [x] AgendaListItemコンポーネントを作成
+  - [x] AgendaにIDを追加
+  - [x] AgendaにBlockTimeを追加
+  - [x] ItemをクリックしたらselectedAgendaをセットする
+  - [x] AgendaFormコンポーネントを作成する
+  - [x] Itemをクリックしたらフォームに切り替える
+  - [x] 入力フォームを表示する
+  - [x] フォームを入力したらagendaListを更新する
+- [x] Redux Toolkitを使ってステート管理する
+  - [x] storeを作成
+  - [x] agendaListをステート管理する
+  - [x] selectedAgendaをステート管理する
+  - [△] payloadの型を定義する (selectedAgendaIdはなぜかエラーになった)
+- [ ] AgendaListの合計時間をProgressBarでカウントする
+  - [ ] 
 
