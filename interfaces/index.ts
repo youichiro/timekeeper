@@ -22,3 +22,9 @@ export interface Agenda {
   name: string
   blockTime: BlockTime
 }
+
+export interface Counter {
+  isStarted: boolean
+  time: number
+  intervalID: number | null
+}

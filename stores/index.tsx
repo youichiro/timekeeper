@@ -5,10 +5,12 @@ import {
 } from 'react-redux'
 import agendaListReducer from './agenda-list'
 import selectedAgendaIdReducer from './selected-agenda-id'
+import counterReducer from './counter'
 
 const reducer = combineReducers({
   agendaList: agendaListReducer,
   selectedAgendaId: selectedAgendaIdReducer,
+  counter: counterReducer,
 })
 
 const store = configureStore({ reducer })
