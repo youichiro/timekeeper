@@ -24,25 +24,27 @@ const AgendaList: React.FC = () => {
   ]
   const [agendaList, setAgendaList] = useState(initialagendaList)
 
-  const [selectedAgenda, setSelectedAgenda] = useState(null as Agenda | null)
-  const handleSetSelectedAgenda = (agenda: Agenda | null): void => {
-    setSelectedAgenda(agenda)
+  const [selectedAgendaId, setSelectedAgendaId] = useState(
+    null as number | null
+  )
+  const handleSetSelectedAgendaId = (id: number | null): void => {
+    setSelectedAgendaId(id)
   }
 
   const listItems = agendaList.map((agenda) =>
-    selectedAgenda !== null && agenda.id === selectedAgenda.id ? (
+    selectedAgendaId !== null && agenda.id === selectedAgendaId ? (
       <AgendaListContext.Provider value={{ agendaList, setAgendaList }}>
         <AgendaForm
           key={agenda.id}
           agenda={agenda}
-          handleClick={handleSetSelectedAgenda}
+          handleClick={handleSetSelectedAgendaId}
         />
       </AgendaListContext.Provider>
     ) : (
       <AgendaListItem
         key={agenda.id}
         agenda={agenda}
-        handleClick={handleSetSelectedAgenda}
+        handleClick={handleSetSelectedAgendaId}
       />
     )
   )

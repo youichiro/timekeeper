@@ -6,7 +6,7 @@ import { AgendaListContext } from './AgendaList'
 
 type Props = {
   agenda: Agenda | null
-  handleClick: (agenda: Agenda | null) => void
+  handleClick: (id: number | null) => void
 }
 
 const AgendaForm: React.FC<Props> = ({ agenda, handleClick }) => {
