@@ -5,13 +5,13 @@ import DoneIcon from '@material-ui/icons/Done'
 
 import { Agenda } from '../interfaces/index'
 import { updateAgenda } from '../stores/agendaList'
+import { setSelectedAgendaId } from '../stores/selectedAgendaId'
 
 type Props = {
   agenda: Agenda | null
-  handleClick: (id: number | null) => void
 }
 
-const AgendaForm: React.FC<Props> = ({ agenda, handleClick }) => {
+const AgendaForm: React.FC<Props> = ({ agenda }) => {
   if (agenda === null) {
     return null
   }
@@ -39,6 +39,10 @@ const AgendaForm: React.FC<Props> = ({ agenda, handleClick }) => {
       },
     }
     dispatch(updateAgenda(newAgenda))
+  }
+
+  const onClickCheckButton = () => {
+    dispatch(setSelectedAgendaId({ id: null }))
   }
 
   const inputValue = (value: number | null): number | '' => {
@@ -76,7 +80,7 @@ const AgendaForm: React.FC<Props> = ({ agenda, handleClick }) => {
           value={inputValue(agenda.blockTime.seconds)}
           onChange={onChangeTimeInput}
         />
-        <DoneIcon color="primary" onClick={() => handleClick(null)} />
+        <DoneIcon color="primary" onClick={() => onClickCheckButton()} />
       </form>
     </ListItem>
   )
