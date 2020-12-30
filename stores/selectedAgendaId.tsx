@@ -7,8 +7,7 @@ const selectedAgendaIdSlice = createSlice({
   initialState,
   reducers: {
     setSelectedAgendaId(_, action) {
-      const { id } = action.payload
-      return id
+      return action.payload.id
     },
   },
 })

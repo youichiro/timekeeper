@@ -20,11 +20,10 @@
   - [x] propsで時間を渡す
   - [x] 設定時間を入力できるようにする
   - [x] 合計秒を時間分秒に変換して表示する
-- [ ] アジェンダのタイマーを作成する
-  - [x] AgendaListコンポーネントを作成
-  - [x] アジェンダを表示
-  - [x] AgendaListItemコンポーネントを作成
   - [ ] アジェンダのタイムを設定できるようにする
+    - [x] AgendaListコンポーネントを作成
+    - [x] アジェンダを表示
+    - [x] AgendaListItemコンポーネントを作成
     - [x] AgendaにIDを追加
     - [x] AgendaにBlockTimeを追加
     - [x] ItemをクリックしたらselectedAgendaをセットする
@@ -36,4 +35,5 @@
     - [x] storeを作成
     - [x] agendaListをステート管理する
     - [x] selectedAgendaをステート管理する
+    - [△] payloadの型を定義する (selectedAgendaIdはなぜかエラーになった)
 

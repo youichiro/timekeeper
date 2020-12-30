@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Agenda, BlockTime } from '../interfaces'
 
 const defaultBlockTime: BlockTime = {
@@ -12,11 +12,17 @@ const initialState: Agenda[] = [
   { id: 3, name: 'アジェンダ3', blockTime: defaultBlockTime },
 ]
 
+type UpdateAgendaPayload = {
+  id: number
+  name: string
+  blockTime: BlockTime
+}
+
 const agendaListSlice = createSlice({
   name: 'agendaList',
   initialState,
   reducers: {
-    updateAgenda(state, action) {
+    updateAgenda(state, action: PayloadAction<UpdateAgendaPayload>) {
       const { id, name, blockTime } = action.payload
       const agenda = state.find((agenda) => agenda.id === id)
       if (agenda) {
