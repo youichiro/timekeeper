@@ -1,8 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import { ListItem, TextField } from '@material-ui/core'
-import { Agenda } from '../interfaces/index'
 import DoneIcon from '@material-ui/icons/Done'
-import { AgendaListContext } from './AgendaList'
+
+import { Agenda } from '../interfaces/index'
+import { updateAgenda } from '../stores/agendaList'
 
 type Props = {
   agenda: Agenda | null
@@ -14,20 +16,14 @@ const AgendaForm: React.FC<Props> = ({ agenda, handleClick }) => {
     return null
   }
 
-  const { agendaList, setAgendaList } = useContext(AgendaListContext)
-
-  const updateAgenda = (newAgenda: Agenda) => {
-    setAgendaList(
-      agendaList.map((a) => (a.id !== newAgenda.id ? a : newAgenda))
-    )
-  }
+  const dispatch = useDispatch()
 
   const onChangeNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newAgenda = {
       ...agenda,
       name: event.target.value,
     }
-    updateAgenda(newAgenda)
+    dispatch(updateAgenda(newAgenda))
   }
 
   const onChangeTimeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +38,7 @@ const AgendaForm: React.FC<Props> = ({ agenda, handleClick }) => {
         seconds: name === 'seconds' ? value : agenda.blockTime.seconds,
       },
     }
-    updateAgenda(newAgenda)
+    dispatch(updateAgenda(newAgenda))
   }
 
   const inputValue = (value: number | null): number | '' => {
