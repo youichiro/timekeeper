@@ -15,6 +15,7 @@ const WholeTimer: React.FC = () => {
 
   const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
+  // const agendaList = useSelector(state => state.agendaList)
 
   const onClickStartButton = () => {
     dispatch(resetCounter())
@@ -28,6 +29,8 @@ const WholeTimer: React.FC = () => {
       dispatch(stopCount())
     }
   }, [counter])
+
+  // const total = agendaList.reduce((sum, agenda) => sum + agenda.time, 0)
 
   return (
     <div>

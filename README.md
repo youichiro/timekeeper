@@ -39,4 +39,6 @@
 - [ ] AgendaListの合計時間をProgressBarでカウントする
   - [x] counterストアを作成
   - [x] 合計時間に達したらカウントを止める
+  - [x] Agendaにtime属性を追加する
+  - [ ] agendaListから合計時間を取得する
 

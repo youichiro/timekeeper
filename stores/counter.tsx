@@ -26,7 +26,9 @@ const counterSlice = createSlice({
       state.time += 1
     },
     resetCounter(state) {
-      ;(state.isStarted = false), (state.intervalID = null), (state.time = 0)
+      state.isStarted = false
+      state.intervalID = null
+      state.time = 0
     },
   },
 })

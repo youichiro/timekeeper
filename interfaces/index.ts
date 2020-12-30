@@ -21,6 +21,7 @@ export interface Agenda {
   id: number
   name: string
   blockTime: BlockTime
+  time: number
 }
 
 export interface Counter {

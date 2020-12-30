@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Agenda, BlockTime } from '../interfaces'
+import { convertSeconds } from '../utils/calc-date'
 
 const defaultBlockTime: BlockTime = {
   hours: 0,
   minutes: 0,
   seconds: 10,
 }
+const totalTime = convertSeconds(defaultBlockTime)
 const initialState: Agenda[] = [
-  { id: 1, name: 'アジェンダ1', blockTime: defaultBlockTime },
-  { id: 2, name: 'アジェンダ2', blockTime: defaultBlockTime },
-  { id: 3, name: 'アジェンダ3', blockTime: defaultBlockTime },
+  { id: 1, name: 'アジェンダ1', blockTime: defaultBlockTime, time: totalTime },
+  { id: 2, name: 'アジェンダ2', blockTime: defaultBlockTime, time: totalTime },
+  { id: 3, name: 'アジェンダ3', blockTime: defaultBlockTime, time: totalTime },
 ]
 
 type UpdateAgendaPayload = {
