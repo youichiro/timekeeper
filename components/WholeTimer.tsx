@@ -11,11 +11,9 @@ import {
 import { useSelector } from '../stores'
 
 const WholeTimer: React.FC = () => {
-  const total = 10
-
   const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
-  // const agendaList = useSelector(state => state.agendaList)
+  const agendaList = useSelector(state => state.agendaList)
 
   const onClickStartButton = () => {
     dispatch(resetCounter())
@@ -30,7 +28,8 @@ const WholeTimer: React.FC = () => {
     }
   }, [counter])
 
-  // const total = agendaList.reduce((sum, agenda) => sum + agenda.time, 0)
+  // 合計時間を取得
+  const total = agendaList.reduce((sum, agenda) => sum + agenda.time, 0)
 
   return (
     <div>
