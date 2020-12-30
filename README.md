@@ -32,4 +32,8 @@
     - [x] Itemをクリックしたらフォームに切り替える
     - [x] 入力フォームを表示する
     - [x] フォームを入力したらagendaListを更新する
+  - [ ] Redux Toolkitを使ってステート管理する
+    - [x] storeを作成
+    - [x] agendaListをステート管理する
+    - [ ] selectedAgendaをステート管理する
 
