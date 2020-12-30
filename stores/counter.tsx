@@ -11,20 +11,30 @@ const counterSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    start(state, action: PayloadAction<{ intervalID: number }>) {
+    startCount(state, action: PayloadAction<{ intervalID: number }>) {
       state.isStarted = true
       state.intervalID = action.payload.intervalID
     },
-    stop(state, action: PayloadAction<{ intervalID: number }>) {
-      clearInterval(action.payload.intervalID)
+    stopCount(state) {
+      if (state.intervalID) {
+        window.clearInterval(state.intervalID)
+      }
       state.isStarted = false
       state.intervalID = null
     },
-    update(state) {
+    updateCount(state) {
       state.time += 1
+    },
+    resetCounter(state) {
+      ;(state.isStarted = false), (state.intervalID = null), (state.time = 0)
     },
   },
 })
 
-export const { start, stop, update } = counterSlice.actions
+export const {
+  startCount,
+  stopCount,
+  updateCount,
+  resetCounter,
+} = counterSlice.actions
 export default counterSlice.reducer

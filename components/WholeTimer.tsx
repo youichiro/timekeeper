@@ -1,70 +1,38 @@
-import React, { useState, useEffect, useCallback, createContext } from 'react'
-
+import React, { useEffect } from 'react'
 import ProgressBar from './ProgressBar'
-import WholeTimeForm from './WholeTimeForm'
 import StartButton from './StartButton'
-import { BlockTime, WholeProgress } from '../interfaces'
-import { convertSeconds, calcEndDate } from '../utils/calc-date'
-
-export const WholeTimerContext = createContext(
-  {} as {
-    wholeBlockTime: BlockTime
-    setWholeBlockTime: (blockTime: BlockTime) => void
-  }
-)
+import { useDispatch } from 'react-redux'
+import {
+  resetCounter,
+  startCount,
+  stopCount,
+  updateCount,
+} from '../stores/counter'
+import { useSelector } from '../stores'
 
 const WholeTimer: React.FC = () => {
-  const initialWholeBlockTime: BlockTime = {
-    hours: 0,
-    minutes: 1,
-    seconds: 8,
+  const total = 10
+
+  const dispatch = useDispatch()
+  const counter = useSelector((state) => state.counter)
+
+  const onClickStartButton = () => {
+    dispatch(resetCounter())
+    const intervalID = window.setInterval(() => dispatch(updateCount()), 1000)
+    dispatch(startCount({ intervalID: intervalID }))
   }
-  const [wholeBlockTime, setWholeBlockTime] = useState(initialWholeBlockTime)
 
-  const initialWholeProgress: WholeProgress = {
-    isStarted: false,
-    totalSeconds: 0,
-    start: new Date(),
-    end: new Date(),
-  }
-  const [wholeProgress, setWholeProgress] = useState(initialWholeProgress)
-
-  // 開始ボタンをクリックしたらタイマーをスタートさせる
-  const onClickStartButton = useCallback(() => {
-    setElapsedSeconds(0)
-    setWholeProgress({
-      isStarted: true,
-      totalSeconds: convertSeconds(wholeBlockTime),
-      start: new Date(),
-      end: calcEndDate(new Date(), wholeBlockTime),
-    })
-  }, [wholeBlockTime])
-
-  // 経過時間をカウントし、設定時間に達したらストップする
-  const [elapsedSeconds, setElapsedSeconds] = useState(0)
+  // counterを監視して、全体時間に達したらカウンターを止める
   useEffect(() => {
-    if (wholeProgress.isStarted === true) {
-      const intervalID = setInterval(
-        () => setElapsedSeconds(elapsedSeconds + 1),
-        1000
-      )
-      if (elapsedSeconds >= wholeProgress.totalSeconds) {
-        clearInterval(intervalID)
-      }
-      return () => clearInterval(intervalID)
+    if (counter.time >= total) {
+      dispatch(stopCount())
     }
-  })
+  }, [counter])
 
   return (
     <div>
       <h2>WholeTimer</h2>
-      <ProgressBar
-        total={wholeProgress.totalSeconds}
-        elapsed={elapsedSeconds}
-      />
-      <WholeTimerContext.Provider value={{ wholeBlockTime, setWholeBlockTime }}>
-        <WholeTimeForm />
-      </WholeTimerContext.Provider>
+      <ProgressBar total={total} elapsed={counter.time} />
       <StartButton handleClick={onClickStartButton} />
     </div>
   )

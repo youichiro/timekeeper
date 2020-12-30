@@ -37,5 +37,6 @@
   - [x] selectedAgendaをステート管理する
   - [△] payloadの型を定義する (selectedAgendaIdはなぜかエラーになった)
 - [ ] AgendaListの合計時間をProgressBarでカウントする
-  - [ ] 
+  - [x] counterストアを作成
+  - [x] 合計時間に達したらカウントを止める
 
