@@ -4,7 +4,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fab from '@material-ui/core/Fab'
-import { resetCounter, startCount, updateCount } from '../../stores/counter'
+import { startCount, updateCount } from '../../stores/counter'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
