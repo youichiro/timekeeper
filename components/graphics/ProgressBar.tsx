@@ -3,7 +3,7 @@ import { LinearProgress, Grid } from '@material-ui/core'
 import {
   convertBlockTimeToDisplayTime,
   convertSecondsToBlockTime,
-} from '../utils/calc-date'
+} from '../../utils/calc-date'
 
 type Props = {
   total: number
