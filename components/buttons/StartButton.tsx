@@ -19,7 +19,6 @@ const StartButton: React.FC = () => {
   const dispatch = useDispatch()
 
   const onClickStartButton = () => {
-    dispatch(resetCounter())
     const intervalID = window.setInterval(() => dispatch(updateCount()), 1000)
     dispatch(startCount({ intervalID }))
   }
