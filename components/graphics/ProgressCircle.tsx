@@ -4,18 +4,14 @@ import { Box, CircularProgress, Typography } from '@material-ui/core'
 type Props = {
   total: number
   elapsed: number
-  title: string
 }
 
-const ProgressCircle: React.FC<Props> = ({ total, elapsed, title }) => {
+const ProgressCircle: React.FC<Props> = ({ total, elapsed }) => {
   const progress = (elapsed / total) * 100
   const size = 200
 
   return (
     <div>
-      <Typography variant="h5" component="div">
-        {title}
-      </Typography>
       <Box position="relative" display="inline-flex">
         <CircularProgress variant="determinate" size={size} value={progress} />
         <Box

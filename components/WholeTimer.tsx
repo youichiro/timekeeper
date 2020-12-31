@@ -42,7 +42,6 @@ const WholeTimer: React.FC = () => {
       <ProgressCircle
         total={runningAgenda?.time || 0}
         elapsed={counter.time - runningAgenda?.startTime || 0}
-        title={runningAgenda?.name || ''}
       />
     </div>
   )
