@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProgressBar from './ProgressBar'
 import StartButton from './StartButton'
 import { useDispatch } from 'react-redux'
@@ -13,7 +13,10 @@ import { useSelector } from '../stores'
 const WholeTimer: React.FC = () => {
   const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
-  const agendaList = useSelector(state => state.agendaList)
+  const agendaList = useSelector((state) => state.agendaList)
+  const selectedAgendaId = useSelector((state) => state.selectedAgendaId)
+
+  const [total, setTotal] = useState(0)
 
   const onClickStartButton = () => {
     dispatch(resetCounter())
@@ -28,8 +31,10 @@ const WholeTimer: React.FC = () => {
     }
   }, [counter])
 
-  // 合計時間を取得
-  const total = agendaList.reduce((sum, agenda) => sum + agenda.time, 0)
+  // selectedAgendaIdを監視して、変化したら合計時間を再計算する
+  useEffect(() => {
+    setTotal(agendaList.reduce((sum, agenda) => sum + agenda.time, 0))
+  }, [selectedAgendaId])
 
   return (
     <div>

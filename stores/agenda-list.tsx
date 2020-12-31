@@ -30,6 +30,7 @@ const agendaListSlice = createSlice({
       if (agenda) {
         agenda.name = name
         agenda.blockTime = blockTime
+        agenda.time = convertSeconds(blockTime)
       }
     },
   },
