@@ -4,7 +4,7 @@ import { ListItem, TextField } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done'
 
 import { Agenda } from '../interfaces/index'
-import { updateAgenda } from '../stores/agenda-list'
+import { updateAgenda, updateAgendaBorders } from '../stores/agenda-list'
 import { setSelectedAgendaId } from '../stores/selected-agenda-id'
 
 type Props = {
@@ -43,6 +43,7 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
 
   const onClickCheckButton = () => {
     dispatch(setSelectedAgendaId({ id: null }))
+    dispatch(updateAgendaBorders())
   }
 
   const inputValue = (value: number | null): number | '' => {

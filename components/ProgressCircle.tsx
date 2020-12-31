@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, CircularProgress, Typography } from '@material-ui/core'
-import {argv0} from 'process'
 
 const ProgressCircle: React.FC = () => {
   const size = 200

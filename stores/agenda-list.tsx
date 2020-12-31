@@ -9,9 +9,27 @@ const defaultBlockTime: BlockTime = {
 }
 const totalTime = convertSeconds(defaultBlockTime)
 const initialState: Agenda[] = [
-  { id: 1, name: 'アジェンダ1', blockTime: defaultBlockTime, time: totalTime },
-  { id: 2, name: 'アジェンダ2', blockTime: defaultBlockTime, time: totalTime },
-  { id: 3, name: 'アジェンダ3', blockTime: defaultBlockTime, time: totalTime },
+  {
+    id: 1,
+    name: 'アジェンダ1',
+    blockTime: defaultBlockTime,
+    time: totalTime,
+    border: 10,
+  },
+  {
+    id: 2,
+    name: 'アジェンダ2',
+    blockTime: defaultBlockTime,
+    time: totalTime,
+    border: 20,
+  },
+  {
+    id: 3,
+    name: 'アジェンダ3',
+    blockTime: defaultBlockTime,
+    time: totalTime,
+    border: 30,
+  },
 ]
 
 type UpdateAgendaPayload = {
@@ -33,8 +51,16 @@ const agendaListSlice = createSlice({
         agenda.time = convertSeconds(blockTime)
       }
     },
+    updateAgendaBorders(state) {
+      state.forEach(
+        (agenda) =>
+          (agenda.border = state
+            .filter((a) => a.id <= agenda.id)
+            .reduce((sum, b) => sum + b.time, 0))
+      )
+    },
   },
 })
 
-export const { updateAgenda } = agendaListSlice.actions
+export const { updateAgenda, updateAgendaBorders } = agendaListSlice.actions
 export default agendaListSlice.reducer
