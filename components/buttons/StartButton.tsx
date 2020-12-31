@@ -1,6 +1,19 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import PlayArrowIcon from '@material-ui/icons/PlayArrow'
+import Tooltip from '@material-ui/core/Tooltip'
+import Fab from '@material-ui/core/Fab'
 import { resetCounter, startCount, updateCount } from '../../stores/counter'
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    fab: {
+      margin: theme.spacing(2),
+      padding: theme.spacing(5),
+    },
+  })
+)
 
 const StartButton: React.FC = () => {
   const dispatch = useDispatch()
@@ -11,12 +24,14 @@ const StartButton: React.FC = () => {
     dispatch(startCount({ intervalID }))
   }
 
+  const classes = useStyles()
+
   return (
-    <div>
-      <button type="submit" onClick={onClickStartButton}>
-        開始
-      </button>
-    </div>
+    <Tooltip title="start">
+      <Fab color="primary" className={classes.fab}>
+        <PlayArrowIcon style={{ fontSize: 50 }} onClick={onClickStartButton} />
+      </Fab>
+    </Tooltip>
   )
 }
 

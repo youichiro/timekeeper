@@ -37,29 +37,26 @@ const ProgressBar: React.FC = () => {
   }
 
   return (
-    <div>
-      <h3>ProgressBar</h3>
-      <div style={{ flexGrow: 1 }}>
-        <Grid container spacing={3} justify="space-between">
-          <Grid item xs={12}>
-            <p style={{ textAlign: 'center' }}>合計: {displayTime(total)}</p>
-          </Grid>
-          <Grid item xs={12}>
-            <LinearProgress
-              variant="determinate"
-              value={progress}
-              style={{ height: 10, borderRadius: 6 }}
-              color="secondary"
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <p>経過: {displayTime(counter.time)}</p>
-          </Grid>
-          <Grid item xs={6}>
-            <p style={{ textAlign: 'right' }}>残り: {displayTime(remained)}</p>
-          </Grid>
+    <div style={{ flexGrow: 1 }}>
+      <Grid container spacing={3} justify="space-between">
+        <Grid item xs={12}>
+          <p style={{ textAlign: 'center' }}>合計: {displayTime(total)}</p>
         </Grid>
-      </div>
+        <Grid item xs={12}>
+          <LinearProgress
+            variant="determinate"
+            value={progress}
+            style={{ height: 10, borderRadius: 6 }}
+            color="secondary"
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <p>経過: {displayTime(counter.time)}</p>
+        </Grid>
+        <Grid item xs={6}>
+          <p style={{ textAlign: 'right' }}>残り: {displayTime(remained)}</p>
+        </Grid>
+      </Grid>
     </div>
   )
 }
