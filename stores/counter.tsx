@@ -26,6 +26,9 @@ const counterSlice = createSlice({
       state.time += 1
     },
     resetCounter(state) {
+      if (state.intervalID) {
+        window.clearInterval(state.intervalID)
+      }
       state.isStarted = false
       state.intervalID = null
       state.time = 0

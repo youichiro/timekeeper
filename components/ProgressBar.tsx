@@ -5,12 +5,12 @@ import {
   convertSecondsToBlockTime,
 } from '../utils/calc-date'
 
-type ProgressBarProps = {
+type Props = {
   total: number
   elapsed: number
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ total, elapsed }) => {
+const ProgressBar: React.FC<Props> = ({ total, elapsed }) => {
   const progress = (elapsed / total) * 100.0
   const remained = total - elapsed
 
