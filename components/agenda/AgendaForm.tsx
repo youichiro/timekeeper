@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux'
 import { ListItem, TextField } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done'
 
-import { Agenda } from '../interfaces/index'
-import { updateAgenda, updateAgendaBorders } from '../stores/agenda-list'
-import { setSelectedAgendaId } from '../stores/selected-agenda-id'
+import { Agenda } from '../../interfaces/index'
+import { updateAgenda, updateAgendaBorders } from '../../stores/agenda-list'
+import { setSelectedAgendaId } from '../../stores/selected-agenda-id'
 
 type Props = {
   agenda: Agenda | null

@@ -3,7 +3,7 @@ import { List } from '@material-ui/core'
 
 import AgendaListItem from './AgendaListItem'
 import AgendaForm from './AgendaForm'
-import { useSelector } from '../stores'
+import { useSelector } from '../../stores'
 
 const AgendaList: React.FC = () => {
   const agendaList = useSelector((state) => state.agendaList)

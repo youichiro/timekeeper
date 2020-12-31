@@ -4,7 +4,7 @@ import { Container } from '@material-ui/core'
 import { Provider } from 'react-redux'
 
 import WholeTimer from '../components/WholeTimer'
-import AgendaList from '../components/AgendaList'
+import AgendaList from '../components/agenda/AgendaList'
 import Buttons from '../components/buttons/Buttons'
 import store from '../stores'
 
