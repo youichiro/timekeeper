@@ -26,13 +26,11 @@ const StopButton: React.FC = () => {
   const classes = useStyles()
 
   return (
-    <div>
-      <Tooltip title="stop">
-        <Fab color="primary" className={classes.fab}>
-          <PauseIcon style={{ fontSize: 50 }} onClick={onClickStopButton} />
-        </Fab>
-      </Tooltip>
-    </div>
+    <Tooltip title="stop">
+      <Fab color="primary" className={classes.fab}>
+        <PauseIcon style={{ fontSize: 50 }} onClick={onClickStopButton} />
+      </Fab>
+    </Tooltip>
   )
 }
 
