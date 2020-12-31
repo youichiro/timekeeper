@@ -19,7 +19,12 @@ const ProgressCircle: React.FC = () => {
   return (
     <div>
       <Box position="relative" display="inline-flex">
-        <CircularProgress variant="determinate" size={size} value={progress} />
+        <CircularProgress
+          variant="determinate"
+          color="secondary"
+          size={size}
+          value={progress}
+        />
         <Box
           top={0}
           left={0}

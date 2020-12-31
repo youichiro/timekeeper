@@ -47,7 +47,7 @@ const ProgressBar: React.FC = () => {
             variant="determinate"
             value={progress}
             style={{ height: 10, borderRadius: 6 }}
-            color="secondary"
+            color="primary"
           />
         </Grid>
         <Grid item xs={6}>

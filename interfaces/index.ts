@@ -29,4 +29,3 @@ export interface Counter {
 }
 
 export type Theme = 'dark' | 'light'
-

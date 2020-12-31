@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import {Theme} from '../interfaces'
+import { Theme } from '../interfaces'
 
 const initialState: Theme = 'dark'
 
@@ -9,8 +9,8 @@ const themeSlice = createSlice({
   reducers: {
     setTheme(_, action) {
       return action.payload.theme
-    }
-  }
+    },
+  },
 })
 
 export const { setTheme } = themeSlice.actions

@@ -12,7 +12,7 @@ const reducer = combineReducers({
   agendaList: agendaListReducer,
   selectedAgendaId: selectedAgendaIdReducer,
   counter: counterReducer,
-  theme: themeReducer
+  theme: themeReducer,
 })
 
 const store = configureStore({ reducer })
