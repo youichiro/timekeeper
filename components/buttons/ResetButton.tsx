@@ -6,6 +6,7 @@ import RefreshIcon from '@material-ui/icons/Refresh'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fab from '@material-ui/core/Fab'
+import { setTheme } from '../../stores/theme'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,6 +22,7 @@ const ResetButton: React.FC = () => {
 
   const onClickResetButton = () => {
     dispatch(resetCounter())
+    dispatch(setTheme({ theme: 'light' }))
   }
 
   const classes = useStyles()

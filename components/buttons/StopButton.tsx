@@ -6,6 +6,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import PauseIcon from '@material-ui/icons/Pause'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fab from '@material-ui/core/Fab'
+import { setTheme } from '../../stores/theme'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,6 +22,7 @@ const StopButton: React.FC = () => {
 
   const onClickStopButton = () => {
     dispatch(stopCount())
+    dispatch(setTheme({ theme: 'light' }))
   }
 
   const classes = useStyles()

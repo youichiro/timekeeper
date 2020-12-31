@@ -5,6 +5,7 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fab from '@material-ui/core/Fab'
 import { startCount, updateCount } from '../../stores/counter'
+import { setTheme } from '../../stores/theme'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,6 +22,7 @@ const StartButton: React.FC = () => {
   const onClickStartButton = () => {
     const intervalID = window.setInterval(() => dispatch(updateCount()), 1000)
     dispatch(startCount({ intervalID }))
+    dispatch(setTheme({ theme: 'dark' }))
   }
 
   const classes = useStyles()
