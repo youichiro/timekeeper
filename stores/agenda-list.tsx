@@ -14,21 +14,27 @@ const initialState: Agenda[] = [
     name: 'アジェンダ1',
     blockTime: defaultBlockTime,
     time: totalTime,
-    border: 10,
+    startTime: 0,
+    endTime: 10,
+    status: 'waiting',
   },
   {
     id: 2,
     name: 'アジェンダ2',
     blockTime: defaultBlockTime,
     time: totalTime,
-    border: 20,
+    startTime: 10,
+    endTime: 20,
+    status: 'waiting',
   },
   {
     id: 3,
     name: 'アジェンダ3',
     blockTime: defaultBlockTime,
     time: totalTime,
-    border: 30,
+    startTime: 20,
+    endTime: 30,
+    status: 'waiting',
   },
 ]
 
@@ -52,12 +58,14 @@ const agendaListSlice = createSlice({
       }
     },
     updateAgendaBorders(state) {
-      state.forEach(
-        (agenda) =>
-          (agenda.border = state
-            .filter((a) => a.id <= agenda.id)
-            .reduce((sum, b) => sum + b.time, 0))
-      )
+      state.forEach((agenda) => {
+        agenda.startTime = state
+          .filter((a) => a.id < agenda.id)
+          .reduce((sum, b) => sum + b.time, 0)
+        agenda.endTime = state
+          .filter((a) => a.id <= agenda.id)
+          .reduce((sum, b) => sum + b.time, 0)
+      })
     },
   },
 })

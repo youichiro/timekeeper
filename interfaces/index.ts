@@ -17,12 +17,16 @@ export interface WholeProgress {
   end: Date
 }
 
+export type Status = 'waiting' | 'running' | 'done'
+
 export interface Agenda {
   id: number
   name: string
   blockTime: BlockTime
   time: number
-  border: number
+  startTime: number
+  endTime: number
+  status: Status
 }
 
 export interface Counter {
