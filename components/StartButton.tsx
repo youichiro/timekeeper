@@ -1,14 +1,20 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { resetCounter, startCount, updateCount } from '../stores/counter'
 
-type Props = {
-  handleClick: () => void
-}
+const StartButton: React.FC = () => {
+  const dispatch = useDispatch()
 
-const StartButton: React.FC<Props> = ({ handleClick }) => {
+  const onClickStartButton = () => {
+    dispatch(resetCounter())
+    const intervalID = window.setInterval(() => dispatch(updateCount()), 1000)
+    dispatch(startCount({ intervalID: intervalID }))
+  }
+
   return (
     <div>
       <h3>StartButton</h3>
-      <button type="submit" onClick={handleClick}>
+      <button type="submit" onClick={onClickStartButton}>
         開始
       </button>
     </div>

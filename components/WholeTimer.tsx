@@ -3,12 +3,7 @@ import { useDispatch } from 'react-redux'
 import ProgressBar from './ProgressBar'
 import StartButton from './StartButton'
 import ProgressCircle from './ProgressCircle'
-import {
-  resetCounter,
-  startCount,
-  stopCount,
-  updateCount,
-} from '../stores/counter'
+import { stopCount } from '../stores/counter'
 import { useSelector } from '../stores'
 import { updateAgendaStates } from '../stores/agenda-list'
 
@@ -19,12 +14,6 @@ const WholeTimer: React.FC = () => {
   const selectedAgendaId = useSelector((state) => state.selectedAgendaId)
 
   const [total, setTotal] = useState(0)
-
-  const onClickStartButton = () => {
-    dispatch(resetCounter())
-    const intervalID = window.setInterval(() => dispatch(updateCount()), 1000)
-    dispatch(startCount({ intervalID: intervalID }))
-  }
 
   // counterを監視して、全体時間に達したらカウンターを止める
   useEffect(() => {
@@ -51,7 +40,7 @@ const WholeTimer: React.FC = () => {
     <div>
       <h2>WholeTimer</h2>
       <ProgressBar total={total} elapsed={counter.time} />
-      <StartButton handleClick={onClickStartButton} />
+      <StartButton />
       <ProgressCircle
         total={runningAgenda?.time || 0}
         elapsed={counter.time - runningAgenda?.startTime || 0}

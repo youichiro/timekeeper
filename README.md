@@ -42,7 +42,10 @@
   - [x] Agendaにtime属性を追加する
   - [x] agendaListから合計時間を取得する
   - [x] selectedAgendaIdが更新されたら合計時間も更新する
-- [ ] agendaのProgressCircleを表示する
+- [x] agendaのProgressCircleを表示する
   - [x] ProgressCircleを表示する
   - [x] 現在進行中のアジェンダを取得する
   - [x] 現在進行中のアジェンダのProgressCircleを表示する
+- [ ] 停止ボタンを作成する
+- [ ] リセットボタンを作成する
+
