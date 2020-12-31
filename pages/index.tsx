@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 
 import WholeTimer from '../components/WholeTimer'
 import AgendaList from '../components/AgendaList'
+import Buttons from '../components/buttons/Buttons'
 import store from '../stores'
 
 const IndexPage: React.FC = () => (
@@ -17,6 +18,7 @@ const IndexPage: React.FC = () => (
         <h1>Timekeeper</h1>
         <WholeTimer />
         <AgendaList />
+        <Buttons />
       </Container>
     </Provider>
   </div>

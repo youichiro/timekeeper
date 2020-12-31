@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import ProgressBar from './ProgressBar'
-import StartButton from './StartButton'
 import ProgressCircle from './ProgressCircle'
 import { stopCount } from '../stores/counter'
 import { useSelector } from '../stores'
@@ -40,7 +39,6 @@ const WholeTimer: React.FC = () => {
     <div>
       <h2>WholeTimer</h2>
       <ProgressBar total={total} elapsed={counter.time} />
-      <StartButton />
       <ProgressCircle
         total={runningAgenda?.time || 0}
         elapsed={counter.time - runningAgenda?.startTime || 0}

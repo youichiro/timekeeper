@@ -7,7 +7,7 @@
     "start": "next start",
     "type-check": "tsc",
     "lint": "eslint . --ext .ts,.tsx",
-    "prettier": "prettier --write ./**/*.{ts,tsx}"
+    "prettier": "prettier --write './**/*.{ts,tsx}'"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { resetCounter, startCount, updateCount } from '../stores/counter'
+import { resetCounter, startCount, updateCount } from '../../stores/counter'
 
 const StartButton: React.FC = () => {
   const dispatch = useDispatch()
@@ -13,7 +13,6 @@ const StartButton: React.FC = () => {
 
   return (
     <div>
-      <h3>StartButton</h3>
       <button type="submit" onClick={onClickStartButton}>
         開始
       </button>
