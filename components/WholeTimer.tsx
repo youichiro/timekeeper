@@ -43,12 +43,20 @@ const WholeTimer: React.FC = () => {
     setTotal(agendaList.reduce((sum, agenda) => sum + agenda.time, 0))
   }, [selectedAgendaId])
 
+  const runningAgenda = agendaList.filter(
+    (agenda) => agenda.status === 'running'
+  )[0]
+
   return (
     <div>
       <h2>WholeTimer</h2>
       <ProgressBar total={total} elapsed={counter.time} />
       <StartButton handleClick={onClickStartButton} />
-      <ProgressCircle total={total} elapsed={counter.time} />
+      <ProgressCircle
+        total={runningAgenda?.time || 0}
+        elapsed={counter.time - runningAgenda?.startTime || 0}
+        title={runningAgenda?.name || ''}
+      />
     </div>
   )
 }

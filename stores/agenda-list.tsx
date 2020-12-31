@@ -70,13 +70,23 @@ const agendaListSlice = createSlice({
     updateAgendaStates(state, action: PayloadAction<{ time: number }>) {
       const { time } = action.payload
       state.forEach((agenda) => {
-        if (time < agenda.startTime || time === 0) {
-          agenda.status = 'waiting'
-        } else if (agenda.endTime <= time) {
-          agenda.status = 'done'
-        } else {
+        // 1sからrunningとする
+        if (agenda.startTime < time && time <= agenda.endTime) {
           agenda.status = 'running'
+        } else if (time <= agenda.startTime) {
+          agenda.status = 'waiting'
+        } else {
+          agenda.status = 'done'
         }
+
+        // 0sからrunningとする
+        // if (time <= agenda.startTime || time === 0) {
+        //   agenda.status = 'waiting'
+        // } else if (agenda.endTime <= time) {
+        //   agenda.status = 'done'
+        // } else {
+        //   agenda.status = 'running'
+        // }
       })
     },
   },

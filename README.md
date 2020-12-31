@@ -45,4 +45,4 @@
 - [ ] agendaのProgressCircleを表示する
   - [x] ProgressCircleを表示する
   - [x] 現在進行中のアジェンダを取得する
-  - [ ] 現在進行中のアジェンダのProgressCircleを表示する
+  - [x] 現在進行中のアジェンダのProgressCircleを表示する
