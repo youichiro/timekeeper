@@ -1,18 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { LinearProgress, Grid } from '@material-ui/core'
+import { useDispatch } from 'react-redux'
 import {
   convertBlockTimeToDisplayTime,
   convertSecondsToBlockTime,
 } from '../../utils/calc-date'
+import { useSelector } from '../../stores'
+import { stopCount } from '../../stores/counter'
 
-type Props = {
-  total: number
-  elapsed: number
-}
+const ProgressBar: React.FC = () => {
+  const dispatch = useDispatch()
+  const counter = useSelector((state) => state.counter)
+  const selectedAgendaId = useSelector((state) => state.selectedAgendaId)
+  const agendaList = useSelector((state) => state.agendaList)
 
-const ProgressBar: React.FC<Props> = ({ total, elapsed }) => {
-  const progress = (elapsed / total) * 100.0
-  const remained = total - elapsed
+  const [total, setTotal] = useState(0)
+
+  // counterを監視して、全体時間に達したらカウンターを止める
+  useEffect(() => {
+    if (counter.time >= total) {
+      dispatch(stopCount())
+    }
+  }, [counter])
+
+  // selectedAgendaIdを監視して、変化したら合計時間を再計算する
+  useEffect(() => {
+    setTotal(agendaList.reduce((sum, agenda) => sum + agenda.time, 0))
+  }, [selectedAgendaId])
+
+  const progress = (counter.time / total) * 100.0
+  const remained = total - counter.time
 
   const displayTime = (totalSeconds: number): string => {
     const bt = convertSecondsToBlockTime(totalSeconds)
@@ -36,7 +53,7 @@ const ProgressBar: React.FC<Props> = ({ total, elapsed }) => {
             />
           </Grid>
           <Grid item xs={6}>
-            <p>経過: {displayTime(elapsed)}</p>
+            <p>経過: {displayTime(counter.time)}</p>
           </Grid>
           <Grid item xs={6}>
             <p style={{ textAlign: 'right' }}>残り: {displayTime(remained)}</p>

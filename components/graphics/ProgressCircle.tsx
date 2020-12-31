@@ -1,12 +1,18 @@
 import React from 'react'
 import { Box, CircularProgress, Typography } from '@material-ui/core'
+import { useSelector } from '../../stores'
 
-type Props = {
-  total: number
-  elapsed: number
-}
+const ProgressCircle: React.FC = () => {
+  const agendaList = useSelector((state) => state.agendaList)
+  const counter = useSelector((state) => state.counter)
 
-const ProgressCircle: React.FC<Props> = ({ total, elapsed }) => {
+  const runningAgenda = agendaList.filter(
+    (agenda) => agenda.status === 'running'
+  )[0]
+
+  const total = runningAgenda?.time || 0
+  const elapsed = counter.time - runningAgenda?.startTime || 0
+
   const progress = (elapsed / total) * 100
   const size = 200
 
