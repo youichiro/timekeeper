@@ -78,15 +78,6 @@ const agendaListSlice = createSlice({
         } else {
           agenda.status = 'done'
         }
-
-        // 0sからrunningとする
-        // if (time <= agenda.startTime || time === 0) {
-        //   agenda.status = 'waiting'
-        // } else if (agenda.endTime <= time) {
-        //   agenda.status = 'done'
-        // } else {
-        //   agenda.status = 'running'
-        // }
       })
     },
   },

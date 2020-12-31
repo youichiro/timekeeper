@@ -10,13 +10,6 @@ export interface BlockTimeString {
   seconds: string
 }
 
-export interface WholeProgress {
-  isStarted: boolean
-  totalSeconds: number
-  start: Date
-  end: Date
-}
-
 export type Status = 'waiting' | 'running' | 'done'
 
 export interface Agenda {
@@ -34,3 +27,6 @@ export interface Counter {
   time: number
   intervalID: number | null
 }
+
+export type Theme = 'dark' | 'light'
+

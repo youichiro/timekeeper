@@ -6,11 +6,13 @@ import {
 import agendaListReducer from './agenda-list'
 import selectedAgendaIdReducer from './selected-agenda-id'
 import counterReducer from './counter'
+import themeReducer from './theme'
 
 const reducer = combineReducers({
   agendaList: agendaListReducer,
   selectedAgendaId: selectedAgendaIdReducer,
   counter: counterReducer,
+  theme: themeReducer
 })
 
 const store = configureStore({ reducer })
