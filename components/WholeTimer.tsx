@@ -10,6 +10,7 @@ import {
   updateCount,
 } from '../stores/counter'
 import { useSelector } from '../stores'
+import { updateAgendaStates } from '../stores/agenda-list'
 
 const WholeTimer: React.FC = () => {
   const dispatch = useDispatch()
@@ -30,6 +31,11 @@ const WholeTimer: React.FC = () => {
     if (counter.time >= total) {
       dispatch(stopCount())
     }
+  }, [counter])
+
+  // counterを監視して、agenda.statusを更新する
+  useEffect(() => {
+    dispatch(updateAgendaStates({ time: counter.time }))
   }, [counter])
 
   // selectedAgendaIdを監視して、変化したら合計時間を再計算する

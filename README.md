@@ -44,4 +44,5 @@
   - [x] selectedAgendaIdが更新されたら合計時間も更新する
 - [ ] agendaのProgressCircleを表示する
   - [x] ProgressCircleを表示する
-  - [ ] 現在進行中のアジェンダを取得する
+  - [x] 現在進行中のアジェンダを取得する
+  - [ ] 現在進行中のアジェンダのProgressCircleを表示する

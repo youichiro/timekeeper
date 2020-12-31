@@ -67,8 +67,24 @@ const agendaListSlice = createSlice({
           .reduce((sum, b) => sum + b.time, 0)
       })
     },
+    updateAgendaStates(state, action: PayloadAction<{ time: number }>) {
+      const { time } = action.payload
+      state.forEach((agenda) => {
+        if (time < agenda.startTime || time === 0) {
+          agenda.status = 'waiting'
+        } else if (agenda.endTime <= time) {
+          agenda.status = 'done'
+        } else {
+          agenda.status = 'running'
+        }
+      })
+    },
   },
 })
 
-export const { updateAgenda, updateAgendaBorders } = agendaListSlice.actions
+export const {
+  updateAgenda,
+  updateAgendaBorders,
+  updateAgendaStates,
+} = agendaListSlice.actions
 export default agendaListSlice.reducer
