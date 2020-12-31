@@ -1,12 +1,12 @@
 {
-  "parser": "@typescript-eslint/parser", 
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true 
+      "jsx": true
     }
   },
   "rules": {
