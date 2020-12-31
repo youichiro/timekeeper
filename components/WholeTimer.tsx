@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import ProgressBar from './ProgressBar'
 import StartButton from './StartButton'
-import { useDispatch } from 'react-redux'
+import ProgressCircle from './ProgressCircle'
 import {
   resetCounter,
   startCount,
@@ -41,6 +42,7 @@ const WholeTimer: React.FC = () => {
       <h2>WholeTimer</h2>
       <ProgressBar total={total} elapsed={counter.time} />
       <StartButton handleClick={onClickStartButton} />
+      <ProgressCircle />
     </div>
   )
 }

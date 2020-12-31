@@ -36,10 +36,12 @@
   - [x] agendaListをステート管理する
   - [x] selectedAgendaをステート管理する
   - [△] payloadの型を定義する (selectedAgendaIdはなぜかエラーになった)
-- [ ] AgendaListの合計時間をProgressBarでカウントする
+- [x] AgendaListの合計時間をProgressBarでカウントする
   - [x] counterストアを作成
   - [x] 合計時間に達したらカウントを止める
   - [x] Agendaにtime属性を追加する
   - [x] agendaListから合計時間を取得する
   - [x] selectedAgendaIdが更新されたら合計時間も更新する
-
+- [ ] agendaのProgressCircleを表示する
+  - [x] ProgressCircleを表示する
+  - [ ] 現在進行中のアジェンダを取得する
