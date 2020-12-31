@@ -27,7 +27,7 @@ const ResetButton: React.FC = () => {
 
   return (
     <Tooltip title="reset">
-      <Fab color="primary" className={classes.fab}>
+      <Fab className={classes.fab}>
         <RefreshIcon style={{ fontSize: 50 }} onClick={onClickResetButton} />
       </Fab>
     </Tooltip>
