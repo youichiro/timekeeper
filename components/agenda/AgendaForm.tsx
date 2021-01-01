@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { ListItem, TextField } from '@material-ui/core'
+import { ListItem } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done'
 
 import { Agenda } from '../../interfaces/index'
@@ -12,6 +12,7 @@ import {
 import { setSelectedAgendaId } from '../../stores/selected-agenda-id'
 import AgendaDeleteButton from './buttons/AgendaDeleteButton'
 import TimeSelectForm from './forms/TimeSelectForm'
+import TextForm from './forms/TextForm'
 
 type Props = {
   agenda: Agenda | null
@@ -61,12 +62,10 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
   return (
     <ListItem>
       <form>
-        <TextField
-          name="name"
+        <TextForm
           label="name"
           value={agenda.name}
-          onChange={onChangeNameInput}
-          error={agenda.name === ''}
+          handleChange={onChangeNameInput}
         />
         <TimeSelectForm
           value={inputValue(agenda.blockTime.hours)}

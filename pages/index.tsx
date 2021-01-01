@@ -44,10 +44,10 @@ const IndexPage: React.FC = () => {
           style={{ marginTop: '5vh', marginBottom: '5vh' }}
         >
           <Grid container spacing={2}>
-            <Grid item xs={6} style={{ height: '60vh' }}>
+            <Grid item xs={8} style={{ height: '60vh' }}>
               <AgendaList />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4}>
               <div
                 style={{
                   height: '60vh',
