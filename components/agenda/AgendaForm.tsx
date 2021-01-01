@@ -68,29 +68,20 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
           onChange={onChangeNameInput}
           error={agenda.name === ''}
         />
-        <TextField
-          name="hours"
-          type="number"
-          label="hours"
+        <TimeSelectForm
           value={inputValue(agenda.blockTime.hours)}
-          onChange={onChangeTimeInput}
+          label="hours"
+          suffix="時間"
+          maxNum={24}
+          handleChange={onChangeTimeInput}
         />
-        <TextField
-          name="minutes"
-          type="number"
-          label="minutes"
+        <TimeSelectForm
           value={inputValue(agenda.blockTime.minutes)}
-          onChange={onChangeTimeInput}
+          label="minutes"
+          suffix="分"
+          maxNum={60}
+          handleChange={onChangeTimeInput}
         />
-        <TextField
-          name="seconds"
-          type="number"
-          label="seconds"
-          value={inputValue(agenda.blockTime.seconds)}
-          onChange={onChangeTimeInput}
-        />
-        <DoneIcon color="primary" onClick={() => onClickCheckButton()} />
-        <AgendaDeleteButton />
         <TimeSelectForm
           value={inputValue(agenda.blockTime.seconds)}
           label="seconds"
@@ -98,6 +89,8 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
           maxNum={60}
           handleChange={onChangeTimeInput}
         />
+        <DoneIcon color="primary" onClick={() => onClickCheckButton()} />
+        <AgendaDeleteButton />
       </form>
     </ListItem>
   )
