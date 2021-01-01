@@ -2,9 +2,9 @@ import React from 'react'
 import { Tooltip } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import DeleteIcon from '@material-ui/icons/Delete'
-import { useSelector } from '../../stores'
-import { deleteAgenda } from '../../stores/agenda-list'
-import { setSelectedAgendaId } from '../../stores/selected-agenda-id'
+import { useSelector } from '../../../stores'
+import { deleteAgenda } from '../../../stores/agenda-list'
+import { setSelectedAgendaId } from '../../../stores/selected-agenda-id'
 
 const AgendaItemDeleteButton: React.FC = () => {
   const dispatch = useDispatch()

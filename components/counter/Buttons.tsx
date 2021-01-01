@@ -1,9 +1,9 @@
 import React from 'react'
-import StartButton from './StartButton'
-import StopButton from './StopButton'
-import ResetButton from './ResetButton'
-import { useSelector } from '../../stores'
 import { Grid } from '@material-ui/core'
+import StartButton from './buttons/StartButton'
+import StopButton from './buttons/StopButton'
+import ResetButton from './buttons/ResetButton'
+import { useSelector } from '../../stores'
 
 const Buttons: React.FC = () => {
   const counter = useSelector((state) => state.counter)

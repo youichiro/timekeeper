@@ -2,10 +2,10 @@ import React from 'react'
 import { Fab, Tooltip } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import { useDispatch } from 'react-redux'
-import { addAgenda, AddAgendaPayload } from '../../stores/agenda-list'
-import { BlockTime } from '../../interfaces'
-import { useSelector } from '../../stores'
-import { setSelectedAgendaId } from '../../stores/selected-agenda-id'
+import { addAgenda, AddAgendaPayload } from '../../../stores/agenda-list'
+import { BlockTime } from '../../../interfaces'
+import { useSelector } from '../../../stores'
+import { setSelectedAgendaId } from '../../../stores/selected-agenda-id'
 
 const AgendaItemAddButton: React.FC = () => {
   const dispatch = useDispatch()

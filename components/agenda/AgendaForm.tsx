@@ -10,7 +10,7 @@ import {
   UpdateAgendaPayload,
 } from '../../stores/agenda-list'
 import { setSelectedAgendaId } from '../../stores/selected-agenda-id'
-import AgendaItemDeleteButton from './AgendaItemDeleteButton'
+import AgendaDeleteButton from './buttons/AgendaDeleteButton'
 
 type Props = {
   agenda: Agenda | null
@@ -89,7 +89,7 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
           onChange={onChangeTimeInput}
         />
         <DoneIcon color="primary" onClick={() => onClickCheckButton()} />
-        <AgendaItemDeleteButton />
+        <AgendaDeleteButton />
       </form>
     </ListItem>
   )

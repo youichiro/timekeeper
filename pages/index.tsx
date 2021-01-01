@@ -6,7 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 
 import AgendaList from '../components/agenda/AgendaList'
-import Buttons from '../components/buttons/Buttons'
+import Buttons from '../components/counter/Buttons'
 import ProgressBar from '../components/graphics/ProgressBar'
 import ProgressCircle from '../components/graphics/ProgressCircle'
 import { useSelector } from '../stores'

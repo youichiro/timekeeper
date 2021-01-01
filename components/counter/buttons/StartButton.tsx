@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { resetCounter } from '../../stores/counter'
-
-import RefreshIcon from '@material-ui/icons/Refresh'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fab from '@material-ui/core/Fab'
-import { setTheme } from '../../stores/theme'
+
+import { startCount, updateCount } from '../../../stores/counter'
+import { setTheme } from '../../../stores/theme'
 
 type StyleProps = {
   margin: number
@@ -26,23 +26,24 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
   })
 )
 
-const ResetButton: React.FC<StyleProps> = (props) => {
+const StartButton: React.FC<StyleProps> = (props) => {
   const classes = useStyles(props)
 
   const dispatch = useDispatch()
 
-  const onClickResetButton = () => {
-    dispatch(resetCounter())
-    dispatch(setTheme({ theme: 'light' }))
+  const onClickStartButton = () => {
+    const intervalID = window.setInterval(() => dispatch(updateCount()), 1000)
+    dispatch(startCount({ intervalID }))
+    dispatch(setTheme({ theme: 'dark' }))
   }
 
   return (
-    <Tooltip title="reset">
-      <Fab className={classes.fab}>
-        <RefreshIcon className={classes.icon} onClick={onClickResetButton} />
+    <Tooltip title="start">
+      <Fab color="primary" className={classes.fab}>
+        <PlayArrowIcon className={classes.icon} onClick={onClickStartButton} />
       </Fab>
     </Tooltip>
   )
 }
 
-export default ResetButton
+export default StartButton

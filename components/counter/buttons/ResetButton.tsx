@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { stopCount } from '../../stores/counter'
+import { resetCounter } from '../../../stores/counter'
 
+import RefreshIcon from '@material-ui/icons/Refresh'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import PauseIcon from '@material-ui/icons/Pause'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fab from '@material-ui/core/Fab'
-import { setTheme } from '../../stores/theme'
+import { setTheme } from '../../../stores/theme'
 
 type StyleProps = {
   margin: number
@@ -26,23 +26,23 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
   })
 )
 
-const StopButton: React.FC<StyleProps> = (props) => {
+const ResetButton: React.FC<StyleProps> = (props) => {
   const classes = useStyles(props)
 
   const dispatch = useDispatch()
 
-  const onClickStopButton = () => {
-    dispatch(stopCount())
+  const onClickResetButton = () => {
+    dispatch(resetCounter())
     dispatch(setTheme({ theme: 'light' }))
   }
 
   return (
-    <Tooltip title="stop">
-      <Fab color="primary" className={classes.fab}>
-        <PauseIcon className={classes.icon} onClick={onClickStopButton} />
+    <Tooltip title="reset">
+      <Fab className={classes.fab}>
+        <RefreshIcon className={classes.icon} onClick={onClickResetButton} />
       </Fab>
     </Tooltip>
   )
 }
 
-export default StopButton
+export default ResetButton
