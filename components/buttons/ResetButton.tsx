@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     fab: {
       margin: theme.spacing(2),
-      padding: theme.spacing(5),
+      padding: theme.spacing(3),
     },
   })
 )
@@ -30,7 +30,7 @@ const ResetButton: React.FC = () => {
   return (
     <Tooltip title="reset">
       <Fab className={classes.fab}>
-        <RefreshIcon style={{ fontSize: 50 }} onClick={onClickResetButton} />
+        <RefreshIcon style={{ fontSize: 30 }} onClick={onClickResetButton} />
       </Fab>
     </Tooltip>
   )

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { List } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
+import { List, Paper, Typography } from '@material-ui/core'
+
 import AgendaListItem from './AgendaListItem'
 import AgendaForm from './AgendaForm'
 import { useSelector } from '../../stores'
@@ -26,8 +27,13 @@ const AgendaList: React.FC = () => {
   )
 
   return (
-    <div>
-      <List>{listItems}</List>
+    <div style={{ height: '100%' }}>
+      <Typography variant="h4" style={{ height: '10%' }}>
+        アジェンダ
+      </Typography>
+      <Paper variant="outlined" style={{ height: '90%' }}>
+        <List>{listItems}</List>
+      </Paper>
     </div>
   )
 }

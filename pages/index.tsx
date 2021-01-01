@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { Container } from '@material-ui/core'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import Grid from '@material-ui/core/Grid'
 
 import AgendaList from '../components/agenda/AgendaList'
 import Buttons from '../components/buttons/Buttons'
@@ -32,18 +33,39 @@ const IndexPage: React.FC = () => {
   })
 
   return (
-    <div>
+    <div style={{ flexGrow: 1 }}>
       <Head>
         <title>Timekeeper</title>
       </Head>
       <ThemeProvider theme={muiTheme}>
         <CssBaseline />
-        <Container fixed>
-          <h1>Timekeeper</h1>
-          <AgendaList />
-          <ProgressCircle />
-          <ProgressBar />
-          <Buttons />
+        <Container
+          maxWidth="md"
+          style={{ marginTop: '5vh', marginBottom: '5vh' }}
+        >
+          <Grid container spacing={2}>
+            <Grid item xs={6} style={{ height: '60vh' }}>
+              <AgendaList />
+            </Grid>
+            <Grid item xs={6}>
+              <div
+                style={{
+                  height: '60vh',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <ProgressCircle />
+              </div>
+            </Grid>
+            <Grid item xs={12}>
+              <div style={{ height: '30vh' }}>
+                <Buttons />
+                <ProgressBar />
+              </div>
+            </Grid>
+          </Grid>
         </Container>
       </ThemeProvider>
     </div>

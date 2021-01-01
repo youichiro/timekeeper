@@ -8,7 +8,7 @@ const Buttons: React.FC = () => {
   const counter = useSelector((state) => state.counter)
 
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       {counter.isStarted ? <StopButton /> : <StartButton />}
       <ResetButton />
     </div>
