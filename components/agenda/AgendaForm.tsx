@@ -4,7 +4,11 @@ import { ListItem, TextField } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done'
 
 import { Agenda } from '../../interfaces/index'
-import { updateAgenda, updateAgendaBorders } from '../../stores/agenda-list'
+import {
+  updateAgenda,
+  updateAgendaBorders,
+  UpdateAgendaPayload,
+} from '../../stores/agenda-list'
 import { setSelectedAgendaId } from '../../stores/selected-agenda-id'
 
 type Props = {
@@ -19,26 +23,28 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
   const dispatch = useDispatch()
 
   const onChangeNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newAgenda = {
-      ...agenda,
+    const payload: UpdateAgendaPayload = {
+      id: agenda.id,
       name: event.target.value,
+      blockTime: agenda.blockTime,
     }
-    dispatch(updateAgenda(newAgenda))
+    dispatch(updateAgenda(payload))
   }
 
   const onChangeTimeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value =
       event.target.value !== '' ? parseInt(event.target.value) : null
     const name = event.target.name
-    const newAgenda = {
-      ...agenda,
+    const payload: UpdateAgendaPayload = {
+      id: agenda.id,
+      name: agenda.name,
       blockTime: {
         hours: name === 'hours' ? value : agenda.blockTime.hours,
         minutes: name === 'minutes' ? value : agenda.blockTime.minutes,
         seconds: name === 'seconds' ? value : agenda.blockTime.seconds,
       },
     }
-    dispatch(updateAgenda(newAgenda))
+    dispatch(updateAgenda(payload))
   }
 
   const onClickCheckButton = () => {

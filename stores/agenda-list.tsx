@@ -38,7 +38,13 @@ const initialState: Agenda[] = [
   },
 ]
 
-type UpdateAgendaPayload = {
+export type UpdateAgendaPayload = {
+  id: number
+  name: string
+  blockTime: BlockTime
+}
+
+export type AddAgendaPayload = {
   id: number
   name: string
   blockTime: BlockTime
@@ -80,6 +86,21 @@ const agendaListSlice = createSlice({
         }
       })
     },
+    addAgenda(state, action: PayloadAction<AddAgendaPayload>) {
+      const { id, name, blockTime } = action.payload
+      const lastAgenda = state.slice(-1)[0]
+      const time = convertSeconds(blockTime)
+      const agenda: Agenda = {
+        id,
+        name,
+        blockTime,
+        time,
+        startTime: lastAgenda.endTime,
+        endTime: lastAgenda.endTime + time,
+        status: 'waiting',
+      }
+      return [...state, agenda]
+    },
   },
 })
 
@@ -87,5 +108,6 @@ export const {
   updateAgenda,
   updateAgendaBorders,
   updateAgendaStates,
+  addAgenda,
 } = agendaListSlice.actions
 export default agendaListSlice.reducer

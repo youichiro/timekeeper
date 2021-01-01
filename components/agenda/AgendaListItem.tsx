@@ -26,7 +26,9 @@ const AgendaListItem: React.FC<Props> = ({ agenda }) => {
         </Grid>
         <Grid item xs={6}>
           <ListItemText style={{ textAlign: 'right' }} primary={displayTime} />
-          {/* <p>{agenda.startTime} {agenda.endTime} {agenda.status}</p> */}
+          <p>
+            {agenda.id} {agenda.startTime} {agenda.endTime} {agenda.status}
+          </p>
         </Grid>
       </Grid>
     </ListItem>
