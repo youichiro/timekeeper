@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { List, ListItem, Paper, Typography } from '@material-ui/core'
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  Typography,
+} from '@material-ui/core'
 
 import AgendaListItem from './AgendaListItem'
 import AgendaForm from './AgendaForm'
@@ -27,6 +33,14 @@ const AgendaList: React.FC = () => {
     )
   )
 
+  const addButtonListItem = (
+    <ListItem>
+      <ListItemText style={{ textAlign: 'center' }}>
+        <AddButton iconSize={30} />
+      </ListItemText>
+    </ListItem>
+  )
+
   return (
     <div style={{ height: '100%' }}>
       <Typography variant="h4" style={{ height: '10%' }}>
@@ -35,9 +49,7 @@ const AgendaList: React.FC = () => {
       <Paper variant="outlined" style={{ height: '90%' }}>
         <List>
           {listItems}
-          <ListItem>
-            <AddButton />
-          </ListItem>
+          {addButtonListItem}
         </List>
       </Paper>
     </div>
