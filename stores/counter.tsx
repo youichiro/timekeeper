@@ -24,7 +24,7 @@ const counterSlice = createSlice({
     updateCount(state) {
       state.time += 1
     },
-    resetCounter(state) {
+    resetCount(state) {
       if (state.intervalID) {
         window.clearInterval(state.intervalID)
       }
@@ -39,6 +39,6 @@ export const {
   startCount,
   stopCount,
   updateCount,
-  resetCounter,
+  resetCount,
 } = counterSlice.actions
 export default counterSlice.reducer

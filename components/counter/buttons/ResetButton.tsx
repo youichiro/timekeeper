@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { resetCounter } from '../../../stores/counter'
+import { resetCount } from '../../../stores/counter'
 
 import RefreshIcon from '@material-ui/icons/Refresh'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
@@ -32,7 +32,7 @@ const ResetButton: React.FC<StyleProps> = (props) => {
   const dispatch = useDispatch()
 
   const onClickResetButton = () => {
-    dispatch(resetCounter())
+    dispatch(resetCount())
     dispatch(setTheme({ theme: 'light' }))
   }
 
