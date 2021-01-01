@@ -96,6 +96,7 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
           label="seconds"
           suffix="秒"
           maxNum={60}
+          handleChange={onChangeTimeInput}
         />
       </form>
     </ListItem>

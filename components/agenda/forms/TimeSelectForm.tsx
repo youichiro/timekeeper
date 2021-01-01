@@ -6,9 +6,16 @@ type Props = {
   label: string
   suffix: string
   maxNum: number
+  handleChange: (event: React.ChangeEvent<any>) => void
 }
 
-const TimeSelectForm: React.FC<Props> = ({ value, label, suffix, maxNum }) => {
+const TimeSelectForm: React.FC<Props> = ({
+  value,
+  label,
+  suffix,
+  maxNum,
+  handleChange,
+}) => {
   const items = [...Array(maxNum + 1).keys()].map((num) => (
     <MenuItem key={num} value={num}>
       {num}
@@ -19,7 +26,7 @@ const TimeSelectForm: React.FC<Props> = ({ value, label, suffix, maxNum }) => {
   return (
     <FormControl variant="outlined">
       <InputLabel>{label}</InputLabel>
-      <Select label={label} value={value}>
+      <Select label={label} name={label} value={value} onChange={handleChange}>
         {items}
       </Select>
     </FormControl>
