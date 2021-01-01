@@ -9,8 +9,12 @@ const Buttons: React.FC = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      {counter.isStarted ? <StopButton /> : <StartButton />}
-      <ResetButton />
+      {counter.isStarted ? (
+        <StopButton margin={2} padding={5} iconSize={50} />
+      ) : (
+        <StartButton margin={2} padding={5} iconSize={50} />
+      )}
+      <ResetButton margin={2} padding={2} iconSize={30} />
     </div>
   )
 }

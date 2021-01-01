@@ -8,16 +8,27 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Fab from '@material-ui/core/Fab'
 import { setTheme } from '../../stores/theme'
 
-const useStyles = makeStyles((theme: Theme) =>
+type StyleProps = {
+  margin: number
+  padding: number
+  iconSize: number
+}
+
+const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
   createStyles({
     fab: {
-      margin: theme.spacing(2),
-      padding: theme.spacing(5),
+      margin: ({ margin }) => theme.spacing(margin),
+      padding: ({ padding }) => theme.spacing(padding),
+    },
+    icon: {
+      fontSize: ({ iconSize }) => iconSize,
     },
   })
 )
 
-const StopButton: React.FC = () => {
+const StopButton: React.FC<StyleProps> = (props) => {
+  const classes = useStyles(props)
+
   const dispatch = useDispatch()
 
   const onClickStopButton = () => {
@@ -25,12 +36,10 @@ const StopButton: React.FC = () => {
     dispatch(setTheme({ theme: 'light' }))
   }
 
-  const classes = useStyles()
-
   return (
     <Tooltip title="stop">
       <Fab color="primary" className={classes.fab}>
-        <PauseIcon style={{ fontSize: 50 }} onClick={onClickStopButton} />
+        <PauseIcon className={classes.icon} onClick={onClickStopButton} />
       </Fab>
     </Tooltip>
   )

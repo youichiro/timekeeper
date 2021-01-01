@@ -8,16 +8,27 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Fab from '@material-ui/core/Fab'
 import { setTheme } from '../../stores/theme'
 
-const useStyles = makeStyles((theme: Theme) =>
+type StyleProps = {
+  margin: number
+  padding: number
+  iconSize: number
+}
+
+const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
   createStyles({
     fab: {
-      margin: theme.spacing(2),
-      padding: theme.spacing(3),
+      margin: ({ margin }) => theme.spacing(margin),
+      padding: ({ padding }) => theme.spacing(padding),
+    },
+    icon: {
+      fontSize: ({ iconSize }) => iconSize,
     },
   })
 )
 
-const ResetButton: React.FC = () => {
+const ResetButton: React.FC<StyleProps> = (props) => {
+  const classes = useStyles(props)
+
   const dispatch = useDispatch()
 
   const onClickResetButton = () => {
@@ -25,12 +36,10 @@ const ResetButton: React.FC = () => {
     dispatch(setTheme({ theme: 'light' }))
   }
 
-  const classes = useStyles()
-
   return (
     <Tooltip title="reset">
       <Fab className={classes.fab}>
-        <RefreshIcon style={{ fontSize: 30 }} onClick={onClickResetButton} />
+        <RefreshIcon className={classes.icon} onClick={onClickResetButton} />
       </Fab>
     </Tooltip>
   )
