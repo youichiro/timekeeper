@@ -7,6 +7,7 @@ import {
 } from '../../utils/calc-date'
 import { useSelector } from '../../stores'
 import { stopCount } from '../../stores/counter'
+import { setTheme } from '../../stores/theme'
 
 const ProgressBar: React.FC = () => {
   const dispatch = useDispatch()
@@ -20,6 +21,7 @@ const ProgressBar: React.FC = () => {
   useEffect(() => {
     if (counter.time >= total) {
       dispatch(stopCount())
+      dispatch(setTheme({ theme: 'light' }))
     }
   }, [counter])
 
