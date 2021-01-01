@@ -101,6 +101,13 @@ const agendaListSlice = createSlice({
       }
       state.push(agenda)
     },
+    deleteAgenda(state, action: PayloadAction<{ id: number | null }>) {
+      const { id } = action.payload
+      if (id === null) {
+        return
+      }
+      return state.filter((agenda) => agenda.id !== id)
+    },
   },
 })
 
@@ -109,5 +116,6 @@ export const {
   updateAgendaBorders,
   updateAgendaStates,
   addAgenda,
+  deleteAgenda,
 } = agendaListSlice.actions
 export default agendaListSlice.reducer
