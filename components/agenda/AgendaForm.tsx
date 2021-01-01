@@ -11,6 +11,7 @@ import {
 } from '../../stores/agenda-list'
 import { setSelectedAgendaId } from '../../stores/selected-agenda-id'
 import AgendaDeleteButton from './buttons/AgendaDeleteButton'
+import TimeSelectForm from './forms/TimeSelectForm'
 
 type Props = {
   agenda: Agenda | null
@@ -90,6 +91,12 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
         />
         <DoneIcon color="primary" onClick={() => onClickCheckButton()} />
         <AgendaDeleteButton />
+        <TimeSelectForm
+          value={inputValue(agenda.blockTime.seconds)}
+          label="seconds"
+          suffix="秒"
+          maxNum={60}
+        />
       </form>
     </ListItem>
   )
