@@ -51,7 +51,7 @@ const ProgressCircle: React.FC = () => {
 
   const total = runningAgenda?.time ?? 0
   const elapsed = counter.time - (runningAgenda?.startTime ?? 0)
-  const progress = (elapsed / total) * 100
+  const progress = elapsed <= total && total !== 0 ? (elapsed / total) * 100 : 0
   const remained = total - elapsed
 
   const displayTime = (total: number): string => {

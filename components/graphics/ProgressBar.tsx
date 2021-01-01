@@ -18,6 +18,7 @@ const ProgressBar: React.FC = () => {
 
   // counterを監視して、全体時間に達したらカウンターを止める
   useEffect(() => {
+    // ここ毎秒実行されてる
     if (counter.time >= total) {
       dispatch(stopCount())
     }
