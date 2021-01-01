@@ -26,6 +26,7 @@ const AgendaListItem: React.FC<Props> = ({ agenda }) => {
       divider={true}
       disabled={agenda.status === 'done'}
       selected={agenda.status === 'running'}
+      autoFocus={agenda.status === 'running'}
       onClick={() => onClickItem(agenda.id)}
     >
       <Grid container spacing={3}>

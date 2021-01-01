@@ -1,18 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, CircularProgress, Typography } from '@material-ui/core'
 import { useSelector } from '../../stores'
+import { Agenda } from '../../interfaces'
+
+type RunningAgenda = Agenda | null
 
 const ProgressCircle: React.FC = () => {
   const agendaList = useSelector((state) => state.agendaList)
   const counter = useSelector((state) => state.counter)
 
-  const runningAgenda = agendaList.filter(
-    (agenda) => agenda.status === 'running'
-  )[0]
+  const [runningAgenda, setRunningAgenda] = useState<RunningAgenda>(null)
 
-  const total = runningAgenda?.time || 0
-  const elapsed = counter.time - runningAgenda?.startTime || 0
+  // agendaListを監視して、進行中の項目を取得する
+  useEffect(() => {
+    const filtered = agendaList.filter(
+      (agenda) => agenda.status === 'running'
+    )[0]
+    setRunningAgenda(filtered ?? null)
+  }, [agendaList])
 
+  const total = runningAgenda?.time ?? 0
+  const elapsed = counter.time - (runningAgenda?.startTime ?? 0)
   const progress = (elapsed / total) * 100
   const size = 200
 

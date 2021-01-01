@@ -46,7 +46,7 @@ const AgendaList: React.FC = () => {
       <Typography variant="h4" style={{ height: '10%' }}>
         アジェンダ
       </Typography>
-      <Paper variant="outlined" style={{ height: '90%' }}>
+      <Paper variant="outlined" style={{ height: '90%', overflowY: 'auto' }}>
         <List>
           {listItems}
           {addButtonListItem}
