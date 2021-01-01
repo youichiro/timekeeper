@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core'
+import { MenuItem, TextField } from '@material-ui/core'
 import React from 'react'
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
   label: string
   suffix: string
   maxNum: number
-  handleChange: (event: React.ChangeEvent<any>) => void
+  handleChange: (event: React.ChangeEvent<any>, name: string) => void
 }
 
 const TimeSelectForm: React.FC<Props> = ({
@@ -24,12 +24,15 @@ const TimeSelectForm: React.FC<Props> = ({
   ))
 
   return (
-    <FormControl variant="outlined">
-      <InputLabel>{label}</InputLabel>
-      <Select label={label} name={label} value={value} onChange={handleChange}>
-        {items}
-      </Select>
-    </FormControl>
+    <TextField
+      select
+      label={label}
+      value={value}
+      onChange={(event) => handleChange(event, label)}
+      SelectProps={{ MenuProps: { disablePortal: true } }}
+    >
+      {items}
+    </TextField>
   )
 }
 

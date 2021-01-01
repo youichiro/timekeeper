@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { ListItem } from '@material-ui/core'
-import DoneIcon from '@material-ui/icons/Done'
+import { ClickAwayListener, ListItem } from '@material-ui/core'
 
 import { Agenda } from '../../interfaces/index'
 import {
@@ -34,10 +33,12 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
     dispatch(updateAgenda(payload))
   }
 
-  const onChangeTimeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeTimeInput = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    name: string
+  ) => {
     const value =
       event.target.value !== '' ? parseInt(event.target.value) : null
-    const name = event.target.name
     const payload: UpdateAgendaPayload = {
       id: agenda.id,
       name: agenda.name,
@@ -50,7 +51,7 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
     dispatch(updateAgenda(payload))
   }
 
-  const onClickCheckButton = () => {
+  const handleClickAway = () => {
     dispatch(setSelectedAgendaId({ id: null }))
     dispatch(updateAgendaBorders())
   }
@@ -60,8 +61,8 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
   }
 
   return (
-    <ListItem>
-      <form>
+    <ClickAwayListener onClickAway={handleClickAway}>
+      <ListItem style={{ position: 'relative' }}>
         <TextForm
           label="name"
           value={agenda.name}
@@ -88,10 +89,9 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
           maxNum={60}
           handleChange={onChangeTimeInput}
         />
-        <DoneIcon color="primary" onClick={() => onClickCheckButton()} />
         <DeleteButton />
-      </form>
-    </ListItem>
+      </ListItem>
+    </ClickAwayListener>
   )
 }
 
