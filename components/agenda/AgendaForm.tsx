@@ -1,11 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import {
-  ClickAwayListener,
-  Grid,
-  ListItem,
-  ListItemIcon,
-} from '@material-ui/core'
+import { ClickAwayListener, Grid, ListItem } from '@material-ui/core'
 
 import { Agenda } from '../../interfaces/index'
 import {
@@ -68,18 +63,18 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <ListItem divider={true}>
-        <ListItemIcon>
-          <DeleteButton />
-        </ListItemIcon>
         <Grid container spacing={3}>
-          <Grid item xs={6}>
+          <Grid item xs={1}>
+            <DeleteButton />
+          </Grid>
+          <Grid item xs={5}>
             <TextForm
               label="name"
               value={agenda.name}
               handleChange={onChangeNameInput}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={5}>
             <div style={{ textAlign: 'right' }}>
               <TimeSelectForm
                 value={inputValue(agenda.blockTime.hours)}
@@ -104,6 +99,7 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
               />
             </div>
           </Grid>
+          <Grid item xs={1}></Grid>
         </Grid>
       </ListItem>
     </ClickAwayListener>

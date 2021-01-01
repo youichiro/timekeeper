@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { ListItem, ListItemText, Grid, ListItemIcon } from '@material-ui/core'
+import { ListItem, ListItemText, Grid } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done'
 
 import { Agenda } from '../../interfaces/index'
@@ -28,16 +28,17 @@ const AgendaListItem: React.FC<Props> = ({ agenda }) => {
       selected={agenda.status === 'running'}
       onClick={() => onClickItem(agenda.id)}
     >
-      <ListItemIcon>
-        {agenda.status === 'done' ? <DoneIcon /> : <></>}
-      </ListItemIcon>
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item xs={1}>
+          {agenda.status === 'done' ? <DoneIcon /> : <></>}
+        </Grid>
+        <Grid item xs={5}>
           <ListItemText primary={agenda.name} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={5}>
           <ListItemText style={{ textAlign: 'right' }} primary={displayTime} />
         </Grid>
+        <Grid item xs={1}></Grid>
       </Grid>
     </ListItem>
   )
