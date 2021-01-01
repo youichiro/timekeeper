@@ -99,7 +99,7 @@ const agendaListSlice = createSlice({
         endTime: lastAgenda.endTime + time,
         status: 'waiting',
       }
-      return [...state, agenda]
+      state.push(agenda)
     },
   },
 })
