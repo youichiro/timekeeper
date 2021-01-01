@@ -62,7 +62,7 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-      <ListItem style={{ position: 'relative' }}>
+      <ListItem divider={true}>
         <TextForm
           label="name"
           value={agenda.name}

@@ -26,7 +26,6 @@ const TimeSelectForm: React.FC<Props> = ({
   return (
     <TextField
       select
-      label={label}
       value={value}
       onChange={(event) => handleChange(event, label)}
       SelectProps={{ MenuProps: { disablePortal: true } }}

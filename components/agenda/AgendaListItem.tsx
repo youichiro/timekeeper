@@ -19,16 +19,19 @@ const AgendaListItem: React.FC<Props> = ({ agenda }) => {
   const displayTime = convertBlockTimeToDisplayTime(agenda.blockTime)
 
   return (
-    <ListItem button onClick={() => onClickItem(agenda.id)}>
+    <ListItem
+      button
+      divider={true}
+      disabled={agenda.status === 'done'}
+      selected={agenda.status === 'running'}
+      onClick={() => onClickItem(agenda.id)}
+    >
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <ListItemText primary={agenda.name} />
         </Grid>
         <Grid item xs={6}>
           <ListItemText style={{ textAlign: 'right' }} primary={displayTime} />
-          <p>
-            {agenda.id} {agenda.startTime} {agenda.endTime} {agenda.status}
-          </p>
         </Grid>
       </Grid>
     </ListItem>
