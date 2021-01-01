@@ -38,9 +38,9 @@ const StartButton: React.FC<StyleProps> = (props) => {
   }
 
   return (
-    <Tooltip title="start">
+    <Tooltip title="start" onClick={onClickStartButton}>
       <Fab color="primary" className={classes.fab}>
-        <PlayArrowIcon className={classes.icon} onClick={onClickStartButton} />
+        <PlayArrowIcon className={classes.icon} />
       </Fab>
     </Tooltip>
   )

@@ -37,9 +37,9 @@ const ResetButton: React.FC<StyleProps> = (props) => {
   }
 
   return (
-    <Tooltip title="reset">
+    <Tooltip title="reset" onClick={onClickResetButton}>
       <Fab className={classes.fab}>
-        <RefreshIcon className={classes.icon} onClick={onClickResetButton} />
+        <RefreshIcon className={classes.icon} />
       </Fab>
     </Tooltip>
   )

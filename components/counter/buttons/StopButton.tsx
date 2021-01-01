@@ -37,9 +37,9 @@ const StopButton: React.FC<StyleProps> = (props) => {
   }
 
   return (
-    <Tooltip title="stop">
+    <Tooltip title="stop" onClick={onClickStopButton}>
       <Fab color="primary" className={classes.fab}>
-        <PauseIcon className={classes.icon} onClick={onClickStopButton} />
+        <PauseIcon className={classes.icon} />
       </Fab>
     </Tooltip>
   )
