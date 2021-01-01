@@ -7,7 +7,7 @@ import { BlockTime } from '../../../interfaces'
 import { useSelector } from '../../../stores'
 import { setSelectedAgendaId } from '../../../stores/selected-agenda-id'
 
-const AgendaItemAddButton: React.FC = () => {
+const AddButton: React.FC = () => {
   const dispatch = useDispatch()
   const agendaList = useSelector((state) => state.agendaList)
 
@@ -37,4 +37,4 @@ const AgendaItemAddButton: React.FC = () => {
   )
 }
 
-export default AgendaItemAddButton
+export default AddButton

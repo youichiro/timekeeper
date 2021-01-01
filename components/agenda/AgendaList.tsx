@@ -4,7 +4,7 @@ import { List, ListItem, Paper, Typography } from '@material-ui/core'
 
 import AgendaListItem from './AgendaListItem'
 import AgendaForm from './AgendaForm'
-import AgendaAddButton from './buttons/AgendaAddButton'
+import AddButton from './buttons/AddButton'
 import { useSelector } from '../../stores'
 import { updateAgendaStates } from '../../stores/agenda-list'
 
@@ -36,7 +36,7 @@ const AgendaList: React.FC = () => {
         <List>
           {listItems}
           <ListItem>
-            <AgendaAddButton />
+            <AddButton />
           </ListItem>
         </List>
       </Paper>

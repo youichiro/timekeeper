@@ -6,7 +6,7 @@ import { useSelector } from '../../../stores'
 import { deleteAgenda } from '../../../stores/agenda-list'
 import { setSelectedAgendaId } from '../../../stores/selected-agenda-id'
 
-const AgendaItemDeleteButton: React.FC = () => {
+const DeleteButton: React.FC = () => {
   const dispatch = useDispatch()
   const selectedAgendaId = useSelector((state) => state.selectedAgendaId)
 
@@ -28,4 +28,4 @@ const AgendaItemDeleteButton: React.FC = () => {
   )
 }
 
-export default AgendaItemDeleteButton
+export default DeleteButton
