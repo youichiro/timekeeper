@@ -29,6 +29,7 @@ const TimeSelectForm: React.FC<Props> = ({
       value={value}
       onChange={(event) => handleChange(event, label)}
       SelectProps={{ MenuProps: { disablePortal: true } }}
+      style={{ marginLeft: 8 }}
     >
       {items}
     </TextField>

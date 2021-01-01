@@ -1,6 +1,11 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { ClickAwayListener, ListItem } from '@material-ui/core'
+import {
+  ClickAwayListener,
+  Grid,
+  ListItem,
+  ListItemIcon,
+} from '@material-ui/core'
 
 import { Agenda } from '../../interfaces/index'
 import {
@@ -63,33 +68,43 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <ListItem divider={true}>
-        <TextForm
-          label="name"
-          value={agenda.name}
-          handleChange={onChangeNameInput}
-        />
-        <TimeSelectForm
-          value={inputValue(agenda.blockTime.hours)}
-          label="hours"
-          suffix="時間"
-          maxNum={24}
-          handleChange={onChangeTimeInput}
-        />
-        <TimeSelectForm
-          value={inputValue(agenda.blockTime.minutes)}
-          label="minutes"
-          suffix="分"
-          maxNum={60}
-          handleChange={onChangeTimeInput}
-        />
-        <TimeSelectForm
-          value={inputValue(agenda.blockTime.seconds)}
-          label="seconds"
-          suffix="秒"
-          maxNum={60}
-          handleChange={onChangeTimeInput}
-        />
-        <DeleteButton />
+        <ListItemIcon>
+          <DeleteButton />
+        </ListItemIcon>
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <TextForm
+              label="name"
+              value={agenda.name}
+              handleChange={onChangeNameInput}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <div style={{ textAlign: 'right' }}>
+              <TimeSelectForm
+                value={inputValue(agenda.blockTime.hours)}
+                label="hours"
+                suffix="時間"
+                maxNum={24}
+                handleChange={onChangeTimeInput}
+              />
+              <TimeSelectForm
+                value={inputValue(agenda.blockTime.minutes)}
+                label="minutes"
+                suffix="分"
+                maxNum={60}
+                handleChange={onChangeTimeInput}
+              />
+              <TimeSelectForm
+                value={inputValue(agenda.blockTime.seconds)}
+                label="seconds"
+                suffix="秒"
+                maxNum={60}
+                handleChange={onChangeTimeInput}
+              />
+            </div>
+          </Grid>
+        </Grid>
       </ListItem>
     </ClickAwayListener>
   )
