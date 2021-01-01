@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Box, CircularProgress, Typography } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+
 import { useSelector } from '../../stores'
 import { Agenda } from '../../interfaces'
+import {
+  convertBlockTimeToDisplayTime,
+  convertSecondsToBlockTime,
+} from '../../utils/calc-date'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -10,13 +15,19 @@ const useStyles = makeStyles((theme: Theme) =>
       color: theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
     },
     top: {
-      color: '#1a90ff',
-      animationDuration: '550ms',
       position: 'absolute',
       left: 0,
     },
     circle: {
       strokeLinecap: 'round',
+    },
+    textBox: {
+      display: 'flex',
+      flexDirection: 'column',
+      textAlign: 'center',
+    },
+    remainedText: {
+      color: theme.palette.grey[500],
     },
   })
 )
@@ -41,9 +52,15 @@ const ProgressCircle: React.FC = () => {
   const total = runningAgenda?.time ?? 0
   const elapsed = counter.time - (runningAgenda?.startTime ?? 0)
   const progress = (elapsed / total) * 100
+  const remained = total - elapsed
+
+  const displayTime = (total: number): string => {
+    const blockTime = convertSecondsToBlockTime(total)
+    return convertBlockTimeToDisplayTime(blockTime)
+  }
 
   const getColor = () => {
-    return total - elapsed <= 5 && elapsed > 0 ? 'secondary' : 'primary'
+    return remained <= 5 && elapsed > 0 ? 'secondary' : 'primary'
   }
 
   return (
@@ -75,9 +92,12 @@ const ProgressCircle: React.FC = () => {
           alignItems="center"
           justifyContent="center"
         >
-          <Typography variant="h5" component="div">
-            {`${elapsed}s / ${total}s`}
-          </Typography>
+          <div className={classes.textBox}>
+            <Typography variant="h5">{displayTime(elapsed)}</Typography>
+            <Typography variant="subtitle1" className={classes.remainedText}>
+              &minus; {displayTime(remained)}
+            </Typography>
+          </div>
         </Box>
       </Box>
     </div>

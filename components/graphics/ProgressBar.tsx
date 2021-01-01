@@ -31,9 +31,9 @@ const ProgressBar: React.FC = () => {
   const progress = (counter.time / total) * 100.0
   const remained = total - counter.time
 
-  const displayTime = (totalSeconds: number): string => {
-    const bt = convertSecondsToBlockTime(totalSeconds)
-    return convertBlockTimeToDisplayTime(bt)
+  const displayTime = (total: number): string => {
+    const blockTime = convertSecondsToBlockTime(total)
+    return convertBlockTimeToDisplayTime(blockTime)
   }
 
   return (
