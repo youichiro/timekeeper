@@ -59,12 +59,12 @@ const AgendaList: React.FC = () => {
   )
 
   return (
-    <div style={{ height: '100%', paddingBottom: 80 }}>
+    <div style={{ height: '100%', paddingBottom: 40 }}>
       <Grid
         container
         spacing={3}
         alignItems="flex-end"
-        style={{ paddingBottom: 10 }}
+        style={{ paddingBottom: 20 }}
       >
         <Grid item xs={6}>
           <Typography variant="h5">アジェンダ</Typography>

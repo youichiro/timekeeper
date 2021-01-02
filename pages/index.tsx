@@ -40,18 +40,15 @@ const IndexPage: React.FC = () => {
       </Head>
       <ThemeProvider theme={muiTheme}>
         <CssBaseline />
-        <Container
-          maxWidth="md"
-          style={{ marginTop: '5vh', marginBottom: '5vh' }}
-        >
+        <Container maxWidth="md" style={{ marginTop: 40, marginBottom: 40 }}>
           <Grid container spacing={2}>
-            <Grid item xs={8} style={{ height: '70vh' }}>
+            <Grid item xs={8} style={{ height: 600 }}>
               <AgendaList />
             </Grid>
             <Grid item xs={4}>
               <div
                 style={{
-                  height: '60vh',
+                  height: 600,
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -61,7 +58,7 @@ const IndexPage: React.FC = () => {
               </div>
             </Grid>
             <Grid item xs={12}>
-              <div style={{ height: '20vh' }}>
+              <div>
                 <ProgressBar />
                 <Buttons />
               </div>
