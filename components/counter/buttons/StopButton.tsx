@@ -7,6 +7,7 @@ import Fab from '@material-ui/core/Fab'
 
 import { setTheme } from '../../../stores/theme'
 import { stopCount } from '../../../stores/counter'
+import { useSelector } from '../../../stores'
 
 type StyleProps = {
   margin: number
@@ -28,17 +29,24 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
 
 const StopButton: React.FC<StyleProps> = (props) => {
   const classes = useStyles(props)
-
   const dispatch = useDispatch()
+  const counter = useSelector((state) => state.counter)
 
   const onClickStopButton = () => {
+    if (counter.isFinished) {
+      return
+    }
     dispatch(stopCount())
     dispatch(setTheme({ theme: 'light' }))
   }
 
+  const getColor = () => {
+    return counter.isFinished ? 'default' : 'primary'
+  }
+
   return (
     <Tooltip title="stop" onClick={onClickStopButton}>
-      <Fab color="primary" className={classes.fab}>
+      <Fab color={getColor()} className={classes.fab}>
         <PauseIcon className={classes.icon} />
       </Fab>
     </Tooltip>
