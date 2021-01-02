@@ -35,32 +35,54 @@ const AgendaList: React.FC = () => {
     )
   )
 
-  const addButtonListItem = (
+  const lastListItem = (
     <ListItem>
-      <ListItemText style={{ textAlign: 'center' }}>
-        <AddButton iconSize={30} />
-      </ListItemText>
+      <Grid container spacing={3} alignItems="center">
+        <Grid item xs={4}></Grid>
+        <Grid item xs={4}>
+          <ListItemText style={{ textAlign: 'center' }}>
+            <AddButton iconSize={30} />
+          </ListItemText>
+        </Grid>
+        <Grid item xs={3} style={{ textAlign: 'right' }}>
+          {counter.isStarted ? (
+            <></>
+          ) : (
+            <Typography variant="subtitle2">
+              合計: {displayTime(counter.total)}
+            </Typography>
+          )}
+        </Grid>
+        <Grid item xs={1}></Grid>
+      </Grid>
     </ListItem>
   )
 
   return (
-    <div style={{ height: '100%' }}>
-      <div style={{ height: '10%' }}>
-        <Grid container spacing={3} alignItems="flex-end">
-          <Grid item xs={6}>
-            <Typography variant="h4">アジェンダ</Typography>
-          </Grid>
-          <Grid item xs={6} style={{ textAlign: 'right', paddingRight: 78 }}>
-            <Typography variant="subtitle1">
-              合計: {displayTime(counter.total)}
-            </Typography>
-          </Grid>
+    <div style={{ height: '100%', paddingBottom: 80 }}>
+      <Grid
+        container
+        spacing={3}
+        alignItems="flex-end"
+        style={{ paddingBottom: 10 }}
+      >
+        <Grid item xs={6}>
+          <Typography variant="h5">アジェンダ</Typography>
         </Grid>
-      </div>
-      <Paper variant="outlined" style={{ height: '90%', overflowY: 'auto' }}>
+        <Grid item xs={6} style={{ textAlign: 'right', paddingRight: 60 }}>
+          {counter.isStarted ? (
+            <Typography variant="subtitle1">
+              全体: {displayTime(counter.total)}
+            </Typography>
+          ) : (
+            <></>
+          )}
+        </Grid>
+      </Grid>
+      <Paper variant="outlined" style={{ height: '100%', overflowY: 'auto' }}>
         <List>
           {listItems}
-          {addButtonListItem}
+          {lastListItem}
         </List>
       </Paper>
     </div>
