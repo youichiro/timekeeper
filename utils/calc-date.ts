@@ -48,3 +48,9 @@ export const convertBlockTimeToDisplayTime = (blockTime: BlockTime): string => {
   const hours = btStr.hours !== '00' ? btStr.hours + ':' : ''
   return `${hours}${btStr.minutes}:${btStr.seconds}`
 }
+
+// 秒を表示用テキストに変換する
+export const displayTime = (total: number): string => {
+  const blockTime = convertSecondsToBlockTime(total)
+  return convertBlockTimeToDisplayTime(blockTime)
+}

@@ -4,10 +4,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 import { useSelector } from '../../stores'
 import { Agenda } from '../../interfaces'
-import {
-  convertBlockTimeToDisplayTime,
-  convertSecondsToBlockTime,
-} from '../../utils/calc-date'
+import { displayTime } from '../../utils/calc-date'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,11 +50,6 @@ const ProgressCircle: React.FC = () => {
   const elapsed = counter.time - (runningAgenda?.startTime ?? 0)
   const progress = elapsed <= total && total !== 0 ? (elapsed / total) * 100 : 0
   const remained = total - elapsed
-
-  const displayTime = (total: number): string => {
-    const blockTime = convertSecondsToBlockTime(total)
-    return convertBlockTimeToDisplayTime(blockTime)
-  }
 
   const getColor = () => {
     return remained <= 5 && elapsed > 0 ? 'secondary' : 'primary'

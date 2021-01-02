@@ -3,10 +3,7 @@ import { useDispatch } from 'react-redux'
 import { LinearProgress, Grid, Typography } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
-import {
-  convertBlockTimeToDisplayTime,
-  convertSecondsToBlockTime,
-} from '../../utils/calc-date'
+import { displayTime } from '../../utils/calc-date'
 import { useSelector } from '../../stores'
 import { setTotal, stopCount } from '../../stores/counter'
 
@@ -49,11 +46,6 @@ const ProgressBar: React.FC = () => {
 
   const progress = (counter.time / counter.total) * 100.0
   const remained = counter.total - counter.time
-
-  const displayTime = (total: number): string => {
-    const blockTime = convertSecondsToBlockTime(total)
-    return convertBlockTimeToDisplayTime(blockTime)
-  }
 
   return (
     <div style={{ flexGrow: 1 }}>
