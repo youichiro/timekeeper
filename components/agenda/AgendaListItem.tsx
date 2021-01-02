@@ -2,10 +2,12 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { ListItem, ListItemText, Grid } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done'
+import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 
 import { Agenda } from '../../interfaces/index'
 import { convertBlockTimeToDisplayTime } from '../../utils/calc-date'
 import { setSelectedAgendaId } from '../../stores/selected-agenda-id'
+import { useSelector } from '../../stores'
 
 type Props = {
   agenda: Agenda
@@ -13,6 +15,7 @@ type Props = {
 
 const AgendaListItem: React.FC<Props> = ({ agenda }) => {
   const dispatch = useDispatch()
+  const counter = useSelector((state) => state.counter)
 
   const onClickItem = (id: number) => {
     dispatch(setSelectedAgendaId({ id }))
@@ -20,18 +23,37 @@ const AgendaListItem: React.FC<Props> = ({ agenda }) => {
 
   const displayTime = convertBlockTimeToDisplayTime(agenda.blockTime)
 
+  const isDone = () => {
+    return (
+      agenda.status === 'done' ||
+      (agenda.status === 'running' && counter.isFinished)
+    )
+  }
+
+  const isRunning = () => agenda.status === 'running'
+
+  const getIcon = () => {
+    return isDone() ? (
+      <DoneIcon />
+    ) : isRunning() ? (
+      <PlayArrowIcon color="action" />
+    ) : (
+      <></>
+    )
+  }
+
   return (
     <ListItem
       button
       divider={true}
-      disabled={agenda.status === 'done'}
-      selected={agenda.status === 'running'}
-      autoFocus={agenda.status === 'running'}
+      disabled={isDone()}
+      selected={isRunning()}
+      autoFocus={isRunning()}
       onClick={() => onClickItem(agenda.id)}
     >
-      <Grid container spacing={3}>
+      <Grid container spacing={3} alignItems="center">
         <Grid item xs={1}>
-          {agenda.status === 'done' ? <DoneIcon /> : <></>}
+          {getIcon()}
         </Grid>
         <Grid item xs={5}>
           <ListItemText primary={agenda.name} />
