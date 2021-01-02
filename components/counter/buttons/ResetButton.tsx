@@ -3,32 +3,16 @@ import { useDispatch } from 'react-redux'
 import { resetCount } from '../../../stores/counter'
 
 import RefreshIcon from '@material-ui/icons/Refresh'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fab from '@material-ui/core/Fab'
 import { setTheme } from '../../../stores/theme'
 import { useSelector } from '../../../stores'
 
-type StyleProps = {
-  margin: number
-  padding: number
+type Props = {
   iconSize: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
-  createStyles({
-    fab: {
-      margin: ({ margin }) => theme.spacing(margin),
-      padding: ({ padding }) => theme.spacing(padding),
-    },
-    icon: {
-      fontSize: ({ iconSize }) => iconSize,
-    },
-  })
-)
-
-const ResetButton: React.FC<StyleProps> = (props) => {
-  const classes = useStyles(props)
+const ResetButton: React.FC<Props> = ({ iconSize }) => {
   const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
 
@@ -43,8 +27,8 @@ const ResetButton: React.FC<StyleProps> = (props) => {
 
   return (
     <Tooltip title="reset" onClick={onClickResetButton}>
-      <Fab color={getColor()} className={classes.fab}>
-        <RefreshIcon className={classes.icon} />
+      <Fab color={getColor()}>
+        <RefreshIcon style={{ fontSize: iconSize }} />
       </Fab>
     </Tooltip>
   )

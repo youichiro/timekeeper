@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fab from '@material-ui/core/Fab'
@@ -9,26 +8,11 @@ import { startCount, updateCount } from '../../../stores/counter'
 import { setTheme } from '../../../stores/theme'
 import { useSelector } from '../../../stores'
 
-type StyleProps = {
-  margin: number
-  padding: number
+type Props = {
   iconSize: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
-  createStyles({
-    fab: {
-      margin: ({ margin }) => theme.spacing(margin),
-      padding: ({ padding }) => theme.spacing(padding),
-    },
-    icon: {
-      fontSize: ({ iconSize }) => iconSize,
-    },
-  })
-)
-
-const StartButton: React.FC<StyleProps> = (props) => {
-  const classes = useStyles(props)
+const StartButton: React.FC<Props> = ({ iconSize }) => {
   const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
 
@@ -45,8 +29,8 @@ const StartButton: React.FC<StyleProps> = (props) => {
 
   return (
     <Tooltip title="start" onClick={onClickStartButton}>
-      <Fab color={getColor()} className={classes.fab}>
-        <PlayArrowIcon className={classes.icon} />
+      <Fab color={getColor()}>
+        <PlayArrowIcon style={{ fontSize: iconSize }} />
       </Fab>
     </Tooltip>
   )

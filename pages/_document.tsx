@@ -21,7 +21,10 @@ export default class MyDocument extends Document {
             content="タイムキーパーの代わりになる君です"
           />
           <meta property="og:url" content="https://time-keeper.vercel.app" />
-          <meta property="og:image" content="https://time-keeper.vercel.app/favicon.png" />
+          <meta
+            property="og:image"
+            content="https://time-keeper.vercel.app/favicon.png"
+          />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@cinnamon_416" />
           <meta name="twitter:creator" content="@cinnamon_416" />

@@ -9,19 +9,19 @@ const Buttons: React.FC = () => {
   const counter = useSelector((state) => state.counter)
 
   return (
-    <Grid container style={{ flexGrow: 1 }} spacing={2}>
+    <Grid container spacing={3} style={{ paddingTop: 20 }}>
       <Grid item xs={12}>
         <Grid container justify="center" alignItems="center">
           <Grid item xs={2}></Grid>
           <Grid item xs={2} style={{ textAlign: 'center' }}>
             {counter.isStarted ? (
-              <StopButton margin={2} padding={5} iconSize={50} />
+              <StopButton iconSize={30} />
             ) : (
-              <StartButton margin={2} padding={5} iconSize={50} />
+              <StartButton iconSize={30} />
             )}
           </Grid>
           <Grid item xs={2} style={{ textAlign: 'center' }}>
-            <ResetButton margin={2} padding={2} iconSize={30} />
+            <ResetButton iconSize={22} />
           </Grid>
         </Grid>
       </Grid>
