@@ -88,15 +88,15 @@ const agendaListSlice = createSlice({
     },
     addAgenda(state, action: PayloadAction<AddAgendaPayload>) {
       const { id, name, blockTime } = action.payload
-      const lastAgenda = state.slice(-1)[0]
+      const lastAgenda = state.length > 0 ? state.slice(-1)[0] : null
       const time = convertSeconds(blockTime)
       const agenda: Agenda = {
         id,
         name,
         blockTime,
         time,
-        startTime: lastAgenda.endTime,
-        endTime: lastAgenda.endTime + time,
+        startTime: lastAgenda ? lastAgenda.endTime : 0,
+        endTime: lastAgenda ? lastAgenda.endTime + time : time,
         status: 'waiting',
       }
       state.push(agenda)

@@ -37,7 +37,7 @@ const AddButton: React.FC<StyleProps> = (props) => {
   }
 
   const onClickAddButton = () => {
-    const id = agendaList.slice(-1)[0].id + 1
+    const id = agendaList.length > 0 ? agendaList.slice(-1)[0].id + 1 : 1
     const payload: AddAgendaPayload = {
       id,
       name: '',
