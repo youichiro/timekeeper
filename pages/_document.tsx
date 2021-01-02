@@ -10,10 +10,7 @@ export default class MyDocument extends Document {
         <Head prefix="og: http://ogp.me/ns# website: http://ogp.me/ns/website#">
           <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.png" />
-          <meta
-            name="description"
-            content="タイムキーパーの代わりになる君"
-          />
+          <meta name="description" content="タイムキーパーの代わりになる君" />
           <meta property="og:title" content="Timekeeper" />
           <meta property="og:type" content="website" />
           <meta

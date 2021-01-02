@@ -12,14 +12,14 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
       paddingTop: 20,
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('xs')]: {
         paddingTop: 0,
       },
     },
     bar: {
       height: 10,
       borderRadius: 6,
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('xs')]: {
         height: 6,
         borderRadius: 4,
       },
