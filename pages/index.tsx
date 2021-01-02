@@ -19,13 +19,10 @@ import { useSelector } from '../stores'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      padding: theme.spacing(1),
+    list: {
+      height: 600,
       [theme.breakpoints.down('sm')]: {
-        backgroundColor: theme.palette.secondary.main,
-      },
-      [theme.breakpoints.up('md')]: {
-        backgroundColor: theme.palette.primary.main,
+        height: 400,
       },
     },
     circle: {
@@ -72,7 +69,7 @@ const IndexPage: React.FC = () => {
         <CssBaseline />
         <Container maxWidth="md" style={{ marginTop: 40, marginBottom: 40 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={8} style={{ height: 600 }}>
+            <Grid item xs={12} sm={8} className={classes.list}>
               <AgendaList />
             </Grid>
             <Grid item xs={12} sm={4}>
