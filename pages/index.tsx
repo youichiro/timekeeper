@@ -1,7 +1,13 @@
 import React from 'react'
 import Head from 'next/head'
 import { Container } from '@material-ui/core'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import {
+  createMuiTheme,
+  ThemeProvider,
+  Theme,
+  makeStyles,
+  createStyles,
+} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 
@@ -11,7 +17,31 @@ import ProgressBar from '../components/graphics/ProgressBar'
 import ProgressCircle from '../components/graphics/ProgressCircle'
 import { useSelector } from '../stores'
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      padding: theme.spacing(1),
+      [theme.breakpoints.down('sm')]: {
+        backgroundColor: theme.palette.secondary.main,
+      },
+      [theme.breakpoints.up('md')]: {
+        backgroundColor: theme.palette.primary.main,
+      },
+    },
+    circle: {
+      height: 600,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      [theme.breakpoints.down('sm')]: {
+        height: 260,
+      },
+    },
+  })
+)
+
 const IndexPage: React.FC = () => {
+  const classes = useStyles()
   const theme = useSelector((state) => state.theme)
 
   const muiTheme = createMuiTheme({
@@ -42,18 +72,11 @@ const IndexPage: React.FC = () => {
         <CssBaseline />
         <Container maxWidth="md" style={{ marginTop: 40, marginBottom: 40 }}>
           <Grid container spacing={2}>
-            <Grid item xs={8} style={{ height: 600 }}>
+            <Grid item xs={12} sm={8} style={{ height: 600 }}>
               <AgendaList />
             </Grid>
-            <Grid item xs={4}>
-              <div
-                style={{
-                  height: 600,
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
+            <Grid item xs={12} sm={4}>
+              <div className={classes.circle}>
                 <ProgressCircle />
               </div>
             </Grid>
