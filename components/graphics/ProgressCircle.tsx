@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Box, CircularProgress, Typography } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import { useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import { useSelector } from '../../stores'
 import { Agenda } from '../../interfaces'
@@ -55,14 +57,19 @@ const ProgressCircle: React.FC = () => {
     return remained <= 5 && elapsed > 0 ? 'secondary' : 'primary'
   }
 
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down('xs'))
+  const circleSize = matches ? 160 : 200
+
   return (
     <div>
       <Box position="relative" display="inline-flex">
         <CircularProgress
           variant="determinate"
           className={classes.bottom}
+          classes={{ circle: classes.circle }}
           value={100}
-          size={200}
+          size={circleSize}
           thickness={2}
         />
         <CircularProgress
@@ -71,7 +78,7 @@ const ProgressCircle: React.FC = () => {
           className={classes.top}
           classes={{ circle: classes.circle }}
           value={progress}
-          size={200}
+          size={circleSize}
           thickness={2}
         />
         <Box

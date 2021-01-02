@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
     list: {
       height: 600,
       [theme.breakpoints.down('sm')]: {
-        height: 400,
+        height: 360,
       },
     },
     circle: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       [theme.breakpoints.down('sm')]: {
-        height: 260,
+        height: 200,
       },
     },
   })
