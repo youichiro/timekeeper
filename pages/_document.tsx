@@ -1,7 +1,7 @@
 // https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/core/styles';
+import React from 'react'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheets } from '@material-ui/core/styles'
 
 export default class MyDocument extends Document {
   render() {
@@ -10,29 +10,43 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.png" />
+          <meta
+            name="description"
+            content="タイムキーパーの替わりになる君です"
+          />
+          <meta property="og:title" content="Timekeeper" />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:description"
+            content="タイムキーパーの替わりになる君です"
+          />
+          <meta property="og:url" content="https://time-keeper.vercel.app" />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
 MyDocument.getInitialProps = async (ctx) => {
-  const sheets = new ServerStyleSheets();
-  const originalRenderPage = ctx.renderPage;
+  const sheets = new ServerStyleSheets()
+  const originalRenderPage = ctx.renderPage
 
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
-    });
+    })
 
-  const initialProps = await Document.getInitialProps(ctx);
+  const initialProps = await Document.getInitialProps(ctx)
 
   return {
     ...initialProps,
-    styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
-  };
-};
+    styles: [
+      ...React.Children.toArray(initialProps.styles),
+      sheets.getStyleElement(),
+    ],
+  }
+}
