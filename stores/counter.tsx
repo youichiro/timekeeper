@@ -26,6 +26,15 @@ const counterSlice = createSlice({
     },
     updateCount(state) {
       state.time += 1
+      // totalに達したらカウンターを止める
+      if (state.total > 0 && state.time >= state.total) {
+        if (state.intervalID) {
+          window.clearInterval(state.intervalID)
+        }
+        state.isStarted = false
+        state.isFinished = true
+        state.intervalID = null
+      }
     },
     resetCount(state) {
       if (state.intervalID) {
@@ -39,14 +48,6 @@ const counterSlice = createSlice({
     setTotal(state, action: PayloadAction<{ total: number }>) {
       state.total = action.payload.total
     },
-    finishCount(state) {
-      if (state.intervalID) {
-        window.clearInterval(state.intervalID)
-      }
-      state.isStarted = false
-      state.isFinished = true
-      state.intervalID = null
-    },
   },
 })
 
@@ -56,6 +57,5 @@ export const {
   updateCount,
   resetCount,
   setTotal,
-  finishCount,
 } = counterSlice.actions
 export default counterSlice.reducer

@@ -5,7 +5,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 import { displayTime } from '../../utils/calc-date'
 import { useSelector } from '../../stores'
-import { setTotal, finishCount } from '../../stores/counter'
+import { setTotal } from '../../stores/counter'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,14 +32,6 @@ const ProgressBar: React.FC = () => {
   const counter = useSelector((state) => state.counter)
   const selectedAgendaId = useSelector((state) => state.selectedAgendaId)
   const agendaList = useSelector((state) => state.agendaList)
-
-  // counterを監視して、全体時間に達したらカウンターを止める
-  useEffect(() => {
-    // ここ毎秒実行されてる
-    if (counter.total > 0 && counter.time >= counter.total) {
-      dispatch(finishCount())
-    }
-  }, [counter])
 
   // selectedAgendaIdを監視して、変化したら合計時間を再計算する
   useEffect(() => {
