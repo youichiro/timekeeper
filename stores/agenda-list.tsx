@@ -4,18 +4,27 @@ import { convertSeconds } from '../utils/calc-date'
 
 const defaultBlockTime: BlockTime = {
   hours: 0,
-  minutes: 1,
-  seconds: 0,
+  minutes: 0,
+  seconds: 10,
 }
 const time = convertSeconds(defaultBlockTime)
 const initialState: Agenda[] = [
   {
     id: 1,
-    name: '項目を入力してね',
+    name: '議題1',
     blockTime: defaultBlockTime,
     time,
     startTime: 0,
     endTime: time,
+    status: 'waiting',
+  },
+  {
+    id: 2,
+    name: '議題2',
+    blockTime: defaultBlockTime,
+    time,
+    startTime: time,
+    endTime: time * 2,
     status: 'waiting',
   },
 ]
