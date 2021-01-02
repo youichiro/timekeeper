@@ -12,15 +12,15 @@ const Buttons: React.FC = () => {
     <Grid container spacing={3} style={{ paddingTop: 20 }}>
       <Grid item xs={12}>
         <Grid container justify="center" alignItems="center">
-          <Grid item xs={2}></Grid>
-          <Grid item xs={2} style={{ textAlign: 'center' }}>
+          <Grid item xs={4}></Grid>
+          <Grid item xs={4} style={{ textAlign: 'center' }}>
             {counter.isStarted ? (
               <StopButton iconSize={30} />
             ) : (
               <StartButton iconSize={30} />
             )}
           </Grid>
-          <Grid item xs={2} style={{ textAlign: 'center' }}>
+          <Grid item xs={4} style={{ textAlign: 'left' }}>
             <ResetButton iconSize={22} />
           </Grid>
         </Grid>

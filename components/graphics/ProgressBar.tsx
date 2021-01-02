@@ -60,7 +60,7 @@ const ProgressBar: React.FC = () => {
         </Grid>
         <Grid item xs={2}>
           <Typography variant="body1" className={classes.remainedText}>
-            &minus; {displayTime(remained)}
+            {displayTime(remained)}
           </Typography>
         </Grid>
       </Grid>

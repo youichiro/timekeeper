@@ -48,7 +48,7 @@ const AgendaListItem: React.FC<Props> = ({ agenda }) => {
       divider={true}
       disabled={isDone()}
       selected={isRunning()}
-      autoFocus={isRunning()}
+      // autoFocus={isRunning()}
       onClick={() => onClickItem(agenda.id)}
     >
       <Grid container spacing={3} alignItems="center">

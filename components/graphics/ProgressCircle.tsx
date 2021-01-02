@@ -87,7 +87,7 @@ const ProgressCircle: React.FC = () => {
           <div className={classes.textBox}>
             <Typography variant="h5">{displayTime(elapsed)}</Typography>
             <Typography variant="subtitle1" className={classes.remainedText}>
-              &minus; {displayTime(remained)}
+              {displayTime(remained)}
             </Typography>
           </div>
         </Box>
