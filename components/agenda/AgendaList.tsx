@@ -45,7 +45,7 @@ const AgendaList: React.FC = () => {
           </ListItemText>
         </Grid>
         <Grid item xs={3} style={{ textAlign: 'right' }}>
-          {counter.isStarted ? (
+          {counter.isStarted || counter.isFinished ? (
             <></>
           ) : (
             <Typography variant="subtitle2">
@@ -70,7 +70,7 @@ const AgendaList: React.FC = () => {
           <Typography variant="h5">アジェンダ</Typography>
         </Grid>
         <Grid item xs={6} style={{ textAlign: 'right', paddingRight: 60 }}>
-          {counter.isStarted ? (
+          {counter.isStarted || counter.isFinished ? (
             <Typography variant="subtitle1">
               全体: {displayTime(counter.total)}
             </Typography>

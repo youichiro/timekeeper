@@ -31,6 +31,7 @@ const counterSlice = createSlice({
         if (state.intervalID) {
           window.clearInterval(state.intervalID)
         }
+        state.isStarted = false
         state.isFinished = true
         state.intervalID = null
       }

@@ -21,14 +21,17 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
         color: theme.palette.primary.main,
       },
     },
+    iconDisabled: {
+      fontSize: ({ iconSize }) => iconSize,
+    },
   })
 )
 
 const AddButton: React.FC<StyleProps> = (props) => {
   const classes = useStyles(props)
-
   const dispatch = useDispatch()
   const agendaList = useSelector((state) => state.agendaList)
+  const counter = useSelector((state) => state.counter)
 
   const defaultBlockTime: BlockTime = {
     hours: 0,
@@ -37,6 +40,7 @@ const AddButton: React.FC<StyleProps> = (props) => {
   }
 
   const onClickAddButton = () => {
+    if (counter.isFinished) return
     const id = agendaList.length > 0 ? agendaList.slice(-1)[0].id + 1 : 1
     const payload: AddAgendaPayload = {
       id,
@@ -49,7 +53,10 @@ const AddButton: React.FC<StyleProps> = (props) => {
 
   return (
     <Tooltip title="add" onClick={onClickAddButton}>
-      <AddCircleIcon color="disabled" className={classes.icon} />
+      <AddCircleIcon
+        color="disabled"
+        className={counter.isFinished ? classes.iconDisabled : classes.icon}
+      />
     </Tooltip>
   )
 }

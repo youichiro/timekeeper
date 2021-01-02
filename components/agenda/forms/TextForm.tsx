@@ -9,7 +9,13 @@ type Props = {
 
 const TextForm: React.FC<Props> = ({ label, value, handleChange }) => {
   return (
-    <TextField fullWidth name={label} value={value} autoFocus={true} onChange={handleChange} />
+    <TextField
+      fullWidth
+      name={label}
+      value={value}
+      autoFocus={true}
+      onChange={handleChange}
+    />
   )
 }
 
