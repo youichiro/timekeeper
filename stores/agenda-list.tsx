@@ -7,14 +7,15 @@ const defaultBlockTime: BlockTime = {
   minutes: 1,
   seconds: 0,
 }
+const time = convertSeconds(defaultBlockTime)
 const initialState: Agenda[] = [
   {
     id: 1,
     name: '項目を入力してね',
     blockTime: defaultBlockTime,
-    time: convertSeconds(defaultBlockTime),
+    time,
     startTime: 0,
-    endTime: 10,
+    endTime: time,
     status: 'waiting',
   },
 ]
