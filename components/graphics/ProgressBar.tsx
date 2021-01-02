@@ -51,11 +51,6 @@ const ProgressBar: React.FC = () => {
     <div style={{ flexGrow: 1 }}>
       <Grid container spacing={3} justify="space-between">
         <Grid item xs={12}>
-          <Typography variant="subtitle1" className={classes.totalText}>
-            {displayTime(counter.total)}
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
           <LinearProgress
             variant="determinate"
             value={progress}
