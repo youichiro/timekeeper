@@ -26,6 +26,7 @@ export interface Counter {
   isStarted: boolean
   time: number
   intervalID: number | null
+  total: number
 }
 
 export type Theme = 'dark' | 'light'

@@ -5,6 +5,7 @@ const initialState: Counter = {
   isStarted: false,
   time: 0,
   intervalID: null,
+  total: 0,
 }
 
 const counterSlice = createSlice({
@@ -32,6 +33,9 @@ const counterSlice = createSlice({
       state.intervalID = null
       state.time = 0
     },
+    setTotal(state, action: PayloadAction<{ total: number }>) {
+      state.total = action.payload.total
+    },
   },
 })
 
@@ -40,5 +44,6 @@ export const {
   stopCount,
   updateCount,
   resetCount,
+  setTotal,
 } = counterSlice.actions
 export default counterSlice.reducer
