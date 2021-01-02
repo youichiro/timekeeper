@@ -16,8 +16,11 @@ const useStyles = makeStyles((theme: Theme) =>
     totalText: {
       textAlign: 'right',
     },
-    remainedText: {
+    elapsedText: {
       textAlign: 'right',
+    },
+    remainedText: {
+      textAlign: 'left',
       color: theme.palette.grey[500],
     },
   })
@@ -48,9 +51,14 @@ const ProgressBar: React.FC = () => {
   const remained = counter.total - counter.time
 
   return (
-    <div style={{ flexGrow: 1 }}>
-      <Grid container spacing={3} justify="space-between">
-        <Grid item xs={12}>
+    <div style={{ flexGrow: 1, paddingTop: 20 }}>
+      <Grid container spacing={2} justify="center" alignItems="center">
+        <Grid item xs={2}>
+          <Typography variant="body1" className={classes.elapsedText}>
+            {displayTime(counter.time)}
+          </Typography>
+        </Grid>
+        <Grid item xs={8}>
           <LinearProgress
             variant="determinate"
             value={progress}
@@ -58,13 +66,8 @@ const ProgressBar: React.FC = () => {
             className={classes.bar}
           />
         </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1">
-            {displayTime(counter.time)}
-          </Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1" className={classes.remainedText}>
+        <Grid item xs={2}>
+          <Typography variant="body1" className={classes.remainedText}>
             &minus; {displayTime(remained)}
           </Typography>
         </Grid>
