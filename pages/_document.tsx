@@ -7,14 +7,13 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="ja">
-        <Head>
+        <Head prefix="og: http://ogp.me/ns# website: http://ogp.me/ns/website#">
           <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.png" />
           <meta
             name="description"
             content="タイムキーパーの代わりになる君です"
           />
-          <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#" />
           <meta property="og:title" content="Timekeeper" />
           <meta property="og:type" content="website" />
           <meta
