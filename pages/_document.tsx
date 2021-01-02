@@ -12,14 +12,14 @@ export default class MyDocument extends Document {
           <link rel="icon" href="/favicon.png" />
           <meta
             name="description"
-            content="タイムキーパーの替わりになる君です"
+            content="タイムキーパーの代わりになる君です"
           />
           <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#" />
           <meta property="og:title" content="Timekeeper" />
           <meta property="og:type" content="website" />
           <meta
             property="og:description"
-            content="タイムキーパーの替わりになる君です"
+            content="タイムキーパーの代わりになる君です"
           />
           <meta property="og:url" content="https://time-keeper.vercel.app" />
           <meta property="og:image" content="https://time-keeper.vercel.app/favicon.png" />
