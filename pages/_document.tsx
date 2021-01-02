@@ -9,6 +9,7 @@ export default class MyDocument extends Document {
       <Html lang="ja">
         <Head>
           <meta charSet="utf-8" />
+          <link rel="icon" href="/favicon.png" />
         </Head>
         <body>
           <Main />
