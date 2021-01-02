@@ -9,9 +9,20 @@ import { setTotal } from '../../stores/counter'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      flexGrow: 1,
+      paddingTop: 20,
+      [theme.breakpoints.down('sm')]: {
+        paddingTop: 0,
+      },
+    },
     bar: {
       height: 10,
       borderRadius: 6,
+      [theme.breakpoints.down('sm')]: {
+        height: 6,
+        borderRadius: 4,
+      },
     },
     totalText: {
       textAlign: 'right',
@@ -43,7 +54,7 @@ const ProgressBar: React.FC = () => {
   const remained = counter.total - counter.time
 
   return (
-    <div style={{ flexGrow: 1, paddingTop: 20 }}>
+    <div className={classes.root}>
       <Grid container spacing={2} justify="center" alignItems="center">
         <Grid item xs={2}>
           <Typography variant="body1" className={classes.elapsedText}>
