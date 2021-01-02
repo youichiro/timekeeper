@@ -36,6 +36,7 @@ const IndexPage: React.FC = () => {
     <div style={{ flexGrow: 1 }}>
       <Head>
         <title>Timekeeper</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
       </Head>
       <ThemeProvider theme={muiTheme}>
         <CssBaseline />
