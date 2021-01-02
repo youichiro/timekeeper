@@ -32,7 +32,7 @@ const AddButton: React.FC<StyleProps> = (props) => {
 
   const defaultBlockTime: BlockTime = {
     hours: 0,
-    minutes: 0,
+    minutes: 1,
     seconds: 0,
   }
 

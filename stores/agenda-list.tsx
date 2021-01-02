@@ -4,8 +4,8 @@ import { convertSeconds } from '../utils/calc-date'
 
 const defaultBlockTime: BlockTime = {
   hours: 0,
-  minutes: 0,
-  seconds: 30,
+  minutes: 1,
+  seconds: 0,
 }
 const initialState: Agenda[] = [
   {
