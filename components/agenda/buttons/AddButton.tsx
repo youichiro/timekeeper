@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Tooltip } from '@material-ui/core'
-import Fab from '@material-ui/core/Fab'
-import AddIcon from '@material-ui/icons/Add'
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
 
 import { addAgenda, AddAgendaPayload } from '../../../stores/agenda-list'
 import { BlockTime } from '../../../interfaces'
@@ -13,7 +13,22 @@ type StyleProps = {
   iconSize: number
 }
 
-const AddButton: React.FC<StyleProps> = ({ iconSize }) => {
+const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
+  createStyles({
+    icon: {
+      fontSize: ({ iconSize }) => iconSize,
+      '&:hover': {
+        color: theme.palette.primary.main,
+      },
+    },
+    iconDisabled: {
+      fontSize: ({ iconSize }) => iconSize,
+    },
+  })
+)
+
+const AddButton: React.FC<StyleProps> = (props) => {
+  const classes = useStyles(props)
   const dispatch = useDispatch()
   const agendaList = useSelector((state) => state.agendaList)
   const counter = useSelector((state) => state.counter)
@@ -38,9 +53,10 @@ const AddButton: React.FC<StyleProps> = ({ iconSize }) => {
 
   return (
     <Tooltip title="add" onClick={onClickAddButton}>
-      <Fab color="default" size="small" disabled={counter.isFinished}>
-        <AddIcon style={{ fontSize: iconSize }} />
-      </Fab>
+      <AddCircleIcon
+        color="disabled"
+        className={counter.isFinished ? classes.iconDisabled : classes.icon}
+      />
     </Tooltip>
   )
 }

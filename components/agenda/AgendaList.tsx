@@ -41,7 +41,7 @@ const AgendaList: React.FC = () => {
         <Grid item xs={4}></Grid>
         <Grid item xs={4}>
           <ListItemText style={{ textAlign: 'center' }}>
-            <AddButton iconSize={16} />
+            <AddButton iconSize={30} />
           </ListItemText>
         </Grid>
         <Grid item xs={3} style={{ textAlign: 'right' }}>
