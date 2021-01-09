@@ -5,7 +5,7 @@ import DoneIcon from '@material-ui/icons/Done'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 
 import { Agenda } from '../../interfaces/index'
-import { convertBlockTimeToDisplayTime } from '../../utils/calc-date'
+import { convertBlockTimeToDisplayTime } from '../../utils/block-time'
 import { setSelectedAgendaId } from '../../stores/selected-agenda-id'
 import { useSelector } from '../../stores'
 

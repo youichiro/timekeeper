@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Agenda, BlockTime } from '../interfaces'
-import { convertSeconds } from '../utils/calc-date'
-
+import { convertSeconds } from '../utils/block-time'
 const defaultBlockTime: BlockTime = {
   hours: 0,
   minutes: 0,

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { LinearProgress, Grid, Typography } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
-import { displayTime } from '../../utils/calc-date'
+import { displayTime } from '../../utils/block-time'
 import { useSelector } from '../../stores'
 import { setTotal } from '../../stores/counter'
 

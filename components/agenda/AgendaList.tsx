@@ -14,7 +14,7 @@ import AgendaForm from './AgendaForm'
 import AddButton from './buttons/AddButton'
 import { useSelector } from '../../stores'
 import { updateAgendaStates } from '../../stores/agenda-list'
-import { displayTime } from '../../utils/calc-date'
+import { displayTime } from '../../utils/block-time'
 
 const AgendaList: React.FC = () => {
   const dispatch = useDispatch()

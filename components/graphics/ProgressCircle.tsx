@@ -6,7 +6,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import { useSelector } from '../../stores'
 import { Agenda } from '../../interfaces'
-import { displayTime } from '../../utils/calc-date'
+import { displayTime } from '../../utils/block-time'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
