@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Agenda, BlockTime } from '../interfaces'
 import { convertSeconds } from '../utils/block-time'
+
 const defaultBlockTime: BlockTime = {
   hours: 0,
   minutes: 0,
@@ -44,6 +45,9 @@ const agendaListSlice = createSlice({
   name: 'agendaList',
   initialState,
   reducers: {
+    setAgendaList(_, action: PayloadAction<Agenda[]>) {
+      return action.payload
+    },
     updateAgenda(state, action: PayloadAction<UpdateAgendaPayload>) {
       const { id, name, blockTime } = action.payload
       const agenda = state.find((agenda) => agenda.id === id)
@@ -102,6 +106,7 @@ const agendaListSlice = createSlice({
 })
 
 export const {
+  setAgendaList,
   updateAgenda,
   updateAgendaBorders,
   updateAgendaStates,

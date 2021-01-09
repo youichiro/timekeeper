@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import React from 'react'
 import { LinearProgress, Grid, Typography } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 import { displayTime } from '../../utils/block-time'
 import { useSelector } from '../../stores'
-import { setTotal } from '../../stores/counter'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,16 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const ProgressBar: React.FC = () => {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
-  const selectedAgendaId = useSelector((state) => state.selectedAgendaId)
-  const agendaList = useSelector((state) => state.agendaList)
-
-  // selectedAgendaIdを監視して、変化したら合計時間を再計算する
-  useEffect(() => {
-    const total = agendaList.reduce((sum, agenda) => sum + agenda.time, 0)
-    dispatch(setTotal({ total }))
-  }, [selectedAgendaId])
 
   const progress = (counter.time / counter.total) * 100.0
   const remained = counter.total - counter.time
