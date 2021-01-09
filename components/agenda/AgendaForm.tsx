@@ -14,14 +14,10 @@ import TimeSelectForm from './forms/TimeSelectForm'
 import TextForm from './forms/TextForm'
 
 type Props = {
-  agenda: Agenda | null
+  agenda: Agenda
 }
 
 const AgendaForm: React.FC<Props> = ({ agenda }) => {
-  if (agenda === null) {
-    return null
-  }
-
   const dispatch = useDispatch()
 
   const handleChangeNameInput = (

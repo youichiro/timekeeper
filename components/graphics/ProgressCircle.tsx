@@ -31,14 +31,12 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-type RunningAgenda = Agenda | null
-
 const ProgressCircle: React.FC = () => {
   const classes = useStyles()
   const agendaList = useSelector((state) => state.agendaList)
   const counter = useSelector((state) => state.counter)
 
-  const [runningAgenda, setRunningAgenda] = useState<RunningAgenda>(null)
+  const [runningAgenda, setRunningAgenda] = useState<Agenda | null>(null)
 
   // agendaListを監視して、進行中の項目を取得する
   useEffect(() => {
