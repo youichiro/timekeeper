@@ -9,6 +9,7 @@ import {
   Typography,
 } from '@material-ui/core'
 
+import AgendaListTitle from './AgendaListTitle'
 import AgendaListItem from './AgendaListItem'
 import AgendaForm from './AgendaForm'
 import AddButton from './buttons/AddButton'
@@ -77,25 +78,7 @@ const AgendaList: React.FC = () => {
 
   return (
     <div style={{ height: '100%', paddingBottom: 40 }}>
-      <Grid
-        container
-        spacing={3}
-        alignItems="flex-end"
-        style={{ paddingBottom: 20 }}
-      >
-        <Grid item xs={6}>
-          <Typography variant="h5">アジェンダ</Typography>
-        </Grid>
-        <Grid item xs={6} style={{ textAlign: 'right', paddingRight: 60 }}>
-          {counter.isStarted || counter.isFinished ? (
-            <Typography variant="subtitle1">
-              全体: {displayTime(counter.total)}
-            </Typography>
-          ) : (
-            <></>
-          )}
-        </Grid>
-      </Grid>
+      <AgendaListTitle />
       <Paper variant="outlined" style={{ height: '100%', overflowY: 'auto' }}>
         <List>
           {listItems}
