@@ -8,22 +8,13 @@ import AgendaForm from './AgendaForm'
 import AgendaListLastItem from './AgendaListLastItem'
 import { useSelector } from '../../stores'
 import { setTotal } from '../../stores/counter'
-import { setAgendaList, updateAgendaStates } from '../../stores/agenda-list'
-import { saveAgendaList, loadAgendaList } from '../../utils/storage'
+import { updateAgendaStates } from '../../stores/agenda-list'
 
 const AgendaList: React.FC = () => {
   const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
   const agendaList = useSelector((state) => state.agendaList)
   const selectedAgendaId = useSelector((state) => state.selectedAgendaId)
-
-  // 初回レンダー時にlocalStorageの値があればその値をセットする
-  useEffect(() => {
-    const loadedAgendaList = loadAgendaList()
-    if (loadedAgendaList) {
-      dispatch(setAgendaList(loadedAgendaList))
-    }
-  }, [])
 
   // counterを監視して、agenda.statusを更新する
   useEffect(() => {
@@ -34,7 +25,6 @@ const AgendaList: React.FC = () => {
   useEffect(() => {
     const total = agendaList.reduce((sum, agenda) => sum + agenda.time, 0)
     dispatch(setTotal({ total }))
-    saveAgendaList(agendaList)
   }, [selectedAgendaId])
 
   const listItems = agendaList.map((agenda) =>
