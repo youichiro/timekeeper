@@ -1,22 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import {
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  Typography,
-} from '@material-ui/core'
+import { List, Paper } from '@material-ui/core'
 
 import AgendaListTitle from './AgendaListTitle'
 import AgendaListItem from './AgendaListItem'
 import AgendaForm from './AgendaForm'
-import AddButton from './buttons/AddButton'
+import AgendaListLastItem from './AgendaListLastItem'
 import { useSelector } from '../../stores'
 import { setTotal } from '../../stores/counter'
 import { setAgendaList, updateAgendaStates } from '../../stores/agenda-list'
-import { displayTime } from '../../utils/block-time'
 import { saveAgendaList, loadAgendaList } from '../../utils/storage'
 
 const AgendaList: React.FC = () => {
@@ -53,36 +45,13 @@ const AgendaList: React.FC = () => {
     )
   )
 
-  const lastListItem = (
-    <ListItem>
-      <Grid container spacing={3} alignItems="center">
-        <Grid item xs={4}></Grid>
-        <Grid item xs={4}>
-          <ListItemText style={{ textAlign: 'center' }}>
-            <AddButton iconSize={20} />
-          </ListItemText>
-        </Grid>
-        <Grid item xs={3} style={{ textAlign: 'right' }}>
-          {counter.isStarted || counter.isFinished ? (
-            <></>
-          ) : (
-            <Typography variant="subtitle2">
-              合計: {displayTime(counter.total)}
-            </Typography>
-          )}
-        </Grid>
-        <Grid item xs={1}></Grid>
-      </Grid>
-    </ListItem>
-  )
-
   return (
     <div style={{ height: '100%', paddingBottom: 40 }}>
       <AgendaListTitle />
       <Paper variant="outlined" style={{ height: '100%', overflowY: 'auto' }}>
         <List>
           {listItems}
-          {lastListItem}
+          <AgendaListLastItem />
         </List>
       </Paper>
     </div>
