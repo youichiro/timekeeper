@@ -23,7 +23,7 @@ const AddButton: React.FC<StyleProps> = ({ iconSize }) => {
     seconds: 0,
   }
 
-  const onClickAddButton = () => {
+  const handleClickAddButton = () => {
     if (counter.isFinished) return
     const id = agendaList.length > 0 ? agendaList.slice(-1)[0].id + 1 : 1
     const payload: AddAgendaPayload = {
@@ -36,7 +36,7 @@ const AddButton: React.FC<StyleProps> = ({ iconSize }) => {
   }
 
   return (
-    <Tooltip title="add" onClick={onClickAddButton}>
+    <Tooltip title="add" onClick={handleClickAddButton}>
       <IconButton size="small" disabled={counter.isFinished}>
         <AddIcon style={{ fontSize: iconSize }} />
       </IconButton>

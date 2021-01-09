@@ -16,7 +16,7 @@ const StopButton: React.FC<Props> = ({ iconSize }) => {
   const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
 
-  const onClickStopButton = () => {
+  const handleClickStopButton = () => {
     if (counter.isFinished) {
       return
     }
@@ -29,7 +29,7 @@ const StopButton: React.FC<Props> = ({ iconSize }) => {
   }
 
   return (
-    <Tooltip title="stop" onClick={onClickStopButton}>
+    <Tooltip title="stop" onClick={handleClickStopButton}>
       <Fab color={getColor()}>
         <PauseIcon style={{ fontSize: iconSize }} />
       </Fab>

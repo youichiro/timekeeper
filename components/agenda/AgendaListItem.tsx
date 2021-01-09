@@ -17,7 +17,7 @@ const AgendaListItem: React.FC<Props> = ({ agenda }) => {
   const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
 
-  const onClickItem = (id: number) => {
+  const handleClickItem = (id: number) => {
     dispatch(setSelectedAgendaId({ id }))
   }
 
@@ -48,8 +48,7 @@ const AgendaListItem: React.FC<Props> = ({ agenda }) => {
       divider={true}
       disabled={isDone()}
       selected={isRunning()}
-      // autoFocus={isRunning()}
-      onClick={() => onClickItem(agenda.id)}
+      onClick={() => handleClickItem(agenda.id)}
     >
       <Grid container spacing={3} alignItems="center">
         <Grid item xs={1}>

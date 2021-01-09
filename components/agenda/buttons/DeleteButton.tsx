@@ -26,7 +26,7 @@ const DeleteButton: React.FC = () => {
   const dispatch = useDispatch()
   const selectedAgendaId = useSelector((state) => state.selectedAgendaId)
 
-  const onClickDeleteButton = () => {
+  const handleClickDeleteButton = () => {
     if (selectedAgendaId !== null) {
       dispatch(deleteAgenda({ id: selectedAgendaId }))
       dispatch(setSelectedAgendaId({ id: null }))
@@ -37,7 +37,7 @@ const DeleteButton: React.FC = () => {
     <Tooltip
       title="delete"
       style={{ cursor: 'pointer' }}
-      onClick={onClickDeleteButton}
+      onClick={handleClickDeleteButton}
     >
       <RemoveCircleIcon color="disabled" className={classes.icon} />
     </Tooltip>

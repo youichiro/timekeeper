@@ -16,7 +16,7 @@ const StartButton: React.FC<Props> = ({ iconSize }) => {
   const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
 
-  const onClickStartButton = () => {
+  const handleClickStartButton = () => {
     if (counter.isFinished) return
     const intervalID = window.setInterval(() => dispatch(updateCount()), 1000)
     dispatch(startCount({ intervalID }))
@@ -28,7 +28,7 @@ const StartButton: React.FC<Props> = ({ iconSize }) => {
   }
 
   return (
-    <Tooltip title="start" onClick={onClickStartButton}>
+    <Tooltip title="start" onClick={handleClickStartButton}>
       <Fab color={getColor()}>
         <PlayArrowIcon style={{ fontSize: iconSize }} />
       </Fab>

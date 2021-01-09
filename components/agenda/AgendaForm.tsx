@@ -24,7 +24,9 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
 
   const dispatch = useDispatch()
 
-  const onChangeNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeNameInput = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const payload: UpdateAgendaPayload = {
       id: agenda.id,
       name: event.target.value,
@@ -33,7 +35,7 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
     dispatch(updateAgenda(payload))
   }
 
-  const onChangeTimeInput = (
+  const handleChangeTimeInput = (
     event: React.ChangeEvent<HTMLInputElement>,
     name: string
   ) => {
@@ -71,7 +73,7 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
             <TextForm
               label="name"
               value={agenda.name}
-              handleChange={onChangeNameInput}
+              handleChange={handleChangeNameInput}
             />
           </Grid>
           <Grid item xs={5}>
@@ -81,21 +83,21 @@ const AgendaForm: React.FC<Props> = ({ agenda }) => {
                 label="hours"
                 suffix="時間"
                 maxNum={24}
-                handleChange={onChangeTimeInput}
+                handleChange={handleChangeTimeInput}
               />
               <TimeSelectForm
                 value={inputValue(agenda.blockTime.minutes)}
                 label="minutes"
                 suffix="分"
                 maxNum={60}
-                handleChange={onChangeTimeInput}
+                handleChange={handleChangeTimeInput}
               />
               <TimeSelectForm
                 value={inputValue(agenda.blockTime.seconds)}
                 label="seconds"
                 suffix="秒"
                 maxNum={60}
-                handleChange={onChangeTimeInput}
+                handleChange={handleChangeTimeInput}
               />
             </div>
           </Grid>

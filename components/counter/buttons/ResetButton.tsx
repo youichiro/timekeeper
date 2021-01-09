@@ -16,7 +16,7 @@ const ResetButton: React.FC<Props> = ({ iconSize }) => {
   const dispatch = useDispatch()
   const counter = useSelector((state) => state.counter)
 
-  const onClickResetButton = () => {
+  const handleClickResetButton = () => {
     dispatch(resetCount())
     dispatch(setTheme({ theme: 'light' }))
   }
@@ -26,7 +26,7 @@ const ResetButton: React.FC<Props> = ({ iconSize }) => {
   }
 
   return (
-    <Tooltip title="reset" onClick={onClickResetButton}>
+    <Tooltip title="reset" onClick={handleClickResetButton}>
       <Fab color={getColor()}>
         <RefreshIcon style={{ fontSize: iconSize }} />
       </Fab>
