@@ -110,3 +110,4 @@ export const {
   deleteAgenda,
 } = agendaListSlice.actions
 export default agendaListSlice.reducer
+
