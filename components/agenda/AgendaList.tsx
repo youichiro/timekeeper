@@ -9,6 +9,7 @@ import AgendaListLastItem from './AgendaListLastItem'
 import { useSelector } from '../../stores'
 import { setTotal } from '../../stores/counter'
 import { updateAgendaStates } from '../../stores/agenda-list'
+import { calcAgendaListTotalTime } from '../../utils/agenda-list'
 
 const AgendaList: React.FC = () => {
   const dispatch = useDispatch()
@@ -23,7 +24,7 @@ const AgendaList: React.FC = () => {
 
   // selectedAgendaIdを監視して、変化したら合計時間を再計算する
   useEffect(() => {
-    const total = agendaList.reduce((sum, agenda) => sum + agenda.time, 0)
+    const total = calcAgendaListTotalTime(agendaList)
     dispatch(setTotal({ total }))
   }, [selectedAgendaId])
 

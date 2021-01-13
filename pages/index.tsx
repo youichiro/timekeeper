@@ -16,6 +16,7 @@ import Buttons from '../components/counter/Buttons'
 import ProgressBar from '../components/graphics/ProgressBar'
 import ProgressCircle from '../components/graphics/ProgressCircle'
 import { useSelector } from '../stores'
+import Uploader from '../components/file-reader/Uploader'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -67,6 +68,7 @@ const IndexPage: React.FC = () => {
       </Head>
       <ThemeProvider theme={muiTheme}>
         <CssBaseline />
+        <Uploader />
         <Container maxWidth="md" style={{ marginTop: 40, marginBottom: 40 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={8} className={classes.list}>
