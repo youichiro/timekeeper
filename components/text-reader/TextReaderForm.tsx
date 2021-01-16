@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { TextField } from '@material-ui/core'
 import { TextReaderDialogContext } from './TextReaderDialog'
 
@@ -27,4 +27,3 @@ const TextReaderForm: React.FC = () => {
 }
 
 export default TextReaderForm
-

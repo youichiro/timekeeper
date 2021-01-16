@@ -1,10 +1,16 @@
-import React, {useState, createContext} from 'react'
+import React, { useState, createContext } from 'react'
 import { useDispatch } from 'react-redux'
-import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from '@material-ui/core'
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Button,
+} from '@material-ui/core'
 
 import TextReaderForm from './TextReaderForm'
-import {convertTextToAgendaList} from '../../utils/input-text'
-import {calcAgendaListTotalTime} from '../../utils/agenda-list'
+import { convertTextToAgendaList } from '../../utils/input-text'
+import { calcAgendaListTotalTime } from '../../utils/agenda-list'
 import { resetCount, setTotal } from '../../stores/counter'
 import { setAgendaList } from '../../stores/agenda-list'
 
@@ -44,7 +50,7 @@ const TextReaderDialog: React.FC = () => {
       >
         <DialogTitle>title</DialogTitle>
         <DialogContent>
-          <TextReaderDialogContext.Provider value={{text, setText}}>
+          <TextReaderDialogContext.Provider value={{ text, setText }}>
             <TextReaderForm />
           </TextReaderDialogContext.Provider>
         </DialogContent>
@@ -57,4 +63,3 @@ const TextReaderDialog: React.FC = () => {
 }
 
 export default TextReaderDialog
-

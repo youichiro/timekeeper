@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { List, Paper, Tooltip, IconButton } from '@material-ui/core'
-import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
+import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile'
 
 import AgendaListTitle from './AgendaListTitle'
 import AgendaListItem from './AgendaListItem'
