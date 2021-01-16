@@ -1,9 +1,9 @@
 import React, {useContext} from 'react'
 import { TextField } from '@material-ui/core'
-import { TextReaderModalContext } from './TextReaderModal'
+import { TextReaderDialogContext } from './TextReaderDialog'
 
 const TextReaderForm: React.FC = () => {
-  const { text, setText } = useContext(TextReaderModalContext)
+  const { text, setText } = useContext(TextReaderDialogContext)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value)

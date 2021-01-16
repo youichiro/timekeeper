@@ -17,7 +17,7 @@ import ProgressBar from '../components/graphics/ProgressBar'
 import ProgressCircle from '../components/graphics/ProgressCircle'
 import { useSelector } from '../stores'
 import Uploader from '../components/file-reader/Uploader'
-import TextReaderModal from '../components/text-reader/TextReaderModal'
+import TextReaderDialog from '../components/text-reader/TextReaderDialog'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -87,7 +87,7 @@ const IndexPage: React.FC = () => {
               </div>
             </Grid>
           </Grid>
-          <TextReaderModal />
+          <TextReaderDialog />
         </Container>
       </ThemeProvider>
     </div>

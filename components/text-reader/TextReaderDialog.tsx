@@ -8,14 +8,14 @@ import {calcAgendaListTotalTime} from '../../utils/agenda-list'
 import { resetCount, setTotal } from '../../stores/counter'
 import { setAgendaList } from '../../stores/agenda-list'
 
-export const TextReaderModalContext = createContext(
+export const TextReaderDialogContext = createContext(
   {} as {
     text: string
     setText: (text: string) => void
   }
 )
 
-const TextReaderModal: React.FC = () => {
+const TextReaderDialog: React.FC = () => {
   const dispatch = useDispatch()
 
   const [open, setOpen] = useState(false)
@@ -44,9 +44,9 @@ const TextReaderModal: React.FC = () => {
       >
         <DialogTitle>title</DialogTitle>
         <DialogContent>
-          <TextReaderModalContext.Provider value={{text, setText}}>
+          <TextReaderDialogContext.Provider value={{text, setText}}>
             <TextReaderForm />
-          </TextReaderModalContext.Provider>
+          </TextReaderDialogContext.Provider>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleSend}>send</Button>
@@ -56,5 +56,5 @@ const TextReaderModal: React.FC = () => {
   )
 }
 
-export default TextReaderModal
+export default TextReaderDialog
 
