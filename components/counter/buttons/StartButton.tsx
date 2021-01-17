@@ -17,7 +17,7 @@ const StartButton: React.FC<Props> = ({ iconSize }) => {
   const counter = useSelector((state) => state.counter)
 
   const handleClickStartButton = () => {
-    if (counter.isFinished) return
+    if (counter.isFinished || counter.total <= 0) return
     const intervalID = window.setInterval(() => dispatch(updateCount()), 1000)
     dispatch(startCount({ intervalID }))
     dispatch(setTheme({ theme: 'dark' }))
