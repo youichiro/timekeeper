@@ -1,8 +1,8 @@
 import React from 'react'
-import { Grid, IconButton, Tooltip, Typography } from '@material-ui/core'
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
+import { Grid, Typography } from '@material-ui/core'
 import { useSelector } from '../../stores'
 import { displayTime } from '../../utils/block-time'
+import MoreButton from './buttons/MoreButton'
 
 const AgendaListTitle: React.FC = () => {
   const counter = useSelector((state) => state.counter)
@@ -23,11 +23,7 @@ const AgendaListTitle: React.FC = () => {
             全体: {displayTime(counter.total)}
           </Typography>
         ) : (
-          <Tooltip title="more">
-            <IconButton size="small">
-              <MoreHorizIcon />
-            </IconButton>
-          </Tooltip>
+          <MoreButton />
         )}
       </Grid>
     </Grid>
