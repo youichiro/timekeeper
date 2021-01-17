@@ -44,7 +44,7 @@ const TextReaderDialog: React.FC = () => {
         open={open}
         onClose={() => dispatch(closeTextReaderDialog())}
         fullWidth={true}
-        maxWidth="lg"
+        maxWidth="sm"
       >
         <DialogTitle>title</DialogTitle>
         <DialogContent>
