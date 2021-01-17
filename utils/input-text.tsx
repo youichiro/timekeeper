@@ -52,8 +52,25 @@ const convertTextToBlockTime = (str: string): BlockTime => {
   }
 }
 
+// 英数字の全角を半角に変換する
 const toHankaku = (str: string) => {
   return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, (s) => {
     return String.fromCharCode(s.charCodeAt(0) - 0xfee0)
   })
+}
+
+// AgendaListをテキストに変換する
+export const convertAgendaListToText = (agendaList: Agenda[]): string => {
+  const agendaTextList = agendaList.map((agenda) => {
+    const hours = getTimeStr(agenda.blockTime.hours, '時間')
+    const minutes = getTimeStr(agenda.blockTime.minutes, '分')
+    const seconds = getTimeStr(agenda.blockTime.seconds, '秒')
+    return `${agenda.name}, ${hours}${minutes}${seconds}`
+  })
+  return agendaTextList.join('\n')
+}
+
+// 時間の数値から文字列を作る
+const getTimeStr = (time: number | null, unit: string): string => {
+  return time !== null && time > 0 ? `${time}${unit}` : ''
 }
