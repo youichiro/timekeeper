@@ -18,7 +18,7 @@ const TextReaderForm: React.FC = () => {
         <TextField
           label=""
           multiline
-          rows={8}
+          rows={10}
           placeholder="議題名, ◯時間◯分◯秒"
           onChange={handleChange}
           value={textReader.text}
