@@ -50,7 +50,7 @@ const MoreButton: React.FC = () => {
           <ListItemIcon>
             <InsertDriveFileIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="text-reader" />
+          <ListItemText primary="テキストで入力する" />
         </MenuItem>
       </Menu>
     </div>
