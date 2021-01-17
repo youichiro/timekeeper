@@ -32,7 +32,7 @@ const TextReaderDialog: React.FC = () => {
   const handleSend = () => {
     const agendaList = convertTextToAgendaList(text)
     const total = calcAgendaListTotalTime(agendaList)
-    dispatch(resetCount)
+    dispatch(resetCount())
     dispatch(setAgendaList(agendaList))
     dispatch(setTotal({ total }))
     dispatch(closeTextReaderDialog())
