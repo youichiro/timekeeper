@@ -4,8 +4,8 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Button,
+  DialogContentText,
 } from '@material-ui/core'
 
 import TextReaderForm from './TextReaderForm'
@@ -29,7 +29,11 @@ const TextReaderDialog: React.FC = () => {
 
   const [text, setText] = useState('')
 
-  const handleSend = () => {
+  const handleClickCancel = () => {
+    dispatch(closeTextReaderDialog())
+  }
+
+  const handleClickOk = () => {
     const agendaList = convertTextToAgendaList(text)
     const total = calcAgendaListTotalTime(agendaList)
     dispatch(resetCount())
@@ -46,14 +50,17 @@ const TextReaderDialog: React.FC = () => {
         fullWidth={true}
         maxWidth="sm"
       >
-        <DialogTitle>title</DialogTitle>
         <DialogContent>
+          <DialogContentText style={{ paddingBottom: 20 }}>
+            議題名と時間をカンマ区切りで入力してください
+          </DialogContentText>
           <TextReaderDialogContext.Provider value={{ text, setText }}>
             <TextReaderForm />
           </TextReaderDialogContext.Provider>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleSend}>send</Button>
+          <Button onClick={handleClickCancel}>cancel</Button>
+          <Button onClick={handleClickOk}>ok</Button>
         </DialogActions>
       </Dialog>
     </div>
