@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import {
   Dialog,
@@ -16,25 +16,16 @@ import { setAgendaList } from '../../stores/agenda-list'
 import { useSelector } from '../../stores'
 import { closeTextReaderDialog } from '../../stores/text-reader'
 
-export const TextReaderDialogContext = createContext(
-  {} as {
-    text: string
-    setText: (text: string) => void
-  }
-)
-
 const TextReaderDialog: React.FC = () => {
   const dispatch = useDispatch()
-  const open = useSelector((state) => state.textReader)
-
-  const [text, setText] = useState('')
+  const textReader = useSelector((state) => state.textReader)
 
   const handleClickCancel = () => {
     dispatch(closeTextReaderDialog())
   }
 
   const handleClickOk = () => {
-    const agendaList = convertTextToAgendaList(text)
+    const agendaList = convertTextToAgendaList(textReader.text)
     const total = calcAgendaListTotalTime(agendaList)
     dispatch(resetCount())
     dispatch(setAgendaList(agendaList))
@@ -45,7 +36,7 @@ const TextReaderDialog: React.FC = () => {
   return (
     <div>
       <Dialog
-        open={open}
+        open={textReader.open}
         onClose={() => dispatch(closeTextReaderDialog())}
         fullWidth={true}
         maxWidth="sm"
@@ -54,9 +45,7 @@ const TextReaderDialog: React.FC = () => {
           <DialogContentText style={{ paddingBottom: 20 }}>
             議題名と時間をカンマ区切りで入力してください
           </DialogContentText>
-          <TextReaderDialogContext.Provider value={{ text, setText }}>
-            <TextReaderForm />
-          </TextReaderDialogContext.Provider>
+          <TextReaderForm />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClickCancel}>cancel</Button>

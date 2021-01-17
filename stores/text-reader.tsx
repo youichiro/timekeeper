@@ -1,14 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { TextReader } from '../interfaces'
+
+const initialState: TextReader = {
+  open: false,
+  text: '',
+}
 
 const textReaderSlice = createSlice({
   name: 'text-reader',
-  initialState: false,
+  initialState,
   reducers: {
-    openTextReaderDialog() {
-      return true
+    openTextReaderDialog(state, actions: PayloadAction<string>) {
+      const text = actions.payload
+      state.text = text
+      state.open = true
     },
-    closeTextReaderDialog() {
-      return false
+    closeTextReaderDialog(state) {
+      state.open = false
+    },
+    setTextReaderText(state, actions: PayloadAction<string>) {
+      const text = actions.payload
+      state.text = text
     },
   },
 })
@@ -16,5 +28,6 @@ const textReaderSlice = createSlice({
 export const {
   openTextReaderDialog,
   closeTextReaderDialog,
+  setTextReaderText,
 } = textReaderSlice.actions
 export default textReaderSlice.reducer

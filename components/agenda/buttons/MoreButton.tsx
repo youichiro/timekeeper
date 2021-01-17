@@ -11,9 +11,12 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import { useDispatch } from 'react-redux'
 import { openTextReaderDialog } from '../../../stores/text-reader'
 import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile'
+import { useSelector } from '../../../stores'
+import { convertAgendaListToText } from '../../../utils/input-text'
 
 const MoreButton: React.FC = () => {
   const dispatch = useDispatch()
+  const agendaList = useSelector((state) => state.agendaList)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const handleClick = (e: any) => {
@@ -25,7 +28,8 @@ const MoreButton: React.FC = () => {
   }
 
   const handleOpenTextReader = () => {
-    dispatch(openTextReaderDialog())
+    const text = convertAgendaListToText(agendaList)
+    dispatch(openTextReaderDialog(text))
     handleClose()
   }
 

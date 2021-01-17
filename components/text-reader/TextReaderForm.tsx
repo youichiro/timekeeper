@@ -1,12 +1,15 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { TextField } from '@material-ui/core'
-import { TextReaderDialogContext } from './TextReaderDialog'
+import { useDispatch } from 'react-redux'
+import { setTextReaderText } from '../../stores/text-reader'
+import { useSelector } from '../../stores'
 
 const TextReaderForm: React.FC = () => {
-  const { text, setText } = useContext(TextReaderDialogContext)
+  const dispatch = useDispatch()
+  const textReader = useSelector((state) => state.textReader)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value)
+    dispatch(setTextReaderText(e.target.value))
   }
 
   return (
@@ -18,7 +21,7 @@ const TextReaderForm: React.FC = () => {
           rows={8}
           placeholder="議題名, ◯時間◯分◯秒"
           onChange={handleChange}
-          value={text}
+          value={textReader.text}
           fullWidth
         />
       </div>
