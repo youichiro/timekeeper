@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { List, Paper, Tooltip, IconButton } from '@material-ui/core'
-import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile'
+import { List, Paper } from '@material-ui/core'
 
 import AgendaListTitle from './AgendaListTitle'
 import AgendaListItem from './AgendaListItem'
@@ -11,6 +10,7 @@ import { useSelector } from '../../stores'
 import { setTotal } from '../../stores/counter'
 import { updateAgendaStates } from '../../stores/agenda-list'
 import { calcAgendaListTotalTime } from '../../utils/agenda-list'
+import TextReaderButton from './buttons/TextReaderButton'
 
 const AgendaList: React.FC = () => {
   const dispatch = useDispatch()
@@ -46,11 +46,7 @@ const AgendaList: React.FC = () => {
           <AgendaListLastItem />
         </List>
       </Paper>
-      <Tooltip title="input file">
-        <IconButton size="small">
-          <InsertDriveFileIcon />
-        </IconButton>
-      </Tooltip>
+      <TextReaderButton />
     </div>
   )
 }

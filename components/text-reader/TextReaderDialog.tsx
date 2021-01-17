@@ -13,6 +13,8 @@ import { convertTextToAgendaList } from '../../utils/input-text'
 import { calcAgendaListTotalTime } from '../../utils/agenda-list'
 import { resetCount, setTotal } from '../../stores/counter'
 import { setAgendaList } from '../../stores/agenda-list'
+import { useSelector } from '../../stores'
+import { closeTextReaderDialog } from '../../stores/text-reader-dialog'
 
 export const TextReaderDialogContext = createContext(
   {} as {
@@ -23,8 +25,8 @@ export const TextReaderDialogContext = createContext(
 
 const TextReaderDialog: React.FC = () => {
   const dispatch = useDispatch()
+  const open = useSelector((state) => state.textReaderDialog)
 
-  const [open, setOpen] = useState(false)
   const [text, setText] = useState('')
 
   const handleSend = () => {
@@ -33,18 +35,14 @@ const TextReaderDialog: React.FC = () => {
     dispatch(resetCount)
     dispatch(setAgendaList(agendaList))
     dispatch(setTotal({ total }))
-    setOpen(false)
+    dispatch(closeTextReaderDialog())
   }
 
   return (
     <div>
-      <button type="button" onClick={() => setOpen(true)}>
-        open
-      </button>
-      <p>{text}</p>
       <Dialog
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={() => dispatch(closeTextReaderDialog())}
         fullWidth={true}
         maxWidth="lg"
       >
