@@ -33,9 +33,9 @@ export const convertTextToAgendaList = (text: string): Agenda[] => {
 }
 
 // 文字列をBlockTimeに変換する
-const convertTextToBlockTime = (text: string): BlockTime => {
+const convertTextToBlockTime = (str: string): BlockTime => {
   let time, hours, minutes, seconds
-  time = text
+  time = toHankaku(str)
   if (time.includes('時間')) {
     [hours, time] = time.split('時間')
   }
@@ -50,4 +50,10 @@ const convertTextToBlockTime = (text: string): BlockTime => {
     minutes: minutes ? parseInt(minutes) : 0,
     seconds: seconds ? parseInt(seconds) : 0,
   }
+}
+
+const toHankaku = (str: string) => {
+  return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, (s) => {
+    return String.fromCharCode(s.charCodeAt(0) - 0xfee0)
+  })
 }
