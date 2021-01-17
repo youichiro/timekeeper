@@ -31,3 +31,8 @@ export interface Counter {
 }
 
 export type Theme = 'dark' | 'light'
+
+export interface TextReader {
+  open: boolean
+  text: string
+}

@@ -99,6 +99,10 @@ const agendaListSlice = createSlice({
       }
       return state.filter((agenda) => agenda.id !== id)
     },
+    setAgendaList(_, action: PayloadAction<Agenda[]>) {
+      const agendaList = action.payload
+      return agendaList
+    },
   },
 })
 
@@ -108,6 +112,7 @@ export const {
   updateAgendaStates,
   addAgenda,
   deleteAgenda,
+  setAgendaList,
 } = agendaListSlice.actions
 export default agendaListSlice.reducer
 

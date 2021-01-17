@@ -16,7 +16,7 @@ const AgendaListLastItem: React.FC = () => {
             <AddButton iconSize={20} />
           </ListItemText>
         </Grid>
-        <Grid item xs={3} style={{ textAlign: 'right' }}>
+        <Grid item xs={4} style={{ textAlign: 'right', paddingRight: 20 }}>
           {counter.isStarted || counter.isFinished ? (
             <></>
           ) : (
@@ -25,7 +25,6 @@ const AgendaListLastItem: React.FC = () => {
             </Typography>
           )}
         </Grid>
-        <Grid item xs={1}></Grid>
       </Grid>
     </ListItem>
   )

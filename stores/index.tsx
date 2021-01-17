@@ -9,12 +9,14 @@ import agendaListReducer from './agenda-list'
 import selectedAgendaIdReducer from './selected-agenda-id'
 import counterReducer from './counter'
 import themeReducer from './theme'
+import textReaderReducer from './text-reader'
 
 const reducer = combineReducers({
   agendaList: agendaListReducer,
   selectedAgendaId: selectedAgendaIdReducer,
   counter: counterReducer,
   theme: themeReducer,
+  textReader: textReaderReducer,
 })
 
 const store = configureStore({
