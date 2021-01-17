@@ -115,4 +115,3 @@ export const {
   setAgendaList,
 } = agendaListSlice.actions
 export default agendaListSlice.reducer
-

@@ -20,6 +20,7 @@ const TextReaderForm: React.FC = () => {
           multiline
           rows={10}
           placeholder="議題名, ◯時間◯分◯秒"
+          autoFocus
           onChange={handleChange}
           value={textReader.text}
           fullWidth
