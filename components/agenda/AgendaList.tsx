@@ -10,7 +10,6 @@ import { useSelector } from '../../stores'
 import { setTotal } from '../../stores/counter'
 import { updateAgendaStates } from '../../stores/agenda-list'
 import { calcAgendaListTotalTime } from '../../utils/agenda-list'
-import TextReaderButton from './buttons/TextReaderButton'
 
 const AgendaList: React.FC = () => {
   const dispatch = useDispatch()
@@ -46,7 +45,6 @@ const AgendaList: React.FC = () => {
           <AgendaListLastItem />
         </List>
       </Paper>
-      <TextReaderButton />
     </div>
   )
 }

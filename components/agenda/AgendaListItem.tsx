@@ -57,10 +57,9 @@ const AgendaListItem: React.FC<Props> = ({ agenda }) => {
         <Grid item xs={5}>
           <ListItemText primary={agenda.name} />
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={6} style={{ paddingRight: 20 }}>
           <ListItemText style={{ textAlign: 'right' }} primary={displayTime} />
         </Grid>
-        <Grid item xs={1}></Grid>
       </Grid>
     </ListItem>
   )

@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState: boolean = false
-
 const textReaderDialogSlice = createSlice({
   name: 'text-reader-dialog',
-  initialState,
+  initialState: false,
   reducers: {
     openTextReaderDialog() {
       return true
