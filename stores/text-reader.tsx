@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const textReaderDialogSlice = createSlice({
-  name: 'text-reader-dialog',
+const textReaderSlice = createSlice({
+  name: 'text-reader',
   initialState: false,
   reducers: {
     openTextReaderDialog() {
@@ -16,5 +16,5 @@ const textReaderDialogSlice = createSlice({
 export const {
   openTextReaderDialog,
   closeTextReaderDialog,
-} = textReaderDialogSlice.actions
-export default textReaderDialogSlice.reducer
+} = textReaderSlice.actions
+export default textReaderSlice.reducer

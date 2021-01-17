@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import { useDispatch } from 'react-redux'
-import { openTextReaderDialog } from '../../../stores/text-reader-dialog'
+import { openTextReaderDialog } from '../../../stores/text-reader'
 import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile'
 
 const MoreButton: React.FC = () => {

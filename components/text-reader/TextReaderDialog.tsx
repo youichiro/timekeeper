@@ -14,7 +14,7 @@ import { calcAgendaListTotalTime } from '../../utils/agenda-list'
 import { resetCount, setTotal } from '../../stores/counter'
 import { setAgendaList } from '../../stores/agenda-list'
 import { useSelector } from '../../stores'
-import { closeTextReaderDialog } from '../../stores/text-reader-dialog'
+import { closeTextReaderDialog } from '../../stores/text-reader'
 
 export const TextReaderDialogContext = createContext(
   {} as {
@@ -25,7 +25,7 @@ export const TextReaderDialogContext = createContext(
 
 const TextReaderDialog: React.FC = () => {
   const dispatch = useDispatch()
-  const open = useSelector((state) => state.textReaderDialog)
+  const open = useSelector((state) => state.textReader)
 
   const [text, setText] = useState('')
 
