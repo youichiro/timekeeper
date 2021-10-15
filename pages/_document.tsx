@@ -25,6 +25,9 @@ export default class MyDocument extends Document {
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@cinnamon_416" />
           <meta name="twitter:creator" content="@cinnamon_416" />
+          <meta name="theme-color" content="#4a90e2" />
+          <link rel="manifest" href="/manifest.webmanifest" />
+          <link rel="apple-touch-icon" href="/icon-192x192.png" />
         </Head>
         <body>
           <Main />
