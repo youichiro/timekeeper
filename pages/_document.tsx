@@ -27,6 +27,7 @@ export default class MyDocument extends Document {
           <meta name="twitter:creator" content="@cinnamon_416" />
           <link rel="manifest" href="/manifest.webmanifest" />
           <link rel="apple-touch-icon" href="/icon-192x192.png" />
+          <meta name="theme-color" content="#303030" />
         </Head>
         <body>
           <Main />
