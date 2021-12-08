@@ -1,4 +1,4 @@
 // /pages/_offline.tsx
-import IndexPage from "./";
+import IndexPage from './'
 
-export default IndexPage;
+export default IndexPage
