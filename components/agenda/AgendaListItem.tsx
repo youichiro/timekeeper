@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { ListItem, ListItemText, Grid } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
+import PauseIcon from '@material-ui/icons/Pause'
 
 import { Agenda } from '../../interfaces/index'
 import { convertBlockTimeToDisplayTime } from '../../utils/block-time'
@@ -23,36 +24,34 @@ const AgendaListItem: React.FC<Props> = ({ agenda }) => {
 
   const displayTime = convertBlockTimeToDisplayTime(agenda.blockTime)
 
-  const isDone = () => {
-    return (
-      agenda.status === 'done' ||
-      (agenda.status === 'running' && counter.isFinished)
-    )
-  }
+  const isDone =
+    agenda.status === 'done' ||
+    (agenda.status === 'running' && counter.isFinished)
+  const isRunning = agenda.status === 'running'
 
-  const isRunning = () => agenda.status === 'running'
-
-  const getIcon = () => {
-    return isDone() ? (
-      <DoneIcon />
-    ) : isRunning() ? (
+  const icon = isDone ? (
+    <DoneIcon />
+  ) : isRunning ? (
+    counter.isStarted ? (
       <PlayArrowIcon color="action" />
     ) : (
-      <></>
+      <PauseIcon style={{ fontSize: 20 }} color="action" />
     )
-  }
+  ) : (
+    <></>
+  )
 
   return (
     <ListItem
       button
       divider={true}
-      disabled={isDone()}
-      selected={isRunning()}
+      disabled={isDone}
+      selected={isRunning}
       onClick={() => handleClickItem(agenda.id)}
     >
       <Grid container spacing={3} alignItems="center">
         <Grid item xs={1}>
-          {getIcon()}
+          {icon}
         </Grid>
         <Grid item xs={5}>
           <ListItemText primary={agenda.name} />
